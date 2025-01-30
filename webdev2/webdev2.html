@@ -7,44 +7,45 @@
     <link rel="stylesheet" href="webdev2.css">
 </head>
 <body>
-    {
-        "imports": {
-          "three": "https://unpkg.com/three@0.171.0/build/three.module.js",
-          "three/addons/": "https://unpkg.com/three@0.171.0/examples/jsm/"
+    <script type="importmap">
+        {
+          "imports": {
+            "three": "https://unpkg.com/three@0.171.0/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.171.0/examples/jsm/"
+          }
         }
-      }
-    </script>
-    <script>
-      let rotations = `
-        // https://forum.gamemaker.io/index.php?threads/solved-3d-rotations-with-a-shader-matrix-or-a-matrix-glsl-es.61064/
-          mat4 rx(float a) {
-            return mat4( 1.0, 0.0, 0.0, 0.0,
-                         0.0,cos(a),sin(a), 0.0,
-                         0.0,-sin(a),cos(a), 0.0,
-                         0.0, 0.0, 0.0, 1.0);
-          }
-    
-          mat4 ry(float a){
-            return mat4( cos(a),0.0, -sin(a), 0.0,
-                         0.0, 1.0, 0.0, 0.0,
-                         sin(a), 0.0, cos(a), 0.0,
-                         0.0,0.0,0.0,1.0);
-          }
-                   
-          mat4 rz(float a){
-            return mat4( cos(a), sin(a), 0.0, 0.0,
-                         -sin(a), cos(a), 0.0, 0.0,
-                         0.0        , 0.0       ,1.0 ,0.0,
-                         0.0        , 0.0       ,0.0 ,1.0);
-          }
-          ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-          
-          mat4 rotationXYZ(vec3 angles){
-            return rz(angles.z) * ry(angles.y) * rx(angles.x);
-          }
-      `;
-    </script>
-    <iframe id="player" style="border: 0; width: 42px; height: 42px;" src="https://bandcamp.com/EmbeddedPlayer/album=3463341063/size=small/bgcol=333333/linkcol=4ec5ec/artwork=none/track=2847152371/transparent=true/" seamless><a href="https://cugateclassics.bandcamp.com/album/dmitri-shostakovich-the-gadfly-suite-op-97a-i-georgy-sviridov-snowstorm">Dmitri Shostakovich: The Gadfly Suite, Op. 97A  I  Georgy Sviridov: Snowstorm by Lithuanian Chamber Orchestra / Saulius Sondeckis / St. Petersburg Camerata / Alexander Titov</a></iframe>, initial-scale=1.0">
+      </script>
+      <script>
+        let rotations = `
+          // https://forum.gamemaker.io/index.php?threads/solved-3d-rotations-with-a-shader-matrix-or-a-matrix-glsl-es.61064/
+            mat4 rx(float a) {
+              return mat4( 1.0, 0.0, 0.0, 0.0,
+                           0.0,cos(a),sin(a), 0.0,
+                           0.0,-sin(a),cos(a), 0.0,
+                           0.0, 0.0, 0.0, 1.0);
+            }
+      
+            mat4 ry(float a){
+              return mat4( cos(a),0.0, -sin(a), 0.0,
+                           0.0, 1.0, 0.0, 0.0,
+                           sin(a), 0.0, cos(a), 0.0,
+                           0.0,0.0,0.0,1.0);
+            }
+                     
+            mat4 rz(float a){
+              return mat4( cos(a), sin(a), 0.0, 0.0,
+                           -sin(a), cos(a), 0.0, 0.0,
+                           0.0        , 0.0       ,1.0 ,0.0,
+                           0.0        , 0.0       ,0.0 ,1.0);
+            }
+            ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            
+            mat4 rotationXYZ(vec3 angles){
+              return rz(angles.z) * ry(angles.y) * rx(angles.x);
+            }
+        `;
+      </script>
+      <iframe id="player" style="border: 0; width: 42px; height: 42px;" src="https://bandcamp.com/EmbeddedPlayer/album=3463341063/size=small/bgcol=333333/linkcol=4ec5ec/artwork=none/track=2847152371/transparent=true/" seamless><a href="https://cugateclassics.bandcamp.com/album/dmitri-shostakovich-the-gadfly-suite-op-97a-i-georgy-sviridov-snowstorm">Dmitri Shostakovich: The Gadfly Suite, Op. 97A  I  Georgy Sviridov: Snowstorm by Lithuanian Chamber Orchestra / Saulius Sondeckis / St. Petersburg Camerata / Alexander Titov</a></iframe>
     <script src="webdev2.js"></script>
 </body>
 </html>
