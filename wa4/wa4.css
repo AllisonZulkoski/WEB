@@ -68,8 +68,8 @@ body {
         width: 35em;
         height: 22em;
         margin: 5em auto;
-        background-color: #7f0215;
-        border: 0.2em solid black;
+        background-color: #696969;
+        border: 0.2em solid rgb(15, 26, 59);
         border-radius: 1.5em;
         font-family: 'Courier New', Courier, monospace;
 
