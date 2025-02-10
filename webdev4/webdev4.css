@@ -7,6 +7,7 @@ body {
   }
   
   @import url('https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
   
   .modal {
     position: absolute;
@@ -44,7 +45,7 @@ body {
   }
   
   .field {
-    font-family: "Poppins", sans-serif;
+    font-family: 'Pacifico', cursive;
     font-optical-sizing: auto;
     font-style: normal;
     /*   font-variation-settings: "wdth" 100; */
@@ -70,7 +71,7 @@ body {
   }
   
   .sign, .signed-by {
-    font-family: "Fira Code", monospace;
+    font-family: 'Indie Flower', cursive;
     font-optical-sizing: auto;
     font-style: normal;
     text-transform: uppercase;
@@ -88,7 +89,7 @@ body {
     transform: translateY(-50%);
     display: flex;
     gap: 8px;
-    align-items: center;
+    align-items: left;
     height: 44px;
     border-radius: 12px;
     padding: 0 14px 2px 12px;
