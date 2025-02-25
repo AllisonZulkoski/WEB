@@ -1,0 +1,45 @@
+body{
+    background-color: khaki;
+}
+
+#box1{
+    width: 25vw;
+    height: 20vh;
+    background-color: indianred;
+}
+
+#box1:hover {
+    background-color: rebeccapurple;
+}
+
+#box2{
+    width: 25vw;
+    height: 20vh;
+    position: relative;
+    background-color: orangered;
+    animation: box2move 5s infinite alternate ease-in-out;
+    animation-duration: 8s;
+}
+
+@keyframes box2move{
+    0% {
+        top: 100vw;
+        left: 100vw;
+    }
+    25% {
+        top: 30vw;
+        left: 50vw;
+    }
+    50% {
+        top: 50vh;
+        left: 50vw;
+    }
+    75% {
+        top: 50vh;
+        left: -2vw;
+    }
+    100% {
+        top: 23vw;
+        left: 90vw;
+    }
+}
