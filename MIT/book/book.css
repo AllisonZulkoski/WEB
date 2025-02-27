@@ -1,0 +1,170 @@
+html, body {
+    font-family: 'Dongle', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.text-container {
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    justify-content: center;
+    align-items: top;
+    font-size: 96px;
+    color: white;
+    opacity: 0.8;
+    user-select: none;
+    text-shadow: 1px 1px rgba(0,0,0,0.1);
+}
+
+.middle-text {
+    z-index: 100;
+    width: calc(100vw - 60px); /* Adjust width to account for border */
+    height: calc(100vh - 60px); /* Adjust height to account for border */
+    display: flex;
+    position: absolute;
+    top: 30px; /* Adjust position to account for border */
+    left: 30px; /* Adjust position to account for border */
+    justify-content: left;
+    align-items: center;
+    font-size: 40px;
+    color: white;
+    opacity: 0.8;
+    user-select: none;
+    text-shadow: 1px 1px rgba(0,0,0,0.1);
+    border: 30px solid transparent; /* Make the border invisible */
+    box-sizing: border-box; /* Include border in element's total width and height */
+}
+
+.options {
+    display: flex;
+    position: absolute;
+    bottom: 20%;
+    width: 100%;
+    justify-content: center;
+    align-items: bottom;
+    gap: 40px;
+}
+
+.option {
+    background: rgba(255, 99, 71, 0.6);
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 0 20px rgba(255, 165, 0, 0.5);
+}
+
+.option:hover {
+    background: rgba(255, 99, 71, 0.9);
+}
+
+/* Colors and animations */
+:root {
+    --color-bg1: #1a1a1a; /* Dark Gray */
+    --color-bg2: #8b0000; /* Dark Red */
+    --color1: 255, 69, 0; /* Orange-Red */
+    --color2: 255, 140, 0; /* Dark Orange */
+    --color3: 255, 215, 0; /* Gold */
+    --color4: 255, 99, 71; /* Tomato */
+    --color5: 255, 165, 0; /* Orange */
+    --color-interactive: 255, 80, 0; /* Fiery Orange */
+    --circle-size: 80%;
+    --blending: hard-light;
+}
+
+@keyframes moveInCircle {
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(180deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes moveVertical {
+    0% { transform: translateY(-50%); }
+    50% { transform: translateY(50%); }
+    100% { transform: translateY(-50%); }
+}
+
+@keyframes moveHorizontal {
+    0% { transform: translateX(-50%) translateY(-10%); }
+    50% { transform: translateX(50%) translateY(10%); }
+    100% { transform: translateX(-50%) translateY(-10%); }
+}
+
+/* Background gradient and animated blobs */
+.gradient-bg {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(40deg, var(--color-bg1), var(--color-bg2));
+    top: 0;
+    left: 0;
+}
+
+svg {
+    position: fixed;
+    top:0;
+    left:0;
+    width: 0;
+    height: 0;
+}
+
+.gradients-container {
+    filter: url(#goo) blur(40px);
+    width: 100%;
+    height: 100%;
+}
+
+/* Moving blobs */
+.g1, .g2, .g3, .g4, .g5 {
+    position: absolute;
+    mix-blend-mode: var(--blending);
+    opacity: 1;
+    width: var(--circle-size);
+    height: var(--circle-size);
+    top: calc(50% - var(--circle-size) / 2);
+    left: calc(50% - var(--circle-size) / 2);
+}
+
+.g1 {
+    background: radial-gradient(circle at center, rgba(var(--color1), 0.8) 0, rgba(var(--color1), 0) 50%) no-repeat;
+    animation: moveVertical 30s ease infinite;
+}
+
+.g2 {
+    background: radial-gradient(circle at center, rgba(var(--color2), 0.8) 0, rgba(var(--color2), 0) 50%) no-repeat;
+    transform-origin: calc(50% - 400px);
+    animation: moveInCircle 20s reverse infinite;
+}
+
+.g3 {
+    background: radial-gradient(circle at center, rgba(var(--color3), 0.8) 0, rgba(var(--color3), 0) 50%) no-repeat;
+    top: calc(50% - var(--circle-size) / 2 + 200px);
+    left: calc(50% - var(--circle-size) / 2 - 500px);
+    transform-origin: calc(50% + 400px);
+    animation: moveInCircle 40s linear infinite;
+}
+
+.g4 {
+    background: radial-gradient(circle at center, rgba(var(--color4), 0.8) 0, rgba(var(--color4), 0) 50%) no-repeat;
+    transform-origin: calc(50% - 200px);
+    animation: moveHorizontal 40s ease infinite;
+    opacity: 0.7;
+}
+
+.g5 {
+    background: radial-gradient(circle at center, rgba(var(--color5), 0.8) 0, rgba(var(--color5), 0) 50%) no-repeat;
+    width: calc(var(--circle-size) * 2);
+    height: calc(var(--circle-size) * 2);
+    top: calc(50% - var(--circle-size));
+    left: calc(50% - var(--circle-size));
+    transform-origin: calc(50% - 800px) calc(50% + 200px);
+    animation: moveInCircle 20s ease infinite;
+}

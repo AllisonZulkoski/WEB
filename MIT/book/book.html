@@ -3,15 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bubbly Text</title>
-    <link rel="stylesheet" href="bubbles.css">
+    <title>Choose Your Path</title>
+    <link rel="stylesheet" href="book.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&display=swap" rel="stylesheet">
 </head>
 <body>
+
     <div class="text-container">
-        FARENHEIT 451
+        You Have Died
     </div>
+    <div class="middle-text">
+        You have been found liable of reading or harboring books, an illegal property. As is custom, the books and all other property you possess will henceforth be burned and you sentenced to death.
+    </div>
+
     <div class="gradient-bg">
         <svg xmlns="http://www.w3.org/2000/svg">
             <defs>
@@ -35,18 +40,11 @@
             <div class="interactive"></div>
         </div>
     </div>
-    <script src="bubbles.js"></script>
-    <script>
-        // Function to start the fade-out effect and redirect to path.html
-        function fadeToPath() {
-            document.body.classList.add('fade-out'); // Apply fade-out effect
-            setTimeout(() => {
-                window.location.href = "https://allisonzulkoski.github.io/WEB/MIT/chose%20your%20path/path.html";
-            }, 1000); // Wait 1 second for fade-out before redirecting
-        }
 
-        // Start the fade-out effect and redirect after 5 seconds
-        setTimeout(fadeToPath, 5000);
-    </script>
+    <div class="options">
+        <div class="option">Return to Path</div>
+    </div>
+
+    <script src="book.js"></script>
 </body>
 </html>
