@@ -1,5 +1,5 @@
 html, body {
-    font-family: 'Bubblegum Sans', sans-serif;
+    font-family: 'Dongle', sans-serif;
     margin: 0;
     padding: 0;
     overflow: hidden;
@@ -20,6 +20,29 @@ html, body {
     opacity: 0.8;
     user-select: none;
     text-shadow: 1px 1px rgba(0,0,0,0.1);
+}
+
+.options {
+    display: flex;
+    position: absolute;
+    bottom: 20%;
+    width: 100%;
+    justify-content: center;
+    gap: 40px;
+}
+
+.option {
+    background: rgba(255, 99, 71, 0.6);
+    padding: 15px 30px;
+    border-radius: 10px;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 0 20px rgba(255, 165, 0, 0.5);
+}
+
+.option:hover {
+    background: rgba(255, 99, 71, 0.9);
 }
 
 /* Colors and animations */
@@ -124,15 +147,4 @@ svg {
     left: calc(50% - var(--circle-size));
     transform-origin: calc(50% - 800px) calc(50% + 200px);
     animation: moveInCircle 20s ease infinite;
-}
-
-/* Fade-out effect */
-.fade-out {
-    animation: fadeOut 1s forwards;
-}
-
-@keyframes fadeOut {
-    to {
-        opacity: 0;
-    }
 }

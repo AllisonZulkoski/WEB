@@ -47,5 +47,6 @@ body, html {
 
 /* Fade-out effect */
 .fade-out {
+    transition: opacity 1s ease-out;
     opacity: 0;
 }

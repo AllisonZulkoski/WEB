@@ -14,7 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
         innerFlameEndColor: { r: 50, g: 0, b: 0 },
         outerFlameStartColor: { r: 200, g: 60, b: 0 },
         outerFlameEndColor: { r: 80, g: 10, b: 0 },
-        showLogs: true
     };
 
     canvas.width = width;
@@ -63,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             const color = blendColor(flame.colorStart, flame.colorStop, height, flame.y);
-            ctx.fillStyle = `rgba(${color.r},${color.g},${color.b},${flame.lifeTime * curStep})`;
+            ctx.fillStyle = `rgba(${color.r},${color.g},${color.b},${Math.min(1, Math.max(0, curStep / flame.lifeTime))})`;
             drawTriangle(flame.x, Math.floor(flame.y));
         }
 
@@ -95,24 +94,27 @@ document.addEventListener("DOMContentLoaded", () => {
         };
     }
 
-    function initializeFlameAnimation() {
-        initFlames();
-        drawFlames();
-    }
-
     function startGame() {
         document.body.classList.add('fade-out'); // Apply fade-out effect
+        
         setTimeout(() => {
             window.location.href = "https://allisonzulkoski.github.io/WEB/MIT/bubbles/bubbles.html";
-        }, 1000); // Wait for fade effect before redirecting
+        }, 1000); // Wait 1 second for fade-out before redirecting
     }
+
+    // Start the flame animation immediately
+    initializeFlameAnimation();
 
     startText.addEventListener('click', () => {
         startText.textContent = "";
         startText.classList.add('hidden');
-        initializeFlameAnimation();
         startGame();
     });
+
+    function initializeFlameAnimation() {
+        initFlames();
+        drawFlames();
+    }
 
     window.addEventListener("resize", () => {
         width = canvas.width = window.innerWidth;
