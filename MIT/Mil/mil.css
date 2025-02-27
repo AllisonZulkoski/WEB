@@ -4,7 +4,7 @@ html, body {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background: black; /* Ensures visibility */
+    background: #121212; /* Darker background */
 }
 
 /* Text Container */
@@ -41,6 +41,7 @@ html, body {
     user-select: none;
     text-shadow: 1px 1px rgba(0,0,0,0.1);
     border-radius: 30px;
+    padding: 30px;
 }
 
 /* Gradient Background and Animated Blobs */
@@ -79,11 +80,37 @@ svg {
 }
 
 /* Moving Blobs Animations */
-.g1 { background: radial-gradient(circle at center, rgba(var(--color1), 0.8) 0, rgba(var(--color1), 0) 50%) no-repeat; animation: moveVertical 30s ease infinite; }
-.g2 { background: radial-gradient(circle at center, rgba(var(--color2), 0.8) 0, rgba(var(--color2), 0) 50%) no-repeat; transform-origin: calc(50% - 400px); animation: moveInCircle 20s reverse infinite; }
-.g3 { background: radial-gradient(circle at center, rgba(var(--color3), 0.8) 0, rgba(var(--color3), 0) 50%) no-repeat; top: calc(50% - var(--circle-size) / 2 + 200px); left: calc(50% - var(--circle-size) / 2 - 500px); transform-origin: calc(50% + 400px); animation: moveInCircle 40s linear infinite; }
-.g4 { background: radial-gradient(circle at center, rgba(var(--color4), 0.8) 0, rgba(var(--color4), 0) 50%) no-repeat; transform-origin: calc(50% - 200px); animation: moveHorizontal 40s ease infinite; opacity: 0.7; }
-.g5 { background: radial-gradient(circle at center, rgba(var(--color5), 0.8) 0, rgba(var(--color5), 0) 50%) no-repeat; width: calc(var(--circle-size) * 2); height: calc(var(--circle-size) * 2); top: calc(50% - var(--circle-size)); left: calc(50% - var(--circle-size)); transform-origin: calc(50% - 800px) calc(50% + 200px); animation: moveInCircle 20s ease infinite; }
+.g1 { 
+    background: radial-gradient(circle at center, rgba(var(--color1), 0.8) 0, rgba(var(--color1), 0) 50%) no-repeat; 
+    animation: moveVertical 30s ease infinite; 
+}
+.g2 { 
+    background: radial-gradient(circle at center, rgba(var(--color2), 0.8) 0, rgba(var(--color2), 0) 50%) no-repeat; 
+    transform-origin: calc(50% - 400px); 
+    animation: moveInCircle 20s reverse infinite; 
+}
+.g3 { 
+    background: radial-gradient(circle at center, rgba(var(--color3), 0.8) 0, rgba(var(--color3), 0) 50%) no-repeat; 
+    top: calc(50% - var(--circle-size) / 2 + 200px); 
+    left: calc(50% - var(--circle-size) / 2 - 500px); 
+    transform-origin: calc(50% + 400px); 
+    animation: moveInCircle 40s linear infinite; 
+}
+.g4 { 
+    background: radial-gradient(circle at center, rgba(var(--color4), 0.8) 0, rgba(var(--color4), 0) 50%) no-repeat; 
+    transform-origin: calc(50% - 200px); 
+    animation: moveHorizontal 40s ease infinite; 
+    opacity: 0.7; 
+}
+.g5 { 
+    background: radial-gradient(circle at center, rgba(var(--color5), 0.8) 0, rgba(var(--color5), 0) 50%) no-repeat; 
+    width: calc(var(--circle-size) * 2); 
+    height: calc(var(--circle-size) * 2); 
+    top: calc(50% - var(--circle-size)); 
+    left: calc(50% - var(--circle-size)); 
+    transform-origin: calc(50% - 800px) calc(50% + 200px); 
+    animation: moveInCircle 20s ease infinite; 
+}
 
 /* Options Section */
 .options {
@@ -120,14 +147,14 @@ svg {
 
 /* Colors and animations for blobs */
 :root {
-    --color-bg1: #1a1a1a; /* Dark Gray */
-    --color-bg2: #8b0000; /* Dark Red */
-    --color1: 255, 69, 0; /* Orange-Red */
-    --color2: 255, 140, 0; /* Dark Orange */
-    --color3: 255, 215, 0; /* Gold */
-    --color4: 255, 99, 71; /* Tomato */
-    --color5: 255, 165, 0; /* Orange */
-    --color-interactive: 255, 80, 0; /* Fiery Orange */
+    --color-bg1: #121212; /* Darker Background */
+    --color-bg2: #2c2c2c; /* Darker Gray */
+    --color1: 40, 40, 40; /* Very Dark Gray */
+    --color2: 60, 60, 60; /* Dark Gray */
+    --color3: 80, 80, 80; /* Smoky Gray */
+    --color4: 100, 100, 100; /* Gray */
+    --color5: 120, 120, 120; /* Light Gray */
+    --color-interactive: 105, 105, 105; /* Dim Gray */
     --circle-size: 80%;
     --blending: hard-light;
 }
