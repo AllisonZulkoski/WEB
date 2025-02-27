@@ -25,10 +25,10 @@ html, body {
     text-shadow: 1px 1px rgba(0,0,0,0.1);
 }
 
-.middle-text {
+.middle-text{
     z-index: 100;
-    width: calc(100vw - 60px);  /* Adjust width to account for the border */
-    height: calc(100vh - 60px);  /* Adjust height to account for the border */
+    width: 100vw;
+    height: 100vh;
     display: flex;
     position: absolute;
     top: 0;
@@ -39,10 +39,9 @@ html, body {
     color: white;
     opacity: 0.8;
     user-select: none;
-    text-shadow: 1px 1px rgba(0, 0, 0, 0.1);
-    /* border-radius: 30px;
-    padding: 30px; /* Adds space inside the element */
-    border: 30px solid transparent; 
+    text-shadow: 1px 1px rgba(0,0,0,0.1);
+    border-radius: 30px;
+    padding: 30px;
 }
 
 
