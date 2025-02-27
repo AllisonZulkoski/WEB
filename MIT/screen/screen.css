@@ -1,5 +1,5 @@
 html, body {
-    font-family: 'Bubblegum Sans', sans-serif;
+    font-family: 'Dongle', sans-serif;
     margin: 0;
     padding: 0;
     overflow: hidden;
@@ -14,12 +14,31 @@ html, body {
     top: 0;
     left: 0;
     justify-content: center;
-    align-items: center;
+    align-items: top;
     font-size: 96px;
     color: white;
     opacity: 0.8;
     user-select: none;
     text-shadow: 1px 1px rgba(0,0,0,0.1);
+}
+
+.middle-text {
+    z-index: 100;
+    width: calc(100vw - 60px); /* Adjust width to account for border */
+    height: calc(100vh - 60px); /* Adjust height to account for border */
+    display: flex;
+    position: absolute;
+    top: 30px; /* Adjust position to account for border */
+    left: 30px; /* Adjust position to account for border */
+    justify-content: left;
+    align-items: center;
+    font-size: 40px;
+    color: white;
+    opacity: 0.8;
+    user-select: none;
+    text-shadow: 1px 1px rgba(0,0,0,0.1);
+    border: 30px solid transparent; /* Make the border invisible */
+    box-sizing: border-box; /* Include border in element's total width and height */
 }
 
 .options {
@@ -50,7 +69,6 @@ html, body {
 .option:hover {
     background: rgba(255, 99, 71, 0.9);
 }
-
 /* Colors and animations */
 :root {
     --color-bg1: #1a1a1a; /* Dark Gray */

@@ -4,14 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Choose Your Path</title>
-    <link rel="stylesheet" href="path.css">
+    <link rel="stylesheet" href="screen.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Bubblegum+Sans&family=Chewy&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <div class="text-container">
-        Choose Your Path
+        You Have Survived
+    </div>
+    <div class="middle-text">
+        You have joined your wife in your parlor screen room where she seems distant, only interested in consuming the entertainment from the screens. You mention her overdosing on sleeping pills, asking how she is doing, and she denies the event ever happening.    
     </div>
 
     <div class="gradient-bg">
@@ -39,10 +42,10 @@
     </div>
 
     <div class="options">
-        <a href="book/book.html" class="option">Read a Book</a>
-        <a href="screen/screen.html" class="option">Use a Screen</a>
-        </div>
-    
-    <script src="path.js"></script>
+        <div class="option" onclick="leaveRoom()">Leave the room to read</div>
+        <div class="option" onclick="stay()">Stay</div>
+    </div>
+
+    <script src="screen.js"></script>
 </body>
 </html>
