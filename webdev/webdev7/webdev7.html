@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebDev7</title>
+    <link rel="stylesheet" href="webdev7.css">
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <textarea id="codeEditor" class="editor" spellcheck="false" autocorrect="off" autocapitalize="off" translate="no" oninput="render()"></textarea>
+    <pre id="error"></pre>
+    <div id="indicator"></div>
+    <div id="controls">
+        <div class="controls">
+            <input id="btnToggleView" class="icon" type="checkbox" name="toggleView" onclick="toggleView()">
+            <input id="btnToggleResolution" class="icon" type="checkbox" name="toggleResolution" onchange="toggleResolution()">
+            <input id="btnReset" class="icon" type="checkbox" name="reset" onclick="reset()">
+        </div>
+    </div>
+    <script src="webdev7.js"></script>
+</body>
+</html>
