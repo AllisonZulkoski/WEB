@@ -2,16 +2,27 @@ body {
     margin: 0;
     padding: 0;
     height: 200vh; /* Increase height to allow scrolling */
-    background: url('./starbs.jpeg') no-repeat center center fixed;
-    background-size: 150%; /* Zoom in the background image by 50% */
     font-family: Arial, sans-serif;
     color: white;
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: top;
     text-align: center;
     position: relative;
+    background: black; /* Set the background to black */
+}
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 1) 100%), url('./starbs.jpeg') no-repeat center center fixed;
+    background-size: 150%; /* Zoom in the background image by 50% */
+    opacity: 0.9; /* Set the opacity to 90% */
+    z-index: -1; /* Ensure it is behind other content */
 }
 
 h1 {
@@ -24,18 +35,118 @@ p {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
 }
 
-/* Fix: Change .saturn to #saturn */
 #saturn {
     position: absolute;
-    bottom: 10px;
-    left: 10px;
-    width: 50%;
+    left: -100%;
+    width: 200%;
     height: auto;
     transform: translateY(50%);
-    z-index: 10; /* Increase so it's above the background */
+    z-index: 10; 
     transition: transform 0.5s ease-out;
+    opacity: 1;
 }
 
 body.scrolled #saturn {
     transform: translateY(0);
 }
+
+#moon {
+    position: absolute;
+    bottom: -1000px; /* Position it below Saturn */
+    left: 80%;
+    width: 50%;
+    height: auto;
+    transform: translateY(50%);
+    z-index: 9; /* Ensure it is below Saturn */
+    transition: transform 0.5s ease-out;
+}
+
+body.scrolled #moon {
+    transform: translateY(0);
+}
+
+#earth {
+    position: absolute;
+    bottom: -5000px; /* Position it below Saturn */
+    left: 50%;
+    width:100%;
+    height: auto;
+    transform: translateY(50%);
+    z-index: 9; /* Ensure it is below Saturn */
+    transition: transform 0.5s ease-out;
+}
+
+body.scrolled #earth {
+    transform: translateY(0);
+}
+
+#jupiter {
+    position: absolute;
+    bottom: -80000px; /* Position it below Saturn */
+    left: 80%;
+    width: 50%;
+    height: auto;
+    transform: translateY(50%);
+    z-index: 9; /* Ensure it is below Saturn */
+    transition: transform 0.5s ease-out;
+}
+
+body.scrolled #jupiter {
+    transform: translateY(0);
+}
+
+#mars {
+    position: absolute;
+    bottom: -2500px; /* Position it below Saturn */
+    right: 50%;
+    width: 70%;
+    height: auto;
+    transform: translateY(50%);
+    z-index: 9; /* Ensure it is below Saturn */
+    transition: transform 0.5s ease-out;
+}
+
+body.scrolled #mars {
+    transform: translateY(0);
+}
+
+#pluto {
+    position: absolute;
+    bottom: -80000px; /* Position it below Saturn */
+    left: 80%;
+    width: 50%;
+    height: auto;
+    transform: translateY(50%);
+    z-index: 9; /* Ensure it is below Saturn */
+    transition: transform 0.5s ease-out;
+}
+
+body.scrolled #pluto {
+    transform: translateY(0);
+}
+
+#uranus {
+    position: absolute;
+    bottom: -8000px; /* Position it below Saturn */
+    left: 80%;
+    width: 50%;
+    height: auto;
+    transform: translateY(50%);
+    z-index: 9; /* Ensure it is below Saturn */
+    transition: transform 0.5s ease-out;
+}
+
+body.scrolled #uranus {
+    transform: translateY(0);
+}
+#concert1 {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5em;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
+}
+
+
