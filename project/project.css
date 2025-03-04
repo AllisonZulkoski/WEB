@@ -1,0 +1,41 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 200vh; /* Increase height to allow scrolling */
+    background: url('./starbs.jpeg') no-repeat center center fixed;
+    background-size: 150%; /* Zoom in the background image by 50% */
+    font-family: Arial, sans-serif;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+h1 {
+    font-size: 3em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
+}
+
+p {
+    font-size: 1.5em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
+}
+
+/* Fix: Change .saturn to #saturn */
+#saturn {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: 50%;
+    height: auto;
+    transform: translateY(50%);
+    z-index: 10; /* Increase so it's above the background */
+    transition: transform 0.5s ease-out;
+}
+
+body.scrolled #saturn {
+    transform: translateY(0);
+}
