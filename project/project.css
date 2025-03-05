@@ -54,7 +54,7 @@ body.scrolled #saturn {
 #moon {
     position: absolute;
     bottom: -1000px; /* Position it below Saturn */
-    left: 80%;
+    left: 70%;
     width: 50%;
     height: auto;
     transform: translateY(50%);
@@ -113,8 +113,8 @@ body.scrolled #mars {
 
 #pluto {
     position: absolute;
-    bottom: -7000px; /* Position it below Saturn */
-    left: 50%;
+    bottom: -9000px; /* Position it below Saturn */
+    right: 52%;
     width: 50%;
     height: auto;
     transform: translateY(50%);
@@ -128,9 +128,9 @@ body.scrolled #pluto {
 
 #neptune{
     position: absolute;
-    bottom: -8000px; /* Position it below Saturn */
-    left: 80%;
-    width: 50%;
+    bottom: -8500px; /* Position it below Saturn */
+    left: 40%;
+    width: 200%;
     height: auto;
     transform: translateY(50%);
     z-index: 9; /* Ensure it is below Saturn */
