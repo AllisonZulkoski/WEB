@@ -10,6 +10,7 @@ body {
     text-align: center;
     position: relative;
     background: black; /* Set the background to black */
+    overflow-x: hidden;
 }
 
 body::before {
@@ -17,7 +18,7 @@ body::before {
     position: absolute;
     top: 0;
     left: 0;
-    width: 200%;
+    width: 100%;
     height: 50%;
     background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 1) 100%), url('./starbs.jpeg') no-repeat center center fixed;
     background-size: 150%; /* Zoom in the background image by 50% */
@@ -67,7 +68,7 @@ body.scrolled #moon {
 
 #earth {
     position: absolute;
-    bottom: -5000px; /* Position it below Saturn */
+    bottom: -4200px; /* Position it below Saturn */
     left: 50%;
     width:100%;
     height: auto;
@@ -82,9 +83,9 @@ body.scrolled #earth {
 
 #jupiter {
     position: absolute;
-    bottom: -80000px; /* Position it below Saturn */
-    left: 80%;
-    width: 50%;
+    bottom: -6000px; /* Position it below Saturn */
+    right: 60%;
+    width: 90%;
     height: auto;
     transform: translateY(50%);
     z-index: 9; /* Ensure it is below Saturn */
@@ -112,8 +113,8 @@ body.scrolled #mars {
 
 #pluto {
     position: absolute;
-    bottom: -80000px; /* Position it below Saturn */
-    left: 80%;
+    bottom: -7000px; /* Position it below Saturn */
+    left: 50%;
     width: 50%;
     height: auto;
     transform: translateY(50%);
@@ -125,7 +126,7 @@ body.scrolled #pluto {
     transform: translateY(0);
 }
 
-#uranus {
+#neptune{
     position: absolute;
     bottom: -8000px; /* Position it below Saturn */
     left: 80%;
@@ -136,44 +137,144 @@ body.scrolled #pluto {
     transition: transform 0.5s ease-out;
 }
 
-body.scrolled #uranus {
+body.scrolled #neptune {
     transform: translateY(0);
 }
 
-.nn {
+.night1 {
     position: absolute;
-    bottom: 20px;
+    bottom: 700px;
+    left: 500px;
+    width: 100%;
+    text-align: center;
+    font-size: 3em;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
+    letter-spacing: 0.5em;
+}
+.night2 {
+    position: absolute;
+    bottom: -500px;
+    left: -120px;
+    width: 100%;
+    text-align: center;
+    font-size: 3em;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
+    letter-spacing: 0.5em;
+}
+.night3 {
+    position: absolute;
+    bottom: -1600px;
+    left: 500px;
+    width: 100%;
+    text-align: center;
+    font-size: 3em;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
+    letter-spacing: 0.5em;
+}
+.night4 {
+    position: absolute;
+    bottom: -3100px;
+    left: -500px;
+    width: 100%;
+    text-align: center;
+    font-size: 3em;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
+    letter-spacing: 0.5em;
+}
+.night5 {
+    position: absolute;
+    bottom: 700px;
+    left: 500px;
     width: 100%;
     text-align: center;
     font-size: 1.5em;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
 }
-.concert1 {
+.night6 {
     position: absolute;
-    bottom: -300px;
+    bottom: 700px;
+    left: 500px;
     width: 100%;
     text-align: center;
     font-size: 1.5em;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
+}
+.night7 {
+    position: absolute;
+    bottom: 700px;
+    left: 500px;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5em;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
+}
+.night8 {
+    position: absolute;
+    bottom: 700px;
+    left: 500px;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5em;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
+}
+.night9 {
+    position: absolute;
+    bottom: 700px;
+    left: 500px;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5em;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
+}
+.night10 {
+    position: absolute;
+    bottom: 700px;
+    left: 500px;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5em;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
+}
+
+
+.concert1 {
+    position: absolute;
+    bottom: 200px;
+    left: -30px;
+    width: 100%;
+    text-align: right;
+    font-size: 1.4em;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
 }
 
 .concert2 {
     position: absolute;
-    bottom: -1000px; /* Move down by 2000 pixels */
+    bottom: -950px; /* Move down by 2000 pixels */
+    left: 70px;
     width: 100%;
-    text-align: center;
-    font-size: 1.5em;
+    text-align: left;
+    font-size: 1.4em;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
 }
 
 .concert3 {
     position: absolute;
-    bottom: 2020px; /* Move down by 2000 pixels */
+    bottom: -2100px; /* Move down by 2000 pixels */
+    left: -30px;
     width: 100%;
-    text-align: center;
+    text-align: right;
     font-size: 1.5em;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
@@ -181,9 +282,10 @@ body.scrolled #uranus {
 
 .concert4 {
     position: absolute;
-    bottom: 2020px; /* Move down by 2000 pixels */
+    bottom: -3750px; /* Move down by 2000 pixels */
+    left: 40px;
     width: 100%;
-    text-align: center;
+    text-align: left;
     font-size: 1.5em;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
