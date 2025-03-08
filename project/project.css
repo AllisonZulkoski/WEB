@@ -114,7 +114,7 @@ body.scrolled #mars {
 #pluto {
     position: absolute;
     bottom: -9000px; /* Position it below Saturn */
-    right: 52%;
+    right: 5%;
     width: 50%;
     height: auto;
     transform: translateY(50%);
@@ -140,7 +140,16 @@ body.scrolled #pluto {
 body.scrolled #neptune {
     transform: translateY(0);
 }
-
+#milkyway {
+    position: absolute;
+    bottom: -8000px; /* Position it below Saturn */
+    left: 50%;
+    width: 100%;
+    height: auto;
+    transform: translateY(50%);
+    z-index: 9; /* Ensure it is below Saturn */
+    transition: transform 0.5s ease-out;
+}
 .night1 {
     position: absolute;
     bottom: 700px;
