@@ -142,14 +142,28 @@ body.scrolled #neptune {
 }
 #milkyway {
     position: absolute;
-    bottom: -8000px; /* Position it below Saturn */
-    left: 50%;
+    bottom: -11000px;
+    left: 0;
     width: 100%;
-    height: auto;
-    transform: translateY(50%);
-    z-index: 9; /* Ensure it is below Saturn */
-    transition: transform 0.5s ease-out;
+    height: 50%;
+    background: url('https://allisonzulkoski.github.io/WEB/project/planets/milkyway.webp') no-repeat center center fixed;
+    background-size: cover; /* Ensure the background image covers the entire element */
+    opacity: 0.4; /* Set the opacity to 80% */
+    z-index: -1; /* Ensure it is behind other content */
 }
+
+#milkyway::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
+    z-index: -1; /* Ensure the gradient is behind other content */
+}
+
+
 .night1 {
     position: absolute;
     bottom: 700px;
