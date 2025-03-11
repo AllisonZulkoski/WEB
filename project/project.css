@@ -376,17 +376,41 @@ body.scrolled #neptune {
 }
 
 
-.m1{
+/* .m1{
     position: absolute;
-    bottom: 50px;
+    bottom: 70px;
     left: -100px;
     width: 100%;
     text-align: right;
     font-size: 2em;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
-    letter-spacing: 0.3em;
+    letter-spacing: 0.2em;
 }
 .m1:hover {
     background: rgb(0,0,0,0);
+} */
+
+/* Option Styling */
+.m1 {
+    position: absolute;
+    bottom: 80px;
+    left: 650px;
+    transform: translateX(-50%);
+    text-align: center;
+    font-size: 2rem;
+    color: white; 
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
+    letter-spacing: 0.2em;
+    background: rgba(0,0,0);
+    padding: 15px;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 20px rgba(247, 246, 245, 0.5);
+}
+
+/* Hover Effect */
+.m1:hover {
+    background: rgba(0,0,0);
 }
