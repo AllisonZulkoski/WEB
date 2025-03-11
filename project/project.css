@@ -378,12 +378,15 @@ body.scrolled #neptune {
 
 .m1{
     position: absolute;
-    bottom: 200px;
-    left: -200px;
+    bottom: 50px;
+    left: -100px;
     width: 100%;
     text-align: right;
     font-size: 2em;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
-    letter-spacing: 0.5em;
+    letter-spacing: 0.3em;
+}
+.m1:hover {
+    background: rgb(0,0,0,0);
 }
