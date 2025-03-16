@@ -27,6 +27,9 @@ body::before {
 }
 
 h1 {
+    font-family: "nasalization", sans-serif;
+    font-weight: 400;
+    font-style: bold;
     font-size: 5em;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
     margin-top: 400px;
@@ -114,7 +117,7 @@ body.scrolled #saturn {
     font-size: 1.4em;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
-    padding: 5px;
+    padding: 10px;
 }
 
 #moon {
@@ -426,7 +429,7 @@ body.scrolled #venus {
 }
 .text8{
     position: absolute;
-    bottom: -19200px;
+    bottom: -19300px;
     left: -30px;
     width: 100%;
     text-align: left;
@@ -438,9 +441,9 @@ body.scrolled #venus {
 
 #mercury {
     position: absolute;
-    bottom: -19000px; /* Position it below Saturn */
+    bottom: -21000px; /* Position it below Saturn */
     right: 500px;
-    width: 50%;
+    width: 100%;
     height: auto;
     transform: translateY(50%);
     z-index: 9; /* Ensure it is below Saturn */
@@ -451,26 +454,27 @@ body.scrolled #mercury {
 }
 .night9 {
     position: absolute;
-    bottom: -110000px;
+    bottom: -20200px;
     left: 500px;
     width: 100%;
     text-align: center;
-    font-size: 1.5em;
+    font-size: 3em;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
+    letter-spacing: 0.5em;
 }
 .concert9 {
     position: absolute;
-    bottom: 12020px; 
+    bottom: -21100px; 
     width: 100%;
-    text-align: center;
+    text-align: right;
     font-size: 1.5em;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
 }
 .text9{
     position: absolute;
-    bottom: -118600px;
+    bottom: -21700px;
     left: -30px;
     width: 100%;
     text-align: right;
@@ -480,31 +484,46 @@ body.scrolled #mercury {
     padding: 5px;
 }
 
+#poliphemus {
+    position: absolute;
+    bottom: -23500px; /* Position it below Saturn */
+    right: -800px;
+    width: 100%;
+    height: auto;
+    transform: translateY(50%);
+    z-index: 9; /* Ensure it is below Saturn */
+    transition: transform 0.5s ease-out;
+}
+body.scrolled #poliphemus {
+    transform: translateY(0);
+}
 .night10 {
     position: absolute;
-    bottom: -110000px;
-    left: 500px;
+    bottom: -22500px;
+    left: -500px;
     width: 100%;
     text-align: center;
-    font-size: 1.5em;
+    font-size: 3em;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
+    letter-spacing: 0.5em;
 }
 .concert10 {
     position: absolute;
-    bottom: 12020px; 
+    bottom: -23550px; 
     width: 100%;
-    text-align: center;
-    font-size: 1px;
+    text-align: left;
+    font-size: 1.5em;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
+    z-index: 10;
 }
 .text10{
     position: absolute;
-    bottom: -119600px;
+    bottom: -24100px;
     left: -30px;
     width: 100%;
-    text-align: right;
+    text-align: left;
     font-size: 1.4em;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
