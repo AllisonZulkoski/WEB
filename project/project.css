@@ -5,8 +5,8 @@ body {
     font-family: Arial, sans-serif;
     color: white;
     display: flex;
-    justify-content: center;
-    align-items: top;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
     position: relative;
     background: black; /* Set the background to black */
@@ -29,11 +29,46 @@ body::before {
 h1 {
     font-size: 5em;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
+    margin-top: 400px;
 }
 
 p {
     font-size: 1.5em;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
+}
+
+nav {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: space-around;
+}
+nav ul li {
+    margin: 0;
+}
+nav ul li a {
+    display: block;
+    padding: 15px 20px;
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
+}
+nav ul li a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    text-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white, 0 0 40px white, 0 0 50px white, 0 0 60px white, 0 0 70px white; /* Add glow effect */
+}
+.concert1, .concert2, .concert3, .concert4, .concert5, .concert6, .concert7, .concert8, .concert9, .concert10 {
+    margin-top: 100px; 
 }
 
 #saturn {
@@ -46,14 +81,45 @@ p {
     transition: transform 0.5s ease-out;
     opacity: 1;
 }
-
 body.scrolled #saturn {
     transform: translateY(0);
+}
+.night1 {
+    position: absolute;
+    bottom: 700px;
+    left: 500px;
+    width: 100%;
+    text-align: center;
+    font-size: 3em;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
+    letter-spacing: 0.5em;
+}
+.concert1 {
+    position: absolute;
+    bottom: -30px;
+    left: -30px;
+    width: 100%;
+    text-align: right;
+    font-size: 1.4em;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
+}
+.text1{
+    position: absolute;
+    bottom: -600px;
+    left: -30px;
+    width: 100%;
+    text-align: right;
+    font-size: 1.4em;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
+    padding: 5px;
 }
 
 #moon {
     position: absolute;
-    bottom: -1000px; /* Position it below Saturn */
+    bottom: -2000px; /* Position it below Saturn */
     left: 70%;
     width: 50%;
     height: auto;
@@ -61,44 +127,45 @@ body.scrolled #saturn {
     z-index: 9; /* Ensure it is below Saturn */
     transition: transform 0.5s ease-out;
 }
-
 body.scrolled #moon {
     transform: translateY(0);
 }
-
-#earth {
+.night2 {
     position: absolute;
-    bottom: -4200px; /* Position it below Saturn */
-    left: 50%;
-    width:100%;
-    height: auto;
-    transform: translateY(50%);
-    z-index: 9; /* Ensure it is below Saturn */
-    transition: transform 0.5s ease-out;
+    bottom: -1500px;
+    left: -300px;
+    width: 100%;
+    text-align: center;
+    font-size: 3em;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
+    letter-spacing: 0.5em;
 }
-
-body.scrolled #earth {
-    transform: translateY(0);
-}
-
-#jupiter {
+.concert2 {
     position: absolute;
-    bottom: -6000px; /* Position it below Saturn */
-    right: 60%;
-    width: 90%;
-    height: auto;
-    transform: translateY(50%);
-    z-index: 9; /* Ensure it is below Saturn */
-    transition: transform 0.5s ease-out;
+    bottom: -2250px; 
+    left: 20px;
+    width: 100%;
+    text-align: left;
+    font-size: 1.4em;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
 }
-
-body.scrolled #jupiter {
-    transform: translateY(0);
+.text2{
+    position: absolute;
+    bottom: -2800px;
+    left: -30px;
+    width: 100%;
+    text-align: left;
+    font-size: 1.4em;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
+    padding: 50px;
 }
 
 #mars {
     position: absolute;
-    bottom: -2500px; /* Position it below Saturn */
+    bottom: -4500px; /* Position it below Saturn */
     right: 50%;
     width: 70%;
     height: auto;
@@ -106,29 +173,136 @@ body.scrolled #jupiter {
     z-index: 9; /* Ensure it is below Saturn */
     transition: transform 0.5s ease-out;
 }
-
 body.scrolled #mars {
     transform: translateY(0);
 }
-
-#pluto {
+.night3 {
     position: absolute;
-    bottom: -9000px; /* Position it below Saturn */
-    right: 500px;
-    width: 50%;
+    bottom: -3600px;
+    left: 500px;
+    width: 100%;
+    text-align: center;
+    font-size: 3em;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
+    letter-spacing: 0.5em;
+}
+.concert3 {
+    position: absolute;
+    bottom: -4600px; 
+    left: -30px;
+    width: 100%;
+    text-align: right;
+    font-size: 1.5em;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
+}
+.text3{
+    position: absolute;
+    bottom: -5100px;
+    left: -30px;
+    width: 100%;
+    text-align: right;
+    font-size: 1.4em;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
+    padding: 5px;
+}
+
+#earth {
+    position: absolute;
+    bottom: -7200px; /* Position it below Saturn */
+    left: 50%;
+    width:100%;
     height: auto;
     transform: translateY(50%);
     z-index: 9; /* Ensure it is below Saturn */
     transition: transform 0.5s ease-out;
 }
-
-body.scrolled #pluto {
+body.scrolled #earth {
     transform: translateY(0);
+}
+.night4 {
+    position: absolute;
+    bottom: -6100px;
+    left: -500px;
+    width: 100%;
+    text-align: center;
+    font-size: 3em;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
+    letter-spacing: 0.5em;
+}
+.concert4 {
+    position: absolute;
+    bottom: -7150px; 
+    left: 40px;
+    width: 100%;
+    text-align: left;
+    font-size: 1.5em;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
+}
+.text4{
+    position: absolute;
+    bottom: -7700px;
+    left: 10px;
+    width: 100%;
+    text-align: left;
+    font-size: 1.4em;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
+    padding: 5px;
+}
+
+#jupiter {
+    position: absolute;
+    bottom: -11000px; /* Position it below Saturn */
+    right: 50%;
+    width: 150%;
+    height: auto;
+    transform: translateY(50%);
+    z-index: 9; /* Ensure it is below Saturn */
+    transition: transform 0.5s ease-out;
+}
+body.scrolled #jupiter {
+    transform: translateY(0);
+}
+.night5 {
+    position: absolute;
+    bottom: -9000px;
+    left: 350px;
+    width: 100%;
+    text-align: center;
+    font-size: 3em;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
+    letter-spacing: 0.5em;
+}
+.concert5 {
+    position: absolute;
+    bottom: -10900px; 
+    left: 500px;
+    text-align: right;
+    font-size: 1.5em;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
+}
+.text5{
+    position: absolute;
+    bottom: -11500px;
+    left: -30px;
+    width: 100%;
+    text-align: right;
+    font-size: 1.4em;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
+    padding: 5px;
 }
 
 #neptune{
     position: absolute;
-    bottom: -8500px; /* Position it below Saturn */
+    bottom: -15000px; /* Position it below Saturn */
     left: 40%;
     width: 200%;
     height: auto;
@@ -136,10 +310,87 @@ body.scrolled #pluto {
     z-index: 9; /* Ensure it is below Saturn */
     transition: transform 0.5s ease-out;
 }
-
 body.scrolled #neptune {
     transform: translateY(0);
 }
+.night6 {
+    position: absolute;
+    bottom: -13000px;
+    left: -400px;
+    width: 100%;
+    text-align: center;
+    font-size: 3em;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
+    letter-spacing: 0.5em;
+}
+.concert6 {
+    position: absolute;
+    bottom: -14500px; 
+    left: 70px;
+    width: 100%;
+    text-align: left;
+    font-size: 1.5em;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
+}
+.text6{
+    position: absolute;
+    bottom: -15100px;
+    left: 70px;
+    width: 100%;
+    text-align: left;
+    font-size: 1.4em;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
+    padding: 5px;
+}
+
+#pluto {
+    position: absolute;
+    bottom: -16000px; /* Position it below Saturn */
+    right: 500px;
+    width: 50%;
+    height: auto;
+    transform: translateY(50%);
+    z-index: 9; /* Ensure it is below Saturn */
+    transition: transform 0.5s ease-out;
+}
+body.scrolled #pluto {
+    transform: translateY(0);
+}
+.night7 {
+    position: absolute;
+    bottom: -15500px;
+    left: 500px;
+    width: 100%;
+    text-align: center;
+    font-size: 3em;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
+    letter-spacing: 0.5em;
+}
+.concert7 {
+    position: absolute;
+    bottom: -16300px; 
+    width: 100%;
+    text-align: right;
+    font-size: 1.5em;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
+}
+.text7{
+    position: absolute;
+    bottom: -16900px;
+    right: 10px;
+    width: 100%;
+    text-align: right;
+    font-size: 1.4em;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
+    padding: 5px;
+}
+
 #milkyway {
     position: absolute;
     bottom: -11000px;
@@ -147,11 +398,10 @@ body.scrolled #neptune {
     width: 100%;
     height: 50%;
     background: url('https://allisonzulkoski.github.io/WEB/project/planets/milkyway.webp') no-repeat center center fixed;
-    background-size: cover; /* Ensure the background image covers the entire element */
-    opacity: 0.4; /* Set the opacity to 80% */
-    z-index: -1; /* Ensure it is behind other content */
+    background-size: cover; 
+    opacity: 0.4; 
+    z-index: -1; 
 }
-
 #milkyway::before {
     content: "";
     position: absolute;
@@ -164,85 +414,10 @@ body.scrolled #neptune {
 }
 
 
-.night1 {
-    position: absolute;
-    bottom: 700px;
-    left: 500px;
-    width: 100%;
-    text-align: center;
-    font-size: 3em;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
-    letter-spacing: 0.5em;
-}
-.night2 {
-    position: absolute;
-    bottom: -500px;
-    left: -120px;
-    width: 100%;
-    text-align: center;
-    font-size: 3em;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
-    letter-spacing: 0.5em;
-}
-.night3 {
-    position: absolute;
-    bottom: -1600px;
-    left: 500px;
-    width: 100%;
-    text-align: center;
-    font-size: 3em;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
-    letter-spacing: 0.5em;
-}
-.night4 {
-    position: absolute;
-    bottom: -3100px;
-    left: -500px;
-    width: 100%;
-    text-align: center;
-    font-size: 3em;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
-    letter-spacing: 0.5em;
-}
-.night5 {
-    position: absolute;
-    bottom: -5000px;
-    left: 300px;
-    width: 100%;
-    text-align: center;
-    font-size: 3em;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
-    letter-spacing: 0.5em;
-}
-.night6 {
-    position: absolute;
-    bottom: -7000px;
-    left: -400px;
-    width: 100%;
-    text-align: center;
-    font-size: 3em;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
-    letter-spacing: 0.5em;
-}
-.night7 {
-    position: absolute;
-    bottom: -7000px;
-    left: 500px;
-    width: 100%;
-    text-align: center;
-    font-size: 1.5em;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
-}
+
 .night8 {
     position: absolute;
-    bottom: -7000px;
+    bottom: -110000px;
     left: 500px;
     width: 100%;
     text-align: center;
@@ -250,167 +425,105 @@ body.scrolled #neptune {
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
 }
-.night9 {
-    position: absolute;
-    bottom: -7000px;
-    left: 500px;
-    width: 100%;
-    text-align: center;
-    font-size: 1.5em;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
-}
-.night10 {
-    position: absolute;
-    bottom: -7000px;
-    left: 500px;
-    width: 100%;
-    text-align: center;
-    font-size: 1.5em;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
-}
-
-
-.concert1 {
-    position: absolute;
-    bottom: 300px;
-    left: -30px;
-    width: 100%;
-    text-align: right;
-    font-size: 1.4em;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
-}
-
-.concert2 {
-    position: absolute;
-    bottom: -950px; 
-    left: 70px;
-    width: 100%;
-    text-align: left;
-    font-size: 1.4em;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
-}
-
-.concert3 {
-    position: absolute;
-    bottom: -2100px; 
-    left: -30px;
-    width: 100%;
-    text-align: right;
-    font-size: 1.5em;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
-}
-
-.concert4 {
-    position: absolute;
-    bottom: -3750px; 
-    left: 40px;
-    width: 100%;
-    text-align: left;
-    font-size: 1.5em;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
-}
-
-.concert5 {
-    position: absolute;
-    bottom: 2020px; 
-    text-align: center;
-    font-size: 1.5em;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
-}
-
-.concert6 {
-    position: absolute;
-    bottom: 2020px; 
-    width: 100%;
-    text-align: center;
-    font-size: 1.5em;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
-}
-
-.concert7 {
-    position: absolute;
-    bottom: 2020px; 
-    width: 100%;
-    text-align: center;
-    font-size: 1.5em;
-    color: white;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
-}
-
 .concert8 {
     position: absolute;
-    bottom: 2020px; 
+    bottom: 12020px; 
     width: 100%;
     text-align: center;
     font-size: 1.5em;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
+.text8{
+    position: absolute;
+    bottom: -117600px;
+    left: -30px;
+    width: 100%;
+    text-align: right;
+    font-size: 1.4em;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
+    padding: 5px;
+}
 
+.night9 {
+    position: absolute;
+    bottom: -110000px;
+    left: 500px;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5em;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
+}
 .concert9 {
     position: absolute;
-    bottom: 2020px; 
+    bottom: 12020px; 
     width: 100%;
     text-align: center;
     font-size: 1.5em;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
 }
+.text9{
+    position: absolute;
+    bottom: -118600px;
+    left: -30px;
+    width: 100%;
+    text-align: right;
+    font-size: 1.4em;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
+    padding: 5px;
+}
 
+.night10 {
+    position: absolute;
+    bottom: -110000px;
+    left: 500px;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5em;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
+}
 .concert10 {
     position: absolute;
-    bottom: 2020px; 
+    bottom: 12020px; 
     width: 100%;
     text-align: center;
     font-size: 1px;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
 }
-
-
-/* .m1{
+.text10{
     position: absolute;
-    bottom: 70px;
-    left: -100px;
+    bottom: -119600px;
+    left: -30px;
     width: 100%;
     text-align: right;
-    font-size: 2em;
+    font-size: 1.4em;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
-    letter-spacing: 0.2em;
-}
-.m1:hover {
-    background: rgb(0,0,0,0);
-} */
-
-/* Option Styling */
-.m1 {
-    position: absolute;
-    bottom: 80px;
-    left: 650px;
-    transform: translateX(-50%);
-    text-align: center;
-    font-size: 2rem;
-    color: white; 
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
-    letter-spacing: 0.2em;
-    background: rgba(0,0,0);
-    padding: 15px;
-    border-radius: 10px;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 0 20px rgba(247, 246, 245, 0.5);
+    padding: 5px;
 }
 
-/* Hover Effect */
-.m1:hover {
-    background: rgba(0,0,0);
+
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
+    border-radius: 5px;
+    transition: background 0.3s;
+    z-index: 90;
+}
+.back-to-top:hover {
+    background: rgba(255, 255, 255, 0.2);
+    text-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white, 0 0 40px white, 0 0 50px white, 0 0 60px white, 0 0 70px white; /* Add glow effect */
 }
