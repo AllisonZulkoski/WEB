@@ -391,61 +391,64 @@ body.scrolled #pluto {
     padding: 5px;
 }
 
-#milkyway {
+#venus {
     position: absolute;
-    bottom: -11000px;
-    left: 0;
+    bottom: -18800px; /* Position it below Saturn */
+    right: -1000px;
     width: 100%;
-    height: 50%;
-    background: url('https://allisonzulkoski.github.io/WEB/project/planets/milkyway.webp') no-repeat center center fixed;
-    background-size: cover; 
-    opacity: 0.4; 
-    z-index: -1; 
+    height: auto;
+    transform: translateY(50%);
+    z-index: 9; /* Ensure it is below Saturn */
+    transition: transform 0.5s ease-out;
 }
-#milkyway::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);
-    z-index: -1; /* Ensure the gradient is behind other content */
+body.scrolled #venus {
+    transform: translateY(0);
 }
-
-
-
 .night8 {
     position: absolute;
-    bottom: -110000px;
-    left: 500px;
+    bottom: -17700px;
+    left: -350px;
     width: 100%;
     text-align: center;
-    font-size: 1.5em;
+    font-size: 3em;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
+    letter-spacing: 0.5em;
 }
 .concert8 {
     position: absolute;
-    bottom: 12020px; 
+    bottom: -18700px; 
     width: 100%;
-    text-align: center;
+    text-align: left;
     font-size: 1.5em;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 .text8{
     position: absolute;
-    bottom: -117600px;
+    bottom: -19200px;
     left: -30px;
     width: 100%;
-    text-align: right;
+    text-align: left;
     font-size: 1.4em;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
-    padding: 5px;
+    padding: 10px;
 }
 
+#mercury {
+    position: absolute;
+    bottom: -19000px; /* Position it below Saturn */
+    right: 500px;
+    width: 50%;
+    height: auto;
+    transform: translateY(50%);
+    z-index: 9; /* Ensure it is below Saturn */
+    transition: transform 0.5s ease-out;
+}
+body.scrolled #mercury {
+    transform: translateY(0);
+}
 .night9 {
     position: absolute;
     bottom: -110000px;
