@@ -20,7 +20,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 50%;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 1) 100%), url('./starbs.jpeg') no-repeat center center fixed;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 30%, rgba(0, 0, 0, 1) 100%), url('./stars.png') no-repeat center center fixed;
     background-size: 150%; /* Zoom in the background image by 50% */
     opacity: 0.9; /* Set the opacity to 90% */
     z-index: -1; /* Ensure it is behind other content */
@@ -102,28 +102,37 @@ body.scrolled #saturn {
     font-size: 3em;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
-    letter-spacing: 0.5em;
+    letter-spacing: 1em;
 }
 .concert1 {
+    font-family: "quara-web", sans-serif;
+    font-weight: 400;
+    font-style: bold;
     position: absolute;
     bottom: -30px;
     left: -30px;
     width: 100%;
     text-align: right;
-    font-size: 1.4em;
+    font-size: 1.8em;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
 }
 .text1{
+    font-family: "quara-web", sans-serif;
+font-weight: 400;
+font-style: normal;
     position: absolute;
     bottom: -600px;
-    left: -30px;
+    left: 0px;
     width: 100%;
     text-align: right;
     font-size: 1.4em;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
     padding: 10px;
+    border: 25px solid black; /* Add a 100px border around the element */
+    box-sizing: border-box; /* Include the border in the element's total width and height */
+
 }
 
 #moon {
@@ -140,6 +149,9 @@ body.scrolled #moon {
     transform: translateY(0);
 }
 .night2 {
+    font-family: "nasalization", sans-serif;
+    font-weight: 400;
+    font-style: bold;
     position: absolute;
     bottom: -1500px;
     left: -300px;
@@ -148,27 +160,28 @@ body.scrolled #moon {
     font-size: 3em;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
-    letter-spacing: 0.5em;
+    letter-spacing: 1em;
 }
 .concert2 {
     font-family: "quara-web", sans-serif;
     font-weight: 400;
     font-style: normal;
     position: absolute;
-    bottom: -2250px; 
-    left: 20px;
+    bottom: -2200px; 
+    left: 40px;
     width: 100%;
     text-align: left;
-    font-size: 1.4em;
+    font-size: 1.8em;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
+    z-index: 10;
 }
 .text2{
     font-family: "quara-web", sans-serif;
 font-weight: 400;
 font-style: normal;
     position: absolute;
-    bottom: -2800px;
+    bottom: -2750px;
     left: -30px;
     width: 100%;
     text-align: left;
@@ -176,6 +189,9 @@ font-style: normal;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
     padding: 50px;
+    border: 25px solid black; /* Add a 100px border around the element */
+    box-sizing: border-box; /* Include the border in the element's total width and height */
+
 }
 
 #mars {
@@ -192,6 +208,9 @@ body.scrolled #mars {
     transform: translateY(0);
 }
 .night3 {
+    font-family: "nasalization", sans-serif;
+    font-weight: 400;
+    font-style: bold;
     position: absolute;
     bottom: -3600px;
     left: 500px;
@@ -200,22 +219,28 @@ body.scrolled #mars {
     font-size: 3em;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
-    letter-spacing: 0.5em;
+    letter-spacing: 1em;
 }
 .concert3 {
+    font-family: "quara-web", sans-serif;
+font-weight: 400;
+font-style: normal;
     position: absolute;
     bottom: -4600px; 
-    left: -30px;
+    left: -20px;
     width: 100%;
     text-align: right;
-    font-size: 1.5em;
+    font-size: 1.8em;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
 }
 .text3{
+    font-family: "quara-web", sans-serif;
+font-weight: 400;
+font-style: normal;
     position: absolute;
     bottom: -5100px;
-    left: -30px;
+    left: -0px;
     width: 100%;
     text-align: right;
     font-size: 1.4em;
@@ -223,6 +248,9 @@ body.scrolled #mars {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
     padding: 5px;
     z-index: 20;
+    border: 25px solid black; /* Add a 100px border around the element */
+    box-sizing: border-box; /* Include the border in the element's total width and height */
+
 }
 
 #earth {
@@ -239,6 +267,9 @@ body.scrolled #earth {
     transform: translateY(0);
 }
 .night4 {
+    font-family: "nasalization", sans-serif;
+    font-weight: 400;
+    font-style: bold;
     position: absolute;
     bottom: -6100px;
     left: -500px;
@@ -247,21 +278,27 @@ body.scrolled #earth {
     font-size: 3em;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
-    letter-spacing: 0.5em;
+    letter-spacing: 1em;
 }
 .concert4 {
+    font-family: "quara-web", sans-serif;
+font-weight: 400;
+font-style: normal;
     position: absolute;
     bottom: -7150px; 
     left: 40px;
     width: 100%;
     text-align: left;
-    font-size: 1.5em;
+    font-size: 1.8em;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
 }
 .text4{
+    font-family: "quara-web", sans-serif;
+font-weight: 400;
+font-style: normal;
     position: absolute;
-    bottom: -7700px;
+    bottom: -7650px;
     left: 10px;
     width: 100%;
     text-align: left;
@@ -269,6 +306,9 @@ body.scrolled #earth {
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
     padding: 5px;
+    border: 25px solid black; /* Add a 100px border around the element */
+    box-sizing: border-box; /* Include the border in the element's total width and height */
+
 }
 
 #jupiter {
@@ -285,6 +325,9 @@ body.scrolled #jupiter {
     transform: translateY(0);
 }
 .night5 {
+    font-family: "nasalization", sans-serif;
+    font-weight: 400;
+    font-style: bold;
     position: absolute;
     bottom: -9000px;
     left: 350px;
@@ -293,27 +336,36 @@ body.scrolled #jupiter {
     font-size: 3em;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
-    letter-spacing: 0.5em;
+    letter-spacing: 1em;
 }
 .concert5 {
+    font-family: "quara-web", sans-serif;
+font-weight: 400;
+font-style: normal;
     position: absolute;
     bottom: -10900px; 
-    left: 500px;
+    left: 700px;
     text-align: right;
-    font-size: 1.5em;
+    font-size: 1.8em;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
 }
 .text5{
+    font-family: "quara-web", sans-serif;
+font-weight: 400;
+font-style: normal;
     position: absolute;
-    bottom: -11500px;
-    left: -30px;
+    bottom: -11400px;
+    left: 30px;
     width: 100%;
     text-align: right;
     font-size: 1.4em;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
     padding: 5px;
+    border: 25px solid black; /* Add a 100px border around the element */
+    box-sizing: border-box; /* Include the border in the element's total width and height */
+
 }
 
 #neptune{
@@ -330,6 +382,9 @@ body.scrolled #neptune {
     transform: translateY(0);
 }
 .night6 {
+    font-family: "nasalization", sans-serif;
+    font-weight: 400;
+    font-style: bold;
     position: absolute;
     bottom: -13000px;
     left: -400px;
@@ -338,34 +393,43 @@ body.scrolled #neptune {
     font-size: 3em;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
-    letter-spacing: 0.5em;
+    letter-spacing: 1em;
 }
 .concert6 {
+    font-family: "quara-web", sans-serif;
+font-weight: 400;
+font-style: normal;
     position: absolute;
     bottom: -14500px; 
-    left: 70px;
+    left: 40px;
     width: 100%;
     text-align: left;
-    font-size: 1.5em;
+    font-size: 1.8em;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
 }
 .text6{
+    font-family: "quara-web", sans-serif;
+font-weight: 400;
+font-style: normal;
     position: absolute;
-    bottom: -15100px;
-    left: 70px;
+    bottom: -15030px;
+    left: 10px;
     width: 100%;
     text-align: left;
     font-size: 1.4em;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
     padding: 5px;
+    border: 25px solid black; /* Add a 100px border around the element */
+    box-sizing: border-box; /* Include the border in the element's total width and height */
+
 }
 
 #pluto {
     position: absolute;
     bottom: -16000px; /* Position it below Saturn */
-    right: 500px;
+    right: 700px;
     width: 50%;
     height: auto;
     transform: translateY(50%);
@@ -376,6 +440,9 @@ body.scrolled #pluto {
     transform: translateY(0);
 }
 .night7 {
+    font-family: "nasalization", sans-serif;
+    font-weight: 400;
+    font-style: bold;
     position: absolute;
     bottom: -15500px;
     left: 500px;
@@ -384,27 +451,36 @@ body.scrolled #pluto {
     font-size: 3em;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
-    letter-spacing: 0.5em;
+    letter-spacing: 1em;
 }
 .concert7 {
+    font-family: "quara-web", sans-serif;
+font-weight: 400;
+font-style: normal;
     position: absolute;
     bottom: -16300px; 
     width: 100%;
     text-align: right;
-    font-size: 1.5em;
+    font-size: 1.8em;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
 }
 .text7{
+    font-family: "quara-web", sans-serif;
+font-weight: 400;
+font-style: normal;
     position: absolute;
-    bottom: -16900px;
-    right: 10px;
+    bottom: -16850px;
+    right: -30px;
     width: 100%;
     text-align: right;
     font-size: 1.4em;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
     padding: 5px;
+    border: 25px solid black; /* Add a 100px border around the element */
+    box-sizing: border-box; /* Include the border in the element's total width and height */
+
 }
 
 #venus {
@@ -421,6 +497,9 @@ body.scrolled #venus {
     transform: translateY(0);
 }
 .night8 {
+    font-family: "nasalization", sans-serif;
+    font-weight: 400;
+    font-style: bold;
     position: absolute;
     bottom: -17700px;
     left: -350px;
@@ -429,27 +508,37 @@ body.scrolled #venus {
     font-size: 3em;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
-    letter-spacing: 0.5em;
+    letter-spacing: 1em;
 }
 .concert8 {
+    font-family: "quara-web", sans-serif;
+font-weight: 400;
+font-style: normal;
     position: absolute;
     bottom: -18700px; 
     width: 100%;
+    left: 40px;
     text-align: left;
-    font-size: 1.5em;
+    font-size: 1.8em;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 .text8{
+    font-family: "quara-web", sans-serif;
+font-weight: 400;
+font-style: normal;
     position: absolute;
-    bottom: -19300px;
-    left: -30px;
+    bottom: -19200px;
+    left: 10px;
     width: 100%;
     text-align: left;
     font-size: 1.4em;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
     padding: 10px;
+    border: 25px solid black; /* Add a 100px border around the element */
+    box-sizing: border-box; /* Include the border in the element's total width and height */
+
 }
 
 #mercury {
@@ -466,6 +555,9 @@ body.scrolled #mercury {
     transform: translateY(0);
 }
 .night9 {
+    font-family: "nasalization", sans-serif;
+    font-weight: 400;
+    font-style: bold;
     position: absolute;
     bottom: -20200px;
     left: 500px;
@@ -474,27 +566,36 @@ body.scrolled #mercury {
     font-size: 3em;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
-    letter-spacing: 0.5em;
+    letter-spacing: 1em;
 }
 .concert9 {
+    font-family: "quara-web", sans-serif;
+font-weight: 400;
+font-style: normal;
     position: absolute;
-    bottom: -21100px; 
+    bottom: -21160px; 
     width: 100%;
     text-align: right;
-    font-size: 1.5em;
+    font-size: 1.8em;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
 }
 .text9{
+    font-family: "quara-web", sans-serif;
+font-weight: 400;
+font-style: normal;
     position: absolute;
     bottom: -21700px;
-    left: -30px;
+    right: -30px;
     width: 100%;
     text-align: right;
     font-size: 1.4em;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
     padding: 5px;
+    border: 25px solid black; /* Add a 100px border around the element */
+    box-sizing: border-box; /* Include the border in the element's total width and height */
+
 }
 
 #poliphemus {
@@ -511,6 +612,9 @@ body.scrolled #poliphemus {
     transform: translateY(0);
 }
 .night10 {
+    font-family: "nasalization", sans-serif;
+    font-weight: 400;
+    font-style: bold;
     position: absolute;
     bottom: -22500px;
     left: -500px;
@@ -519,10 +623,14 @@ body.scrolled #poliphemus {
     font-size: 3em;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow to the text */
-    letter-spacing: 0.5em;
+    letter-spacing: 1em;
 }
 .concert10 {
-    position: absolute;
+    font-family: "quara-web", sans-serif;
+font-weight: 400;
+font-style: normal;
+left: 40px;    
+position: absolute;
     bottom: -23550px; 
     width: 100%;
     text-align: left;
@@ -532,15 +640,21 @@ body.scrolled #poliphemus {
     z-index: 10;
 }
 .text10{
+    font-family: "quara-web", sans-serif;
+font-weight: 400;
+font-style: normal;
     position: absolute;
     bottom: -24100px;
-    left: -30px;
+    left: 10px;
     width: 100%;
     text-align: left;
     font-size: 1.4em;
     color: white;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
     padding: 5px;
+    border: 25px solid black; /* Add a 100px border around the element */
+    box-sizing: border-box; /* Include the border in the element's total width and height */
+
 }
 
 
