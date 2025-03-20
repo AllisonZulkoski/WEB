@@ -44,10 +44,10 @@ function result() {
   newStory = newStory.replace(':inserty:', yItem);
   newStory = newStory.replace(':insertz:', zItem);
 
-  // Replace "Bob" with custom name if provided
+  // Replace "Your name" with custom name if provided
   if (customName.value !== '') {
     const name = customName.value;
-    newStory = newStory.replace('Bob', name);
+    newStory = newStory.replace('Your name', name);
   }
 
   // Convert units if UK is selected
