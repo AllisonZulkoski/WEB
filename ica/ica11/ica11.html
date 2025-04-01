@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Box</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 5px;
+        }
+        
+        .msgBox {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            border: 1px solid #ccc;
+            padding: 20px;
+            width: 250px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            text-align: center; /* Center text */
+        }
+        
+        .msgBox p {
+            margin: 0;
+            padding: 10px 0;
+        }
+        
+        .msgBox button {
+            background: red;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <button id="showMessage">Show Message</button>
+    
+    <script>
+        function displayMessage(msgText, msgType) {
+            const panel = document.createElement("div");
+            panel.setAttribute("class", "msgBox");
+    
+            const msg = document.createElement("p");
+            msg.textContent = msgText;
+            panel.appendChild(msg);
+    
+            const closeBtn = document.createElement("button");
+            closeBtn.textContent = "x";
+            panel.appendChild(closeBtn);
+    
+            closeBtn.addEventListener("click", () => panel.remove());
+            
+            if (msgType === "warning") {
+                panel.style.backgroundColor = "red";
+                panel.style.color = "black"; // Ensures black text in red box
+            } else if (msgType === "chat") {
+                panel.style.backgroundColor = "aqua";
+            }
+    
+            document.body.appendChild(panel);
+        }
+    
+        document.getElementById("showMessage").addEventListener("click", () => {
+            displayMessage("Your inbox is almost full — delete some mails", "warning");
+        });
+    </script>
+</body>
+</html>
