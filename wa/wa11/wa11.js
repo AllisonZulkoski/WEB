@@ -1,41 +1,54 @@
-const imageFiles = ['jdv1.jpg', 'jdv2.jpg', 'jdv3.jpg', 'jdv4.jpg', 'jdv5.jpg'];
-const altText = {
-  'jdv1.jpg': 'JD Vance as Pepto Bismol',
-  'jdv2.jpg': 'JD Vance as a Bug',
-  'jdv3.jpg': 'JD Vance as a thirst trap',
-  'jdv4.jpg': 'JD Vance as Little Debbie',
-  'jdv5.jpg': 'Just Dance Vance'
-};
-
+const displayedImage = document.querySelector('.displayed-img');
 const thumbBar = document.querySelector('.thumb-bar');
-const displayedImg = document.querySelector('.displayed-img');
-const overlay = document.querySelector('.overlay');
+
 const btn = document.querySelector('button');
+const overlay = document.querySelector('.overlay');
 
-// Loop through images and add thumbnails
-imageFiles.forEach((file) => {
-  const newImage = document.createElement('img');
-  newImage.setAttribute('src', `images/${file}`);
-  newImage.setAttribute('alt', altText[file]);
-  thumbBar.appendChild(newImage);
+const pictures = [];
+for (let i = 1; i < 6; i++) {
+    let name = "pic" + i + ".jpg";
+    pictures.push(name);
+}
 
-  newImage.addEventListener('click', () => {
-    displayedImg.setAttribute('src', `images/${file}`);
-    displayedImg.setAttribute('alt', altText[file]);
-  });
-});
+const altText = [
+    "JD Vance as Pepto Bismol",
+    "JD Vance as a bug",
+    "JD Vance as a thirst trap",
+    "JD Vance as Little Debbie",
+    "Just Dance Vance!"
+];
 
-// Darken/Lighten button functionality
+for (let i = 0; i < pictures.length; i++) {
+    const newImage = document.createElement('img');
+    newImage.setAttribute('src', pictures[i]);
+    newImage.setAttribute('alt', altText[i]);
+    thumbBar.appendChild(newImage);
+
+    newImage.addEventListener('click', event => {
+        displayedImage.src = event.target.src;
+        displayedImage.alt = event.target.alt;
+
+        updateOverlayDimensions();
+    });
+}
+
 btn.addEventListener('click', () => {
-  if (btn.classList.contains('dark')) {
-    btn.classList.remove('dark');
-    btn.classList.add('light');
-    btn.textContent = 'Lighten';
-    overlay.style.backgroundColor = 'rgb(0 0 0 / 50%)';
-  } else {
-    btn.classList.remove('light');
-    btn.classList.add('dark');
-    btn.textContent = 'Darken';
-    overlay.style.backgroundColor = 'rgb(0 0 0 / 0%)';
-  }
+    const brightness = btn.getAttribute('class');
+    if (brightness === 'dark') {
+        btn.setAttribute('class', 'light');
+        btn.textContent = 'Lighten';
+        overlay.style.backgroundColor = 'rgba(0,0,0,0.5)'; 
+    } else {
+        btn.setAttribute('class', 'dark');
+        btn.textContent = 'Darken';
+        overlay.style.backgroundColor = 'rgba(0,0,0,0)'; 
+    }
+
+    updateOverlayDimensions();
 });
+
+function updateOverlayDimensions() {
+    overlay.style.width = `${displayedImage.clientWidth}px`;
+    overlay.style.height = `${displayedImage.clientHeight}px`;
+    overlay.style.position = 'absolute';
+}
