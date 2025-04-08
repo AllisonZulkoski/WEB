@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Parallax Layers (CSS ONLY)</title>
+	<link rel="stylesheet" href="webdev12.css">
+</head>
+<body>
+<header class="content-grid">
+    <h1>Parallax Layers (CSS ONLY)</h1>
+    <p>Expanding upon my <a href="https://codepen.io/HejChristian/pen/ZYEqoXd" target="_blank" rel="noopener noreferrer">other parallax experiment</a>, now with zero-JavaScript! CSS scroll-driven animations are doing all the work here 🥳</p>
+  </header>
+  <main class="content-grid">
+    <section>
+      <p>Dino Scene, 13 base layers + rays</p>
+      <!-- I've decided not to inline the SVG as we don't need to manipulate the SVGs themselves via CSS -->
+      <div class="frame frame-a4 filter-mutedGreen parallax-y" role="img" aria-label="Multi-layered scene depicting dinosaurs in a jungle setting." style="--multiplier: .5">
+        <img src="https://assets.codepen.io/2153413/dino-layer10.svg" alt="" style="--offset:1">
+        <img src="https://assets.codepen.io/2153413/dino-layer9.svg" alt="" style="--offset:0.9">
+        <img src="https://assets.codepen.io/2153413/dino-layer8.svg" alt="" style="--offset:0.8">
+        <img src="https://assets.codepen.io/2153413/dino-layer7.svg" alt="" style="--offset:0.7">
+        <img src="https://assets.codepen.io/2153413/dino-layer6.3.svg" alt="" style="--offset:0.6">
+        <img src="https://assets.codepen.io/2153413/dino-layer6.2.svg" alt="" style="--offset:0.6">
+        <img src="https://assets.codepen.io/2153413/dino-layer6.1.svg" alt="" style="--offset:0.6">
+        <img src="https://assets.codepen.io/2153413/dino-layer5.svg" alt="" style="--offset:0.5">
+        <img src="https://assets.codepen.io/2153413/dino-layer4.2.svg" alt="" style="--offset:0.4">
+        <img src="https://assets.codepen.io/2153413/dino-layer4.1.svg" alt="" style="--offset:0.4">
+        <img src="https://assets.codepen.io/2153413/godrays.png" alt="" style="--offset:0" class="rays">
+        <img src="https://assets.codepen.io/2153413/dino-layer3.svg" alt="" style="--offset:0.2">
+        <img src="https://assets.codepen.io/2153413/dino-layer2.svg" alt="" style="--offset:0.1">
+        <img src="https://assets.codepen.io/2153413/dino-layer1.svg" alt="" style="--offset:0">
+      </div>
+      <p class="supports"></p>
+    </section>
+    <section>
+      <p>Tian Tan Buddha, 8 layers (Horizontal Parallax)</p>
+      <div class="frame frame-square filter-softSepia parallax-x" role="img" aria-label="Multi-layered scene depicting an the Tian Tan Buddha statue in Hong Kong. A giant sculpture of Buddha, sitting on top of hill." style="--multiplier: 2">
+        <img src="https://assets.codepen.io/2153413/buddha-layer4.3.svg" alt="" style="--offset:0.1">
+        <img src="https://assets.codepen.io/2153413/buddha-layer4.2.svg" alt="" style="--offset:0.09">
+        <img src="https://assets.codepen.io/2153413/buddha-layer4.1.svg" alt="" style="--offset:0.08">
+        <img src="https://assets.codepen.io/2153413/buddha-layer3.svg" alt="" style="--offset:0.075">
+        <img src="https://assets.codepen.io/2153413/buddha-layer2.3.svg" alt="" style="--offset:0.05">
+        <img src="https://assets.codepen.io/2153413/buddha-layer2.2.svg" alt="" style="--offset:0.049">
+        <img src="https://assets.codepen.io/2153413/buddha-layer2.1.svg" alt="" style="--offset:0.025">
+        <img src="https://assets.codepen.io/2153413/buddha-layer1.svg" alt="" style="--offset:0">
+      </div>
+      <p class="supports"></p>
+    </section>
+    <section>
+      <p>Manta Ray Scene, 5 layers</p>
+      <div class="frame frame-square filter-blue parallax-y" role="img" aria-label="Multi-layered scene depicting an underwater scene of some fish and Manta Ray. Set within the outline of a Manta Ray." style="--multiplier: 2">
+        <img src="https://assets.codepen.io/2153413/manta-layer5.svg" alt="" style="--offset:0.1">
+        <img src="https://assets.codepen.io/2153413/manta-layer4.svg" alt="" style="--offset:0.075">
+        <img src="https://assets.codepen.io/2153413/manta-layer3.svg" alt="" style="--offset:0.05">
+        <img src="https://assets.codepen.io/2153413/manta-layer2.svg" alt="" style="--offset:0.025">
+        <img src="https://assets.codepen.io/2153413/manta-layer1.svg" alt="" style="--offset:0">
+      </div>
+      <p class="supports"></p>
+    </section>
+  </main>
+  <footer class="content-grid">
+    <h2>Credits</h2>
+    <ul>
+      <li><a href="https://alistairshepherd.uk" target="_blank" rel="noopener noreferrer">Alistair Shepherd</a> - For the great <a href="https://alistairshepherd.uk/writing/parallax-svg-landscape-1/" target="_blank" rel="noopener noreferrer">Parallax SVG guide</a> that got me going.</li>
+      <li><a href="https://codepen.io/germanfrelo" target="_blank" rel="noopener noreferrer">Germán Freixinós</a> - For the hint about CSS scroll-driven animations.</li>
+      <li><a href="https://www.magicpattern.design" target="_blank" rel="noopener noreferrer">MagicPattern</a> - For the <a href="https://www.magicpattern.design/tools/god-rays-generator" target="_blank" rel="noopener noreferrer">God Rays Generator</a>, used as an extra layer between the dino SVGs.</li>
+    </ul>
+  </footer>
+  <div class="my-footer">
+    <p>March 2025, Christian Alder</p>
+    <p><a href="https://bsky.app/profile/hejchristian.com" target="_blank" rel="noopener noreferrer">Bluesky</a> | <a href="https://mastodon.social/@hejchristian" target="_blank" rel="noopener noreferrer">Mastodon</a></p>
+  </div>
+  <script src="webdev12.js"></script>
+</body>
+</html>

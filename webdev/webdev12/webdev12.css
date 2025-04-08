@@ -1,0 +1,102 @@
+section {
+  margin: 30vh 0 50vh 0;
+}
+
+/* Animations, from -100% so we get a nice amount of motion on both sides */
+@keyframes anim-parallax-y {
+  from { 
+    transform: translateY(calc(-100% * var(--offset) * var(--multiplier)));
+  }
+  to {
+    transform: translateY(calc(100% * var(--offset) * var(--multiplier)));
+  }
+}
+
+@keyframes anim-parallax-x {
+  from { 
+    transform: translateX(calc(-100% * var(--offset) * var(--multiplier)));
+  }
+  to {
+    transform: translateX(calc(100% * var(--offset) * var(--multiplier)));
+  }
+}
+
+/* Base frame setup */
+.frame {
+  --multiplier: 1;
+
+  position: relative;
+  width: 100%;
+  height: auto;
+
+  background: var(--color-light);
+  background-image: var(--texture-noise);
+  border-radius: .5em;
+
+  /* If you comment this out, you can get a better visual for how the layers are behaving */
+  overflow: clip;
+}
+
+.frame img {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+}
+
+/* Wrapping the animation with a supports to check browser compatibility */
+@supports (animation-timeline: view()) {
+  .parallax-y img {
+    animation: anim-parallax-y linear forwards;
+    animation-timeline: view();
+    animation-range: entry 0% exit 100%;
+  }
+}
+
+@supports (animation-timeline: view()) {
+  .parallax-x img {
+    animation: anim-parallax-x linear forwards;
+    animation-timeline: view();
+    animation-range: entry 0% exit 100%;
+  }
+}
+
+/* A little message for folks that can't see the parallax */
+@supports not (animation-timeline: view()) {
+  .supports {
+    display: block;
+    text-align: center;
+    padding: .5em;
+    margin: 0 auto;
+    font-size: var(--step--2);
+  }
+
+  .supports::after {
+    content: "🚫 Sorry, animation-timeline: view() isn't supported in your browser.";
+  }
+}
+
+/* Some basic helper classes */
+.frame-a4 {
+  aspect-ratio: 1.414 / 1;
+}
+
+.frame-square {
+  aspect-ratio: 1 / 1;
+}
+
+.rays {
+  mix-blend-mode: color-dodge;
+}
+
+.filter-mutedGreen {
+  filter: sepia(100%) hue-rotate(100deg) saturate(50%);
+}
+
+.filter-softSepia {
+  filter: sepia(20%);
+}
+
+.filter-blue {
+  filter: sepia(100%) hue-rotate(180deg) saturate(300%);
+}
