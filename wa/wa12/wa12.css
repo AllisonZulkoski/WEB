@@ -1,0 +1,68 @@
+/* I used the background changing thing from a different project, I think it adds a nice touch */
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: none;
+    color: #333;
+    text-align: center;
+    padding: 40px;
+  }
+  
+  #lyric-box {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  input {
+    padding: 10px;
+    margin: 10px;
+    width: 80%;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #4b79a1;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  button:hover {
+    background-color: #283e51;
+  }
+  
+  #spinner {
+    display: none;
+    margin-top: 15px;
+  }
+  
+  #lyrics {
+    white-space: pre-wrap;
+    margin-top: 20px;
+    text-align: left;
+  }
+  
+  #tweet-btn {
+    display: none;
+  }
+  
+  #explanation {
+    margin-top: 40px;
+    font-size: 0.95em;
+    color: black; 
+  }
+
+  a {
+    color: black;
+    text-decoration: underline; 
+    }   

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lyric Machine</title>
+  <link rel="stylesheet" href="wa12.css" />
+</head>
+<body>
+  <div id="lyric-box">
+    <h1>Lyric API Machine</h1>
+    <input type="text" id="artist" placeholder="Artist Name" />
+    <input type="text" id="title" placeholder="Song Title" />
+    <button onclick="getLyrics()">Get Lyrics</button>
+    <div id="spinner">Loading...</div>
+    <div id="lyrics"></div>
+  </div>
+  <p id="explanation">
+    <strong>Extension Explanation:</strong> This lyric machine uses the <a href="https://publicapis.io/lyrics-ovh-api?utm_source=chatgpt.com" target="_blank">Lyrics.ovh</a> API to fetch song lyrics. 
+    It includes several extensions: a loading spinner, and a randomly generated background color every time the page is loaded or refreshed. 
+  </p>
+  
+
+  <script src="wa12.js"></script>
+</body>
+</html>

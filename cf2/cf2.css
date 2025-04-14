@@ -19,9 +19,9 @@ body {
   flex-direction: column;
   align-items: center;
   width: 90%;
-  max-width: 1000px;
+  max-width: 500%;
   gap: 0.5rem;
-  margin-top: 0; /* Remove extra top margin */
+  /* margin-top: 5%;  */
   margin-bottom: 0; /* Remove the 250% bottom margin */
   max-height: 90vh; /* Ensure the container doesn't exceed the viewport height */
 }
@@ -33,15 +33,16 @@ body {
   border: 4px solid black;
   background-color: white;
   transition: background 0.3s ease;
+  margin-top: 5%;
 }
 
 .color-picker {
+  font-size: 200%;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.2rem;
-  margin-top: 0; /* Remove auto margin */
-  margin-bottom: 0; /* Remove auto margin */
+  margin-top: 2%; 
 }
 
 label {
@@ -50,7 +51,7 @@ label {
 
 button {
   padding: 0.3rem 0.6rem;
-  font-size: 0.8rem;
+  font-size: 300%;
   cursor: pointer;
   border: none;
   border-radius: 6px;
@@ -65,7 +66,7 @@ button:hover {
 }
 
 #result {
-  font-size: 0.9rem;
+  font-size: 300%;
   font-weight: bold;
   margin-top: 0.1rem;
 }
