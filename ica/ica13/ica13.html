@@ -1,0 +1,125 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Balls</title>
+  <link rel="stylesheet" href="ica13.css" />
+  <style>
+      html, body {
+          margin: 0;
+      }
+      html {
+          font-family: sans-serif;
+      }
+      body {
+          overflow: hidden;
+          height: inherit;
+      }
+      h1 {
+          font-size: 2rem;
+          letter-spacing: -1px;
+      }
+  </style>
+</head>
+<body>
+  <canvas id="canvas"></canvas>
+  <script>
+      function random(min, max) {
+          return Math.random() * (max - min) + min;
+      }
+
+      function randomColor() {
+          const r = Math.floor(Math.random() * 256);
+          const g = Math.floor(Math.random() * 256);
+          const b = Math.floor(Math.random() * 256);
+          return `rgb(${r},${g},${b})`;
+      }
+
+      class Ball {
+          constructor(x, y, radius, color) {
+              this.x = x;
+              this.y = y;
+              this.radius = radius;
+              this.color = color;
+              this.dx = Math.random() * 4 - 2 * 2; 
+              this.dy = Math.random() * 4 - 2 * 2; 
+          }
+
+          draw(ctx) {
+              ctx.beginPath();
+              ctx.fillStyle = this.color;
+              ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+              ctx.fill();
+          }
+
+          update(canvas) {
+              this.x += this.dx;
+              this.y += this.dy;
+
+              if (this.x + this.radius >= canvas.width || this.x - this.radius <= 0) {
+                  this.dx = -this.dx;
+              }
+              if (this.y + this.radius >= canvas.height || this.y - this.radius <= 0) {
+                  this.dy = -this.dy;
+              }
+          }
+
+          collisionDetect(balls) {
+              for (const ball of balls) {
+                  if (this === ball) continue;
+                  const dx = ball.x - this.x;
+                  const dy = ball.y - this.y;
+                  const distance = Math.sqrt(dx * dx + dy * dy);
+                  if (distance < ball.radius + this.radius) {
+                      const tempDx = this.dx;
+                      const tempDy = this.dy;
+                      this.dx = ball.dx;
+                      this.dy = ball.dy;
+                      ball.dx = tempDx;
+                      ball.dy = tempDy;
+
+                      this.color = randomColor();
+                      ball.color = randomColor();
+                  }
+              }
+          }
+      }
+
+      const canvas = document.getElementById('canvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      window.addEventListener('resize', () => {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+      });
+
+      const balls = [];
+      while (balls.length < 10) { 
+          const size = random(10, 20);
+          const ball = new Ball(
+              random(size, window.innerWidth - size),
+              random(size, window.innerHeight - size),
+              size,
+              randomColor()
+          );
+          balls.push(ball);
+      }
+
+      function loop() {
+          ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+          
+          for (const ball of balls) {
+              ball.update(canvas);
+              ball.collisionDetect(balls);
+              ball.draw(ctx);
+          }
+          requestAnimationFrame(loop);
+      }
+
+      loop();
+  </script>
+</body>
+</html>
