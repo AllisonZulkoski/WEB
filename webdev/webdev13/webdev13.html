@@ -1,0 +1,37 @@
+<head>
+  <link rel="stylesheet" href="webdev13.css">
+</head>
+<div class="circle-wrapper">
+  <div class="circle"></div>
+</div>
+<svg width="800px" height="600px">
+  <defs>
+    <filter id="distort">
+      <feTurbulence baseFrequency=".0015 .0015" type="fractalNoise" />
+      <feColorMatrix type="hueRotate" values="0">
+        <animate attributeName="values" from="0" to="360" dur="1s" repeatCount="indefinite" />
+      </feColorMatrix>
+      <feDisplacementMap in="SourceGraphic" xChannelSelector="R" yChannelSelector="B" scale="100">
+        <animate attributeName="scale" values="80;30;80" dur="5s" repeatCount="indefinite" />
+      </feDisplacementMap>
+      <feGaussianBlur stdDeviation="0" />
+      <feComponentTransfer result="main">
+        <feFuncA type="gamma" amplitude="1" exponent="5" />
+      </feComponentTransfer>
+      <feColorMatrix type="matrix" values="0 0 0 0 0 
+                                           0 0 0 0 0
+                                           0 0 0 0 0
+                                           0 0 0 1 0" />
+      <feComposite operator="over" in="main" />
+    </filter>
+    <filter id="bloom" color-interpolation-filters="sRGB">
+      <feColorMatrix type="matrix" values="1 0 0 0 0
+                                           0 1 0 0 0
+                                           0 0 1 0 0
+                                           -255 -255 -255 300 0" result="dark-pixels" />
+      <feComposite in2="dark-pixels" in="SourceGraphic" operator="out" result="text" />
+      <feGaussianBlur in="text" stdDeviation="12" result="text-blur"></feGaussianBlur>
+      <feComposite in2="text-blur" in="SourceGraphic" operator="over" result="text" />
+    </filter>
+  </defs>
+</svg>
