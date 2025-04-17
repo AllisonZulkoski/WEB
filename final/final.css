@@ -1,48 +1,101 @@
-#dartboard {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    position: relative;
-    margin: 50px auto;
-    background:
-        radial-gradient(circle,
-            orange 0%,         /* bullseye */
-            orange 5%,
-            blue 5%,           /* outer bullseye */
-            blue 10%,
-            white 10%,         /* inner pie section */
-            white 35%,
-            orange 35%,        /* inner ring (triple) */
-            orange 37%,
-            white 37%,
-            white 60%,         /* outer pie section */
-            blue 60%,          /* outer ring (double) */
-            blue 62%,
-            black 62%,         /* outer border */
-            black 100%
-        ),
-        conic-gradient(
-            black 0deg 9deg, white 9deg 18deg,
-            black 18deg 27deg, white 27deg 36deg,
-            black 36deg 45deg, white 45deg 54deg,
-            black 54deg 63deg, white 63deg 72deg,
-            black 72deg 81deg, white 81deg 90deg,
-            black 90deg 99deg, white 99deg 108deg,
-            black 108deg 117deg, white 117deg 126deg,
-            black 126deg 135deg, white 135deg 144deg,
-            black 144deg 153deg, white 153deg 162deg,
-            black 162deg 171deg, white 171deg 180deg,
-            black 180deg 189deg, white 189deg 198deg,
-            black 198deg 207deg, white 207deg 216deg,
-            black 216deg 225deg, white 225deg 234deg,
-            black 234deg 243deg, white 243deg 252deg,
-            black 252deg 261deg, white 261deg 270deg,
-            black 270deg 279deg, white 279deg 288deg,
-            black 288deg 297deg, white 297deg 306deg,
-            black 306deg 315deg, white 315deg 324deg,
-            black 324deg 333deg, white 333deg 342deg,
-            black 342deg 351deg, white 351deg 360deg
-        );
-    border: 3px solid #000;
-    box-shadow: 0 0 10px rgba(0,0,0,0.5);
-}
+body {
+    margin: 0;
+    background: #006400;
+    font-family: sans-serif;
+    color: white;
+  }
+  
+  .controls {
+    padding: 20px;
+    text-align: center;
+    font-size: 18px;
+  }
+  
+  #powerRange {
+    width: 200px;
+    margin: 0 10px;
+  }
+  
+  button {
+    padding: 5px 15px;
+    font-size: 16px;
+    margin-left: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #ffffff;
+    color: #006400;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #e0e0e0;
+  }
+  
+  canvas {
+    display: block;
+    background: #0a4f2f;
+    margin: 0 auto 20px auto;
+    border: 4px solid #fff;
+    border-radius: 15px;
+  }
+
+  .phone {
+    text-align: center;
+    margin-top: 120px; /* Increase margin to move the dashes 10% lower */
+  }
+
+  #pocketedBallsDisplay {
+    font-size: 50px; /* Make the dashes bigger */
+    font-weight: bold;
+    color: white;
+    letter-spacing: 10px; /* Increase spacing between dashes */
+  }
+
+  #resetButton {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    background-color: #ffffff;
+    color: #006400;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  #resetButton:hover {
+    background-color: #e0e0e0;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: 36px;
+    margin-top: 20px;
+    color: white;
+  }
+
+  .instructions {
+    text-align: center;
+    font-size: 18px;
+    margin: 20px auto;
+    color: white;
+    max-width: 600px;
+  }
+
+  #startGameButton {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: none;
+    background-color: #ffffff;
+    color: #006400;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  #startGameButton:hover {
+    background-color: #e0e0e0;
+  }
