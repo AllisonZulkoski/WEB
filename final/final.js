@@ -86,8 +86,9 @@ powerSlider.addEventListener('input', () => {
 
 shootButton.addEventListener('click', () => {
   if (Math.hypot(cueBall.vx, cueBall.vy) < 0.1) {
-    cueBall.vx = Math.cos(cueAngle) * cuePower;
-    cueBall.vy = Math.sin(cueAngle) * cuePower;
+    const powerMultiplier = 1 + cuePower / 50; // Scale velocity based on cue power
+    cueBall.vx = Math.cos(cueAngle) * cuePower * powerMultiplier;
+    cueBall.vy = Math.sin(cueAngle) * cuePower * powerMultiplier;
   }
 });
 
@@ -161,10 +162,12 @@ function handleCollisions(allBalls) {
         b.x += moveX;
         b.y += moveY;
 
-        const tempVx = a.vx;
-        const tempVy = a.vy;
-        a.vx = b.vx;
-        a.vy = b.vy;
+        // Scale velocity transfer to make balls move more
+        const velocityScale = 1; // Increase this value to amplify the effect
+        const tempVx = a.vx * velocityScale;
+        const tempVy = a.vy * velocityScale;
+        a.vx = b.vx * velocityScale;
+        a.vy = b.vy * velocityScale;
         b.vx = tempVx;
         b.vy = tempVy;
       }
@@ -214,8 +217,9 @@ document.addEventListener('keydown', (e) => {
   if (e.code === 'ArrowLeft') cueAngle -= 0.1;
   if (e.code === 'ArrowRight') cueAngle += 0.1;
   if (e.code === 'Space' && Math.hypot(cueBall.vx, cueBall.vy) < 0.1) {
-    cueBall.vx = Math.cos(cueAngle) * cuePower;
-    cueBall.vy = Math.sin(cueAngle) * cuePower;
+    const powerMultiplier = 1 + cuePower / 50; // Scale velocity based on cue power
+    cueBall.vx = Math.cos(cueAngle) * cuePower * powerMultiplier;
+    cueBall.vy = Math.sin(cueAngle) * cuePower * powerMultiplier;
   }
 });
 
