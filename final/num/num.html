@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Number</title>
+  <link rel="stylesheet" href="num.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Is This Your Number?</h1>
+    </header>
+    <main>
+      <p id="instructions">
+        Is this your phone number??? If not, click "reset" to try again!      </p>
+      <p id="displayNumber">- - - - - - - - - -</p> <!-- Placeholder for the number -->
+      <button id="startButton">Reset</button>
+    </main>
+  </div>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const number = params.get('number');
+    if (number) {
+      const formattedNumber = number.split('').join(' '); // Add spaces between digits
+      document.getElementById('displayNumber').textContent = formattedNumber;
+    }
+    document.getElementById('startButton').addEventListener('click', () => {
+      window.location.href = '../final.html';
+    });
+  </script>
+</body>
+</html>

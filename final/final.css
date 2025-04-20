@@ -52,6 +52,31 @@ body {
     letter-spacing: 10px; /* Increase spacing between dashes */
   }
 
+  .button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Ensure buttons are vertically aligned */
+    gap: 10px;
+  }
+
+  #resetButton,
+  #enterButton {
+    width: 100px;
+    height: 40px;
+    font-size: 16px;
+    background-color: #ffffff; /* Match Reset button's background */
+    color: #006400; /* Match Reset button's text color */
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  #resetButton:hover,
+  #enterButton:hover {
+    background-color: #e0e0e0; /* Match Reset button's hover effect */
+  }
+
   #resetButton {
     margin-top: 10px;
     padding: 10px 20px;
@@ -66,6 +91,10 @@ body {
   
   #resetButton:hover {
     background-color: #e0e0e0;
+  }
+
+  #enterButton {
+    margin-top: 10px; /* Match the margin of the Reset button */
   }
 
   h1 {

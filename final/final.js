@@ -28,6 +28,14 @@ const pocketedBalls = Array(10).fill('-'); // Array to store pocketed ball numbe
 const pocketedBallsDisplay = document.getElementById('pocketedBallsDisplay');
 const resetButton = document.getElementById('resetButton');
 
+// Get the Enter button
+const enterButton = document.getElementById('enterButton');
+
+// Add functionality to redirect to num.htm
+enterButton.addEventListener('click', () => {
+  window.location.href = 'https://allisonzulkoski.github.io/WEB/final/num/num.html';
+});
+
 // Update the starting positions of the balls to form a properly oriented triangle
 function resetBalls() {
   balls.length = 0; // Clear existing balls
@@ -118,11 +126,11 @@ function drawCueStick() {
     const x2 = cueBall.x - Math.cos(cueAngle) * (length + 10);
     const y2 = cueBall.y - Math.sin(cueAngle) * (length + 10);
 
-    ctx.strokeStyle = '#deb887';
-    ctx.lineWidth = 4;
+    ctx.strokeStyle = '#deb887'; // Restore original cue stick color
+    ctx.lineWidth = 4; // Restore original line width
     ctx.beginPath();
     ctx.moveTo(x1, y1);
-    ctx.lineTo(x2, y2);
+    ctx.lineTo(x2, y2); // Fix incorrect coordinate reference
     ctx.stroke();
   }
 }
