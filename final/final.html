@@ -32,8 +32,13 @@
   <script src="final.js"></script>
   <script>
     document.getElementById('enterButton').addEventListener('click', () => {
-      const number = document.getElementById('numberInput').value; // Assume there's an input field with this ID
-      window.location.href = `num/num.html?number=${encodeURIComponent(number)}`;
+      const pocketedNumbers = document.getElementById('pocketedBallsDisplay').textContent.trim();
+      if (pocketedNumbers.includes('-')) {
+        alert('Please pocket all numbers before proceeding.');
+      } else {
+        // Ensure the path to num.html is correct
+        window.location.href = `./num/num.html?number=${encodeURIComponent(pocketedNumbers)}`;
+      }
     });
   </script>
 </body>
