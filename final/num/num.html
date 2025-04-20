@@ -22,8 +22,7 @@
     const params = new URLSearchParams(window.location.search);
     const number = params.get('number');
     if (number) {
-      const formattedNumber = number.split('').join(' '); // Add spaces between digits
-      document.getElementById('displayNumber').textContent = formattedNumber;
+      document.getElementById('displayNumber').textContent = number.split('').join(' '); // Add spaces between digits
     }
     document.getElementById('startButton').addEventListener('click', () => {
       window.location.href = '../final.html';
