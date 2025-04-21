@@ -55,8 +55,45 @@ function initializeAudio() {
   }
 }
 
+// Function to stop all themes
+function stopAllThemes() {
+  greenHillZoneTheme.pause();
+  greenHillZoneTheme.currentTime = 0;
+  snoopDoggTheme.pause();
+  snoopDoggTheme.currentTime = 0;
+  grumbleVolcanoTheme.pause();
+  grumbleVolcanoTheme.currentTime = 0;
+  devilLaughSound.pause(); // Ensure the devil laugh also stops
+  devilLaughSound.currentTime = 0;
+}
+
+// Function to start "Devil's Game"
+function startDevilsGame() {
+  stopAllThemes(); // Stop all other themes
+  grumbleVolcanoTheme.play().catch((err) => console.error('Audio playback failed:', err));
+  devilLaughSound.play().catch((err) => console.error('Audio playback failed:', err));
+}
+
+// Function to start "420 Theme"
+function start420Theme() {
+  stopAllThemes(); // Stop all other themes
+  snoopDoggTheme.play().catch((err) => console.error('Audio playback failed:', err));
+}
+
+// Function to start "Green Hill Zone" (Mort theme)
+function startGreenHillZone() {
+  stopAllThemes(); // Stop all other themes
+  greenHillZoneTheme.src = 'sounds/Mort.mp3'; // Ensure the correct file is set
+  greenHillZoneTheme.play().catch((err) => console.error('Audio playback failed:', err));
+}
+
 // Attach the audio initialization to a user interaction
-document.addEventListener('click', initializeAudio);
+document.addEventListener('click', () => {
+  if (!audioInitialized) {
+    startGreenHillZone(); // Start Green Hill Zone on first interaction
+    audioInitialized = true;
+  }
+});
 document.addEventListener('keydown', initializeAudio);
 
 // Update the starting positions of the balls to form a properly oriented triangle
@@ -97,10 +134,16 @@ function resetBalls() {
   cueBall.vy = 0;
 }
 
+// Reset button logic
 resetButton.addEventListener('click', () => {
   resetBalls();
   pocketedBalls.fill('-'); // Reset pocketedBalls array
   pocketedBallsDisplay.textContent = pocketedBalls.join(' '); // Update HTML
+
+  // Restore the original theme and music
+  document.body.classList.remove('devils-game', 'weed-game'); // Remove any applied themes
+  stopAllThemes(); // Stop all audio
+  startGreenHillZone(); // Play the original theme music (Mort)
 });
 
 let cueAngle = 0;
@@ -283,14 +326,14 @@ function applyWeedTheme() {
 
 // Function to start "Devil's Game"
 function startDevilsGame() {
-  greenHillZoneTheme.pause();
+  stopAllThemes(); // Stop all other themes
   grumbleVolcanoTheme.play().catch((err) => console.error('Audio playback failed:', err));
   devilLaughSound.play().catch((err) => console.error('Audio playback failed:', err));
 }
 
 // Function to start "420 Theme"
 function start420Theme() {
-  greenHillZoneTheme.pause();
+  stopAllThemes(); // Stop all other themes
   snoopDoggTheme.play().catch((err) => console.error('Audio playback failed:', err));
 }
 
