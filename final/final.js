@@ -37,39 +37,62 @@ enterButton.addEventListener('click', () => {
 });
 
 // Audio elements
-const greenHillZoneTheme = new Audio('sounds/green_hill_zone.mp3');
+// const greenHillZoneTheme = new Audio('sounds/green_hill_zone.mp3');
 const grumbleVolcanoTheme = new Audio('sounds/grumble_volcano.mp3');
 const devilLaughSound = new Audio('sounds/devil_laugh.mp3');
 const snoopDoggTheme = new Audio('sounds/snoop_dogg.mp3');
+const policeSirenSound = new Audio('sounds/police_siren.mp3'); // Add police siren sound
+const copTheme = new Audio('sounds/Cop.mp3'); // Add Cop.mp3 audio
+const casinoTheme = new Audio('sounds/Casino.mp3'); // Add Casino.mp3 audio
+const elevenTheme = new Audio('sounds/11.mp3'); // Add 11.mp3 audio
 
 // Configure audio settings
-greenHillZoneTheme.loop = true;
+// greenHillZoneTheme.loop = true;
 grumbleVolcanoTheme.loop = true;
+policeSirenSound.loop = true; // Loop the siren sound
+copTheme.loop = true; // Loop the Cop theme
+casinoTheme.loop = true; // Loop the Casino theme
+elevenTheme.loop = true; // Loop the 11 theme
 
 // Start audio playback after user interaction
 let audioInitialized = false;
 function initializeAudio() {
   if (!audioInitialized) {
-    greenHillZoneTheme.play().catch((err) => console.error('Audio playback failed:', err));
+    // greenHillZoneTheme.play().catch((err) => console.error('Audio playback failed:', err));
     audioInitialized = true;
   }
 }
 
 // Function to stop all themes
 function stopAllThemes() {
-  greenHillZoneTheme.pause();
-  greenHillZoneTheme.currentTime = 0;
+  // greenHillZoneTheme.pause();
+  // greenHillZoneTheme.currentTime = 0;
   snoopDoggTheme.pause();
   snoopDoggTheme.currentTime = 0;
   grumbleVolcanoTheme.pause();
   grumbleVolcanoTheme.currentTime = 0;
   devilLaughSound.pause(); // Ensure the devil laugh also stops
   devilLaughSound.currentTime = 0;
+  policeSirenSound.pause(); // Ensure the police siren also stops
+  policeSirenSound.currentTime = 0;
+  copTheme.pause(); // Ensure the Cop theme also stops
+  copTheme.currentTime = 0;
+  casinoTheme.pause(); // Ensure the Casino theme also stops
+  casinoTheme.currentTime = 0;
+  elevenTheme.pause(); // Ensure the 11 theme also stops
+  elevenTheme.currentTime = 0;
 }
 
 // Function to start "Devil's Game"
 function startDevilsGame() {
   stopAllThemes(); // Stop all other themes
+  document.body.classList.remove('weed-game'); // Remove weed-game theme
+  document.body.classList.add('devils-game'); // Apply devils-game theme
+
+  // Reset ball colors to match the Devil's theme
+  applyDevilTheme();
+
+  // Start Devil's Game sounds
   grumbleVolcanoTheme.play().catch((err) => console.error('Audio playback failed:', err));
   devilLaughSound.play().catch((err) => console.error('Audio playback failed:', err));
 }
@@ -77,26 +100,56 @@ function startDevilsGame() {
 // Function to start "420 Theme"
 function start420Theme() {
   stopAllThemes(); // Stop all other themes
+  document.body.classList.remove('devils-game'); // Remove devils-game theme
+  document.body.classList.add('weed-game'); // Apply weed-game theme
+
+  // Reset ball colors to match the Weed theme
+  applyWeedTheme();
+
+  // Start 420 Theme sound
   snoopDoggTheme.play().catch((err) => console.error('Audio playback failed:', err));
 }
 
-// Function to start "Green Hill Zone" (Mort theme)
-function startGreenHillZone() {
+function startPoliceTheme() {
   stopAllThemes(); // Stop all other themes
-  greenHillZoneTheme.src = 'sounds/Mort.mp3'; // Ensure the correct file is set
-  greenHillZoneTheme.play().catch((err) => console.error('Audio playback failed:', err));
+  document.body.classList.remove('devils-game', 'weed-game'); // Remove other themes
+  document.body.classList.add('police-game'); // Apply police-game theme
+
+  // Reset ball colors to match the Police theme
+  applyPoliceTheme();
+
+  // Start Police Theme sound
+  copTheme.play().catch((err) => console.error('Audio playback failed:', err));
 }
 
-// Attach the audio initialization to a user interaction
-document.addEventListener('click', () => {
-  if (!audioInitialized) {
-    startGreenHillZone(); // Start Green Hill Zone on first interaction
-    audioInitialized = true;
-  }
-});
-document.addEventListener('keydown', initializeAudio);
+function startCasinoTheme() {
+  stopAllThemes(); // Stop all other themes
+  document.body.classList.remove('devils-game', 'weed-game', 'police-game'); // Remove other themes
+  document.body.classList.add('casino-game'); // Apply casino-game theme
 
-// Update the starting positions of the balls to form a properly oriented triangle
+  // Reset ball colors to match the Casino theme
+  applyCasinoTheme();
+
+  // Start Casino Theme sound
+  elevenTheme.play().catch((err) => console.error('Audio playback failed:', err));
+
+  // Trigger jackpot animation
+  triggerJackpotAnimation();
+}
+
+function triggerJackpotAnimation() {
+  const sillyMessage = document.getElementById('sillyMessage');
+  sillyMessage.textContent = '🎰 JACKPOT! 🎰'; // Display jackpot message
+  sillyMessage.style.color = '#FFD700'; // Gold text
+  sillyMessage.style.opacity = 1; // Fade in the message
+
+  // Use the same timeout logic as other messages
+  clearTimeout(messageTimeout); // Clear any existing timeout
+  messageTimeout = setTimeout(() => {
+    sillyMessage.style.opacity = 0; // Fade out the message after 3 seconds
+  }, 3000);
+}
+
 function resetBalls() {
   balls.length = 0; // Clear existing balls
   const triangleStartX = canvas.width / 2 + 200; // Center the triangle horizontally
@@ -140,10 +193,22 @@ resetButton.addEventListener('click', () => {
   pocketedBalls.fill('-'); // Reset pocketedBalls array
   pocketedBallsDisplay.textContent = pocketedBalls.join(' '); // Update HTML
 
-  // Restore the original theme and music
-  document.body.classList.remove('devils-game', 'weed-game'); // Remove any applied themes
+  // Restore the original theme and stop all sounds
+  document.body.classList.remove('devils-game', 'weed-game', 'police-game', 'casino-game'); // Remove any applied themes
+  document.body.classList.add('original-theme'); // Add the Original Theme class
   stopAllThemes(); // Stop all audio
-  startGreenHillZone(); // Play the original theme music (Mort)
+  document.getElementById('gv').pause();
+  document.getElementById('gv').currentTime = 0;
+  document.getElementById('laugh').pause();
+  document.getElementById('laugh').currentTime = 0;
+  document.getElementById('sd').pause();
+  document.getElementById('sd').currentTime = 0;
+  document.getElementById('cop').pause();
+  document.getElementById('cop').currentTime = 0;
+  document.getElementById('elevenTheme').pause();
+  document.getElementById('elevenTheme').currentTime = 0;
+  document.getElementById('casinoTheme').pause();
+  document.getElementById('casinoTheme').currentTime = 0;
 });
 
 let cueAngle = 0;
@@ -324,17 +389,26 @@ function applyWeedTheme() {
   cueBall.color = '#FFFFFF'; // Keep the cue ball white
 }
 
-// Function to start "Devil's Game"
-function startDevilsGame() {
-  stopAllThemes(); // Stop all other themes
-  grumbleVolcanoTheme.play().catch((err) => console.error('Audio playback failed:', err));
-  devilLaughSound.play().catch((err) => console.error('Audio playback failed:', err));
+function applyPoliceTheme() {
+  document.body.classList.add('police-game'); // Add the class for Police game styling
+
+  // Update ball colors to include red and blue for the "police" theme
+  const policeColors = ['#001F3F', '#0074D9', '#FF4136', '#7FDBFF', '#FF851B']; // Added red and orange
+  balls.forEach((ball, index) => {
+    ball.color = policeColors[index % policeColors.length]; // Cycle through the colors
+  });
+  cueBall.color = '#FFFFFF'; // Keep the cue ball white
 }
 
-// Function to start "420 Theme"
-function start420Theme() {
-  stopAllThemes(); // Stop all other themes
-  snoopDoggTheme.play().catch((err) => console.error('Audio playback failed:', err));
+function applyCasinoTheme() {
+  document.body.classList.add('casino-game'); // Add the class for Casino game styling
+
+  // Update ball colors to match the "casino" theme
+  const casinoColors = ['#D4AF37', '#C0C0C0', '#8B0000', '#228B22', '#FFD700']; // Gold, silver, dark red, green, bright gold
+  balls.forEach((ball, index) => {
+    ball.color = casinoColors[index % casinoColors.length]; // Cycle through the colors
+  });
+  cueBall.color = '#FFFFFF'; // Keep the cue ball white
 }
 
 // Modify handleNumberInput to apply the devil theme when 666 is entered
@@ -372,7 +446,7 @@ function handleNumberInput(number) {
     inputSequence[inputSequence.length - 1] === 9
   ) {
     const sillyMessage = document.getElementById('sillyMessage');
-    sillyMessage.textContent = 'You silly little girl'; // Set the message text
+    sillyMessage.textContent = 'Good Girl'; // Set the message text
     sillyMessage.style.opacity = 1; // Fade in the message
     clearTimeout(messageTimeout); // Clear any existing timeout
     messageTimeout = setTimeout(() => {
@@ -395,6 +469,40 @@ function handleNumberInput(number) {
 
     applyWeedTheme(); // Apply the weed theme
     start420Theme(); // Play 420 Theme audio
+  }
+
+  // Check for the special case of 911
+  if (
+    inputSequence.length >= 3 &&
+    inputSequence.slice(-3).join('') === '911'
+  ) {
+    const sillyMessage = document.getElementById('sillyMessage');
+    sillyMessage.textContent = 'YOU CALLED THE COPS ON ME?!'; // Set the message text
+    sillyMessage.style.opacity = 1; // Fade in the message
+    clearTimeout(messageTimeout); // Clear any existing timeout
+    messageTimeout = setTimeout(() => {
+      sillyMessage.style.opacity = 0; // Fade out the message after 3 seconds
+    }, 3000);
+
+    applyPoliceTheme(); // Apply the police theme
+    startPoliceTheme(); // Play Police Theme audio
+  }
+
+  // Check for the special case of 777
+  if (
+    inputSequence.length >= 3 &&
+    inputSequence.slice(-3).join('') === '777'
+  ) {
+    const sillyMessage = document.getElementById('sillyMessage');
+    sillyMessage.textContent = 'Jackpot! Welcome to the Casino!'; // Set the message text
+    sillyMessage.style.opacity = 1; // Fade in the message
+    clearTimeout(messageTimeout); // Clear any existing timeout
+    messageTimeout = setTimeout(() => {
+      sillyMessage.style.opacity = 0; // Fade out the message after 3 seconds
+    }, 3000);
+
+    applyCasinoTheme(); // Apply the casino theme
+    startCasinoTheme(); // Play Casino Theme audio
   }
 
   // Check if the input sequence matches the target sequence

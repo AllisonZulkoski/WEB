@@ -31,13 +31,15 @@
     </div>
   </div>
 
-  <div id="sillyMessage"></div> <!-- Single div for the message -->
+  <div id="sillyMessage"></div> <!-- Used for jackpot animation -->
   <div id="devilsGame"></div>
 
-  <audio id="greenHillZoneTheme" src="sounds/Mort.mp3" loop></audio>
-  <audio id="grumbleVolcanoTheme" src="sounds/GrumbleVolcano.mp3"></audio>
-  <audio id="devilLaughSound" src="sounds/Laugh.mp3"></audio>
-  <audio id="snoopDoggTheme" src="sounds/SnoopDogg.mp3"></audio>
+  <audio id="gv" src="sounds/GrumbleVolcano.mp3"></audio>
+  <audio id="laugh" src="sounds/Laugh.mp3"></audio>
+  <audio id="sd" src="sounds/SnoopDogg.mp3"></audio>
+  <audio id="p" src="sounds/Cop.mp3"></audio>
+  <audio id="cop" src="sounds/Cop.mp3"></audio>
+  <audio id="elevenTheme" src="sounds/11.mp3"></audio>
 
   <script src="final.js"></script>
   <script>
@@ -50,33 +52,93 @@
       }
     });
 
-    // Example of playing sounds
-    document.getElementById('shootButton').addEventListener('click', () => {
-      document.getElementById('shootSound').play();
-    });
+    // Remove "Green Hill Zone" play logic from page load
+    // window.addEventListener('load', () => {
+    //   document.getElementById('mort').play();
+    // });
 
+    // Update reset button logic to remove the audio clause
     document.getElementById('resetButton').addEventListener('click', () => {
-      document.getElementById('resetSound').play();
-    });
+      resetBalls();
+      pocketedBalls.fill('-'); // Reset pocketedBalls array
+      pocketedBallsDisplay.textContent = pocketedBalls.join(' '); // Update HTML
 
-    // Add logic in final.js to play pocketSound when a ball is pocketed
-
-    // Play "Green Hill Zone" on game load
-    window.addEventListener('load', () => {
-      document.getElementById('greenHillZoneTheme').play();
+      // Restore the original theme
+      document.body.classList.remove('devils-game', 'weed-game'); // Remove any applied themes
+      document.body.classList.add('original-theme'); // Add the Original Theme class
     });
 
     // Example logic for "Devil's Game"
     function startDevilsGame() {
-      document.getElementById('greenHillZoneTheme').pause();
-      document.getElementById('grumbleVolcanoTheme').play();
-      document.getElementById('devilLaughSound').play();
+      // Remove the Original Theme class to stop "Mort"
+      document.body.classList.remove('original-theme');
+
+      // Stop all audio tracks
+      document.getElementById('sd').pause();
+      document.getElementById('sd').currentTime = 0;
+      document.getElementById('gv').pause();
+      document.getElementById('gv').currentTime = 0;
+      document.getElementById('laugh').pause();
+      document.getElementById('laugh').currentTime = 0;
+      document.getElementById('cop').pause();
+      document.getElementById('cop').currentTime = 0;
+      document.getElementById('elevenTheme').pause();
+      document.getElementById('elevenTheme').currentTime = 0;
+      document.getElementById('p').pause();
+      document.getElementById('p').currentTime = 0;
+
+      // Start Devil's Game sounds
+      document.getElementById('gv').play();
+      document.getElementById('laugh').play();
     }
 
     // Example logic for "420 Theme"
     function start420Theme() {
-      document.getElementById('greenHillZoneTheme').pause();
-      document.getElementById('snoopDoggTheme').play();
+      // Remove the Original Theme class to stop "Mort"
+      document.body.classList.remove('original-theme');
+
+      // Stop all audio tracks
+      document.getElementById('gv').pause();
+      document.getElementById('gv').currentTime = 0;
+      document.getElementById('laugh').pause();
+      document.getElementById('laugh').currentTime = 0;
+      document.getElementById('cop').pause();
+      document.getElementById('cop').currentTime = 0;
+      document.getElementById('elevenTheme').pause();
+      document.getElementById('elevenTheme').currentTime = 0;
+      document.getElementById('sd').play();
+    }
+
+    function startPoliceTheme() {
+      // Remove the Original Theme class to stop "Mort"
+      document.body.classList.remove('original-theme');
+
+      // Stop all audio tracks
+      document.getElementById('gv').pause();
+      document.getElementById('gv').currentTime = 0;
+      document.getElementById('laugh').pause();
+      document.getElementById('laugh').currentTime = 0;
+      document.getElementById('sd').pause();
+      document.getElementById('sd').currentTime = 0;
+      document.getElementById('elevenTheme').pause();
+      document.getElementById('elevenTheme').currentTime = 0;
+      document.getElementById('cop').play();
+    }
+
+    function startCasinoTheme() {
+      // Remove the Original Theme class to stop "Mort"
+      document.body.classList.remove('original-theme');
+
+      // Stop all audio tracks
+      document.getElementById('gv').pause();
+      document.getElementById('gv').currentTime = 0;
+      document.getElementById('laugh').pause();
+      document.getElementById('laugh').currentTime = 0;
+      document.getElementById('sd').pause();
+      document.getElementById('sd').currentTime = 0;
+      document.getElementById('cop').pause();
+      document.getElementById('cop').currentTime = 0;
+      document.getElementById('elevenTheme').play();
     }
 
     // Add calls to `startDevilsGame()` and `start420Theme()` in your game logic as needed
