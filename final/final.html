@@ -29,11 +29,14 @@
     </div>
   </div>
 
+  <div id="sillyMessage" style="opacity: 0; transition: opacity 0.5s; position: absolute; top: 10px; left: 50%; transform: translateX(-50%); font-size: 20px; color: red; font-weight: bold;">
+  </div>
+
   <script src="final.js"></script>
   <script>
     document.getElementById('enterButton').addEventListener('click', () => {
       const pocketedNumbers = document.getElementById('pocketedBallsDisplay').textContent.replace(/-/g, '').trim();
-      if (!pocketedNumbers) {
+       if (!pocketedNumbers) {
         alert('No numbers have been pocketed yet.');
       } else {
         window.location.href = `./num/num.html?number=${encodeURIComponent(pocketedNumbers)}`;

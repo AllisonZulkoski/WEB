@@ -196,6 +196,7 @@ function checkPockets() {
         if (emptyIndex !== -1) {
           pocketedBalls[emptyIndex] = ball.number;
           pocketedBallsDisplay.textContent = pocketedBalls.join(' '); // Update HTML
+          checkPocketedBallsForSillyMessage(); // Check for the silly message
         }
 
         // Reset ball to a random position on the table
@@ -221,6 +222,31 @@ function checkPockets() {
   }
 }
 
+function checkPocketedBallsForSillyMessage() {
+  const message = document.getElementById('sillyMessage');
+  for (let i = 0; i < pocketedBalls.length - 2; i++) {
+    if (pocketedBalls[i] === 6 && pocketedBalls[i + 1] === 6 && pocketedBalls[i + 2] === 6) {
+      window.location.href = 'https://allisonzulkoski.github.io/WEB/final/num/num.html';
+      return; // Exit the function after redirecting
+    }
+  }
+
+  for (let i = 0; i < pocketedBalls.length - 1; i++) {
+    if (pocketedBalls[i] === 6 && pocketedBalls[i + 1] === 9) {
+      message.textContent = 'you silly little girl';
+      message.style.opacity = '1'; // Show the message
+
+      // Fade out after 3 seconds
+      setTimeout(() => {
+        message.style.opacity = '0'; // Hide the message
+      }, 3000);
+      break;
+    }
+  }
+}
+
+let inputSequence = []; // Track the sequence of entered numbers
+
 document.addEventListener('keydown', (e) => {
   if (e.code === 'ArrowLeft') cueAngle -= 0.1;
   if (e.code === 'ArrowRight') cueAngle += 0.1;
@@ -229,6 +255,40 @@ document.addEventListener('keydown', (e) => {
     cueBall.vx = Math.cos(cueAngle) * cuePower * powerMultiplier;
     cueBall.vy = Math.sin(cueAngle) * cuePower * powerMultiplier;
   }
+
+  // Track number keys pressed
+  if (e.key >= '0' && e.key <= '9') {
+    inputSequence.push(e.key);
+    if (inputSequence.length > 2) inputSequence.shift(); // Keep only the last two inputs
+
+    // Check for the sequence "6" followed by "9"
+    if (inputSequence.join('') === '69') {
+      const message = document.getElementById('sillyMessage');
+      message.style.opacity = '1'; // Show the message
+
+      // Fade out after 3 seconds
+      setTimeout(() => {
+        message.style.opacity = '0'; // Hide the message
+      }, 3000);
+    }
+  }
+});
+
+canvas.addEventListener('click', (e) => {
+  const rect = canvas.getBoundingClientRect();
+  const mouseX = e.clientX - rect.left;
+  const mouseY = e.clientY - rect.top;
+
+  balls.forEach((ball) => {
+    const dist = Math.sqrt((mouseX - ball.x) ** 2 + (mouseY - ball.y) ** 2);
+    if (dist < BALL_RADIUS) {
+      const emptyIndex = pocketedBalls.indexOf('-');
+      if (emptyIndex !== -1) {
+        pocketedBalls[emptyIndex] = ball.number;
+        pocketedBallsDisplay.textContent = pocketedBalls.join(' '); // Update HTML
+      }
+    }
+  });
 });
 
 function draw() {
