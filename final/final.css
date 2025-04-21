@@ -114,14 +114,72 @@ body {
 
   #sillyMessage {
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 24px;
-    color: red;
+    top: 50%; /* Center vertically */
+    left: 50%; /* Center horizontally */
+    transform: translate(-50%, -50%); /* Center both horizontally and vertically */
+    font-size: 3rem;
+    color: white;
+    font-weight: bold;
     opacity: 0;
-    transition: opacity 1s ease-in-out;
-    pointer-events: none; /* Prevent interaction */
+    transition: opacity 1s ease-in-out, color 0.5s ease-in-out;
+    pointer-events: none;
+    width: 100%; /* Stretch across the entire table */
+    text-align: center; /* Center the text horizontally */
+    line-height: 1; /* Ensure proper vertical alignment */
+    letter-spacing: 0.1em;
+    display: flex; /* Use flexbox for vertical centering */
+    align-items: center; /* Vertically center the text */
+    justify-content: center; /* Horizontally center the text */
   }
+
+  body.devils-game {
+    background-color: #8B0000; /* Dark red */
+    color: #000000; /* Black text */
+  }
+  
+  body.devils-game #billiardsCanvas {
+    background-color: #660000; /* Dark red for the table */
+    border-color: #B8860B; /* Dark goldenrod for a less bright yellow outline */
+  }
+  
+  body.devils-game button {
+    background-color: #DC143C; /* Crimson */
+    color: #000000; /* Black text */
+  }
+  
+  body.devils-game #pocketedBallsDisplay {
+    color: #FFD700; /* Gold */
+  }
+  
+  body.devils-game h1,
+  body.devils-game .instructions {
+    color: #000000; /* Black text */
+  }
+
+  body.weed-game {
+    background-color: #556B2F; /* Dark olive green */
+    color: #FFFFFF; /* White text */
+  }
+
+  body.weed-game #billiardsCanvas {
+    background-color: #6B8E23; /* Olive drab */
+    border-color: #8FBC8F; /* Dark sea green */
+  }
+
+  body.weed-game button {
+    background-color: #2E8B57; /* Sea green */
+    color: #FFFFFF; /* White text */
+  }
+
+  body.weed-game #pocketedBallsDisplay {
+    color: #228B22; /* Forest green */
+  }
+
+  body.weed-game h1,
+  body.weed-game .instructions {
+    color: #FFFFFF; /* White text */
+  }
+
+
 
 

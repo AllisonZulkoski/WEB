@@ -45,7 +45,7 @@ function resetBalls() {
   let ballIndex = 0;
 
   for (let row = 0; row < 4; row++) {
-    for (let col = 0; col <= row; col++) {
+    for (let col = 0; col <= row; col++) { // Fix the loop condition
       const xOffset = (row * BALL_RADIUS) - (col * 2 * BALL_RADIUS);
       const yOffset = row * 2 * BALL_RADIUS;
 
@@ -196,7 +196,6 @@ function checkPockets() {
         if (emptyIndex !== -1) {
           pocketedBalls[emptyIndex] = ball.number;
           pocketedBallsDisplay.textContent = pocketedBalls.join(' '); // Update HTML
-          checkPocketedBallsForSillyMessage(); // Check for the silly message
         }
 
         // Reset ball to a random position on the table
@@ -222,31 +221,6 @@ function checkPockets() {
   }
 }
 
-function checkPocketedBallsForSillyMessage() {
-  const message = document.getElementById('sillyMessage');
-  for (let i = 0; i < pocketedBalls.length - 2; i++) {
-    if (pocketedBalls[i] === 6 && pocketedBalls[i + 1] === 6 && pocketedBalls[i + 2] === 6) {
-      window.location.href = 'https://allisonzulkoski.github.io/WEB/final/num/num.html';
-      return; // Exit the function after redirecting
-    }
-  }
-
-  for (let i = 0; i < pocketedBalls.length - 1; i++) {
-    if (pocketedBalls[i] === 6 && pocketedBalls[i + 1] === 9) {
-      message.textContent = 'you silly little girl';
-      message.style.opacity = '1'; // Show the message
-
-      // Fade out after 3 seconds
-      setTimeout(() => {
-        message.style.opacity = '0'; // Hide the message
-      }, 3000);
-      break;
-    }
-  }
-}
-
-let inputSequence = []; // Track the sequence of entered numbers
-
 document.addEventListener('keydown', (e) => {
   if (e.code === 'ArrowLeft') cueAngle -= 0.1;
   if (e.code === 'ArrowRight') cueAngle += 0.1;
@@ -255,25 +229,103 @@ document.addEventListener('keydown', (e) => {
     cueBall.vx = Math.cos(cueAngle) * cuePower * powerMultiplier;
     cueBall.vy = Math.sin(cueAngle) * cuePower * powerMultiplier;
   }
-
-  // Track number keys pressed
-  if (e.key >= '0' && e.key <= '9') {
-    inputSequence.push(e.key);
-    if (inputSequence.length > 2) inputSequence.shift(); // Keep only the last two inputs
-
-    // Check for the sequence "6" followed by "9"
-    if (inputSequence.join('') === '69') {
-      const message = document.getElementById('sillyMessage');
-      message.style.opacity = '1'; // Show the message
-
-      // Fade out after 3 seconds
-      setTimeout(() => {
-        message.style.opacity = '0'; // Hide the message
-      }, 3000);
-    }
-  }
 });
 
+const targetSequence = [1, 2, 3]; // Define the target sequence
+let inputSequence = []; // Array to track the user's input sequence
+
+let messageTimeout; // Timeout to clear the message after a delay
+
+function applyDevilTheme() {
+  document.body.classList.add('devils-game'); // Add the class for Devil's game styling
+
+  // Update ball colors to match the "hell" themes
+  const hellColors = ['#FF4500', '#8B0000', '#FFD700', '#DC143C', '#FF6347']; // Example colors from the themes
+  balls.forEach((ball, index) => {
+    ball.color = hellColors[index % hellColors.length]; // Cycle through the colors
+  });
+  cueBall.color = '#FFFFFF'; // Keep the cue ball white
+}
+
+function applyWeedTheme() {
+  document.body.classList.add('weed-game'); // Add the class for Weed's game styling
+
+  // Update ball colors to match the "weed" themes
+  const weedColors = ['#6B8E23', '#556B2F', '#8FBC8F', '#2E8B57', '#228B22']; // Example colors from the themes
+  balls.forEach((ball, index) => {
+    ball.color = weedColors[index % weedColors.length]; // Cycle through the colors
+  });
+  cueBall.color = '#FFFFFF'; // Keep the cue ball white
+}
+
+// Modify handleNumberInput to apply the devil theme when 666 is entered
+function handleNumberInput(number) {
+  inputSequence.push(number);
+
+  // Update the pocketedBallsDisplay with the entered numbers
+  const emptyIndex = pocketedBalls.indexOf('-');
+  if (emptyIndex !== -1) {
+    pocketedBalls[emptyIndex] = number;
+    pocketedBallsDisplay.textContent = pocketedBalls.join(' '); // Update HTML
+  }
+
+  // Check for the special case of 666
+  if (
+    inputSequence.length >= 3 &&
+    inputSequence.slice(-3).every((num) => num === 6)
+  ) {
+    const sillyMessage = document.getElementById('sillyMessage');
+    sillyMessage.textContent = 'You are now playing the Devil\'s game'; // Set the message text
+    sillyMessage.style.opacity = 1; // Fade in the message
+    clearTimeout(messageTimeout); // Clear any existing timeout
+    messageTimeout = setTimeout(() => {
+      sillyMessage.style.opacity = 0; // Fade out the message after 3 seconds
+    }, 3000);
+
+    applyDevilTheme(); // Apply the devil theme
+  }
+
+  // Check for the special case of 69 (not 96)
+  if (
+    inputSequence.length >= 2 &&
+    inputSequence[inputSequence.length - 2] === 6 &&
+    inputSequence[inputSequence.length - 1] === 9
+  ) {
+    const sillyMessage = document.getElementById('sillyMessage');
+    sillyMessage.textContent = 'You silly little girl'; // Set the message text
+    sillyMessage.style.opacity = 1; // Fade in the message
+    clearTimeout(messageTimeout); // Clear any existing timeout
+    messageTimeout = setTimeout(() => {
+      sillyMessage.style.opacity = 0; // Fade out the message after 3 seconds
+    }, 3000);
+  }
+
+  // Check for the special case of 420
+  if (
+    inputSequence.length >= 3 &&
+    inputSequence.slice(-3).join('') === '420'
+  ) {
+    const sillyMessage = document.getElementById('sillyMessage');
+    sillyMessage.textContent = 'Little pothead, are we?'; // Set the message text
+    sillyMessage.style.opacity = 1; // Fade in the message
+    clearTimeout(messageTimeout); // Clear any existing timeout
+    messageTimeout = setTimeout(() => {
+      sillyMessage.style.opacity = 0; // Fade out the message after 3 seconds
+    }, 3000);
+
+    applyWeedTheme(); // Apply the weed theme
+  }
+
+  // Check if the input sequence matches the target sequence
+  if (inputSequence.length === targetSequence.length) {
+    if (inputSequence.every((num, index) => num === targetSequence[index])) {
+      alert('Correct sequence entered!'); // Display a message
+    }
+    inputSequence = []; // Reset the input sequence
+  }
+}
+
+// Example usage: Call handleNumberInput when a ball is clicked
 canvas.addEventListener('click', (e) => {
   const rect = canvas.getBoundingClientRect();
   const mouseX = e.clientX - rect.left;
@@ -282,17 +334,19 @@ canvas.addEventListener('click', (e) => {
   balls.forEach((ball) => {
     const dist = Math.sqrt((mouseX - ball.x) ** 2 + (mouseY - ball.y) ** 2);
     if (dist < BALL_RADIUS) {
-      const emptyIndex = pocketedBalls.indexOf('-');
-      if (emptyIndex !== -1) {
-        pocketedBalls[emptyIndex] = ball.number;
-        pocketedBallsDisplay.textContent = pocketedBalls.join(' '); // Update HTML
-      }
+      handleNumberInput(ball.number); // Pass the ball number to the function
     }
   });
+
+  // Check if the cue ball is clicked
+  const cueDist = Math.sqrt((mouseX - cueBall.x) ** 2 + (mouseY - cueBall.y) ** 2);
+  if (cueDist < BALL_RADIUS) {
+    handleNumberInput(cueBall.number); // Pass the cue ball number (if applicable)
+  }
 });
 
 function draw() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.clearRect(0, 0, canvas.width, canvas.height); // Remove fiery background logic
 
   // Draw pockets
   ctx.fillStyle = '#000';
