@@ -36,6 +36,29 @@ enterButton.addEventListener('click', () => {
   window.location.href = 'https://allisonzulkoski.github.io/WEB/final/num/num.html';
 });
 
+// Audio elements
+const greenHillZoneTheme = new Audio('sounds/green_hill_zone.mp3');
+const grumbleVolcanoTheme = new Audio('sounds/grumble_volcano.mp3');
+const devilLaughSound = new Audio('sounds/devil_laugh.mp3');
+const snoopDoggTheme = new Audio('sounds/snoop_dogg.mp3');
+
+// Configure audio settings
+greenHillZoneTheme.loop = true;
+grumbleVolcanoTheme.loop = true;
+
+// Start audio playback after user interaction
+let audioInitialized = false;
+function initializeAudio() {
+  if (!audioInitialized) {
+    greenHillZoneTheme.play().catch((err) => console.error('Audio playback failed:', err));
+    audioInitialized = true;
+  }
+}
+
+// Attach the audio initialization to a user interaction
+document.addEventListener('click', initializeAudio);
+document.addEventListener('keydown', initializeAudio);
+
 // Update the starting positions of the balls to form a properly oriented triangle
 function resetBalls() {
   balls.length = 0; // Clear existing balls
@@ -258,6 +281,19 @@ function applyWeedTheme() {
   cueBall.color = '#FFFFFF'; // Keep the cue ball white
 }
 
+// Function to start "Devil's Game"
+function startDevilsGame() {
+  greenHillZoneTheme.pause();
+  grumbleVolcanoTheme.play().catch((err) => console.error('Audio playback failed:', err));
+  devilLaughSound.play().catch((err) => console.error('Audio playback failed:', err));
+}
+
+// Function to start "420 Theme"
+function start420Theme() {
+  greenHillZoneTheme.pause();
+  snoopDoggTheme.play().catch((err) => console.error('Audio playback failed:', err));
+}
+
 // Modify handleNumberInput to apply the devil theme when 666 is entered
 function handleNumberInput(number) {
   inputSequence.push(number);
@@ -283,6 +319,7 @@ function handleNumberInput(number) {
     }, 3000);
 
     applyDevilTheme(); // Apply the devil theme
+    startDevilsGame(); // Play Devil's Game audio
   }
 
   // Check for the special case of 69 (not 96)
@@ -314,6 +351,7 @@ function handleNumberInput(number) {
     }, 3000);
 
     applyWeedTheme(); // Apply the weed theme
+    start420Theme(); // Play 420 Theme audio
   }
 
   // Check if the input sequence matches the target sequence

@@ -34,6 +34,11 @@
   <div id="sillyMessage"></div> <!-- Single div for the message -->
   <div id="devilsGame"></div>
 
+  <audio id="greenHillZoneTheme" src="sounds/green_hill_zone.mp3" loop></audio>
+  <audio id="grumbleVolcanoTheme" src="sounds/grumble_volcano.mp3"></audio>
+  <audio id="devilLaughSound" src="sounds/devil_laugh.mp3"></audio>
+  <audio id="snoopDoggTheme" src="sounds/snoop_dogg.mp3"></audio>
+
   <script src="final.js"></script>
   <script>
     document.getElementById('enterButton').addEventListener('click', () => {
@@ -44,6 +49,37 @@
         window.location.href = `./num/num.html?number=${encodeURIComponent(pocketedNumbers)}`;
       }
     });
+
+    // Example of playing sounds
+    document.getElementById('shootButton').addEventListener('click', () => {
+      document.getElementById('shootSound').play();
+    });
+
+    document.getElementById('resetButton').addEventListener('click', () => {
+      document.getElementById('resetSound').play();
+    });
+
+    // Add logic in final.js to play pocketSound when a ball is pocketed
+
+    // Play "Green Hill Zone" on game load
+    window.addEventListener('load', () => {
+      document.getElementById('greenHillZoneTheme').play();
+    });
+
+    // Example logic for "Devil's Game"
+    function startDevilsGame() {
+      document.getElementById('greenHillZoneTheme').pause();
+      document.getElementById('grumbleVolcanoTheme').play();
+      document.getElementById('devilLaughSound').play();
+    }
+
+    // Example logic for "420 Theme"
+    function start420Theme() {
+      document.getElementById('greenHillZoneTheme').pause();
+      document.getElementById('snoopDoggTheme').play();
+    }
+
+    // Add calls to `startDevilsGame()` and `start420Theme()` in your game logic as needed
   </script>
 </body>
 </html>
