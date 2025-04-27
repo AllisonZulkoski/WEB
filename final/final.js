@@ -1,10 +1,13 @@
 const canvas = document.getElementById('billiardsCanvas');
 const ctx = canvas.getContext('2d');
 
+//ball shit
+//friciton is an interactivity between them
 const BALL_RADIUS = 15;
-const FRICTION = 0.98;
+const FRICTION = 0.99;
 const POCKET_RADIUS = 25;
 
+//pocket size
 const pockets = [
   { x: 0, y: 0 },
   { x: canvas.width, y: 0 },
@@ -33,6 +36,7 @@ enterButton.addEventListener('click', () => {
   window.location.href = 'https://allisonzulkoski.github.io/WEB/final/num/num.html';
 });
 
+//calling the audios from the sounds folder
 const grumbleVolcanoTheme = new Audio('sounds/grumble_volcano.mp3');
 const devilLaughSound = new Audio('sounds/devil_laugh.mp3');
 const snoopDoggTheme = new Audio('sounds/snoop_dogg.mp3');
@@ -55,6 +59,7 @@ function initializeAudio() {
   }
 }
 
+//stop audios from overlapping
 function stopAllThemes() {
   snoopDoggTheme.pause();
   snoopDoggTheme.currentTime = 0;
@@ -74,6 +79,7 @@ function stopAllThemes() {
   mortTheme.currentTime = 0;
 }
 
+//for when 666 is entered
 function startDevilsGame() {
   stopAllThemes();
   document.body.classList.remove('weed-game', 'original-theme', 'police-game', 'casino-game');
@@ -83,6 +89,7 @@ function startDevilsGame() {
   devilLaughSound.play().catch((err) => console.error('Audio playback failed:', err));
 }
 
+//for when 420 is entered
 function start420Theme() {
   stopAllThemes();
   document.body.classList.remove('devils-game', 'original-theme', 'police-game', 'casino-game');
@@ -91,6 +98,7 @@ function start420Theme() {
   snoopDoggTheme.play().catch((err) => console.error('Audio playback failed:', err));
 }
 
+//for when 911 is entered
 function startPoliceTheme() {
   stopAllThemes();
   document.body.classList.remove('devils-game', 'weed-game', 'original-theme', 'casino-game');
@@ -99,6 +107,7 @@ function startPoliceTheme() {
   copTheme.play().catch((err) => console.error('Audio playback failed:', err));
 }
 
+//for when 777 is entered
 function startCasinoTheme() {
   stopAllThemes();
   document.body.classList.remove('devils-game', 'weed-game', 'police-game', 'original-theme');
@@ -119,6 +128,7 @@ function triggerJackpotAnimation() {
   }, 3000);
 }
 
+//orientation of the balls and shit
 function resetBalls() {
   balls.length = 0;
   const triangleStartX = canvas.width / 2 + 200;
@@ -153,6 +163,7 @@ function resetBalls() {
   cueBall.vy = 0;
 }
 
+//calls the balls and themes to be reset and stops the audio
 resetButton.addEventListener('click', () => {
   resetBalls();
   pocketedBalls.fill('-');
@@ -193,6 +204,7 @@ shootButton.addEventListener('click', () => {
   }
 });
 
+//draw the balls
 function drawBall(ball) {
   ctx.beginPath();
   ctx.arc(ball.x, ball.y, BALL_RADIUS, 0, Math.PI * 2);
@@ -211,6 +223,7 @@ function drawBall(ball) {
   }
 }
 
+//draw the cue stick
 function drawCueStick() {
   if (Math.hypot(cueBall.vx, cueBall.vy) < 0.1) {
     const length = 80;
@@ -244,6 +257,7 @@ function moveBall(ball) {
   }
 }
 
+//collisions
 function handleCollisions(allBalls) {
   for (let i = 0; i < allBalls.length; i++) {
     for (let j = i + 1; j < allBalls.length; j++) {
@@ -275,6 +289,7 @@ function handleCollisions(allBalls) {
   }
 }
 
+//for when a ball touches a pocekt
 function checkPockets() {
   for (let i = 0; i < balls.length; i++) {
     const ball = balls[i];
@@ -309,6 +324,7 @@ function checkPockets() {
   }
 }
 
+//keyboard controls for the cue stick
 document.addEventListener('keydown', (e) => {
   if (e.code === 'ArrowLeft') cueAngle -= 0.1;
   if (e.code === 'ArrowRight') cueAngle += 0.1;
@@ -323,6 +339,7 @@ const targetSequence = [1, 2, 3];
 let inputSequence = [];
 let messageTimeout;
 
+//for when 666 is entered
 function applyDevilTheme() {
   document.body.classList.add('devils-game');
   const hellColors = ['#FF4500', '#8B0000', '#FFD700', '#DC143C', '#FF6347'];
@@ -332,6 +349,7 @@ function applyDevilTheme() {
   cueBall.color = '#FFFFFF';
 }
 
+//for when 420 is entered
 function applyWeedTheme() {
   document.body.classList.add('weed-game');
   const weedColors = ['#6B8E23', '#556B2F', '#8FBC8F', '#2E8B57', '#228B22'];
@@ -341,6 +359,7 @@ function applyWeedTheme() {
   cueBall.color = '#FFFFFF';
 }
 
+//for when 911 is entered
 function applyPoliceTheme() {
   document.body.classList.add('police-game');
   const policeColors = ['#001F3F', '#0074D9', '#FF4136', '#7FDBFF', '#FF851B'];
@@ -350,6 +369,7 @@ function applyPoliceTheme() {
   cueBall.color = '#FFFFFF';
 }
 
+//for when 777 is entered
 function applyCasinoTheme() {
   document.body.classList.add('casino-game');
   const casinoColors = ['#D4AF37', '#C0C0C0', '#8B0000', '#228B22', '#FFD700'];
@@ -359,6 +379,7 @@ function applyCasinoTheme() {
   cueBall.color = '#FFFFFF';
 }
 
+//for when 666 is entered
 function handleNumberInput(number) {
   inputSequence.push(number);
   const emptyIndex = pocketedBalls.indexOf('-');
@@ -370,7 +391,9 @@ function handleNumberInput(number) {
   if (
     inputSequence.length >= 3 &&
     inputSequence.slice(-3).every((num) => num === 6)
-  ) {
+  ) 
+  //from here down, it is the message that is displayed when the ball combos are entered
+  {
     const sillyMessage = document.getElementById('sillyMessage');
     sillyMessage.textContent = 'You are now playing the Devil\'s game';
     sillyMessage.style.opacity = 1;
@@ -387,7 +410,9 @@ function handleNumberInput(number) {
     inputSequence.length >= 2 &&
     inputSequence[inputSequence.length - 2] === 6 &&
     inputSequence[inputSequence.length - 1] === 9
-  ) {
+  ) 
+
+  {
     const sillyMessage = document.getElementById('sillyMessage');
     sillyMessage.textContent = 'Good Girl';
     sillyMessage.style.opacity = 1;
@@ -453,6 +478,7 @@ function handleNumberInput(number) {
   }
 }
 
+//for when the balls are clicked (will be commented out later)
 canvas.addEventListener('click', (e) => {
   const rect = canvas.getBoundingClientRect();
   const mouseX = e.clientX - rect.left;
