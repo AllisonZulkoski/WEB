@@ -4,20 +4,20 @@ body {
     font-family: sans-serif;
     color: white;
     display: flex;
-    flex-direction: row;  /* Keep the row direction */
-    justify-content: 50%;  /* This centers the content horizontally */
-    align-items: 50%;  /* This centers the content vertically */
-    height: 100vh;  /* Ensure the body takes up the full viewport height */
-  }
+    flex-direction: row;
+    justify-content: 50%;
+    align-items: 50%;
+    height: 100vh;
+}
   
-  .controls {
+.controls {
     padding: 20px;
     text-align: center;
     font-size: 18px;
     transform: translateX(50%);
-  }
+}
   
-  button {
+button {
     padding: 5px 15px;
     font-size: 16px;
     margin-left: 10px;
@@ -27,46 +27,46 @@ body {
     color: #006400;
     font-weight: bold;
     cursor: pointer;
-  }
+}
 
-  button#startButton {
+button#startButton {
     display: block;
     margin: 0 auto;
-    transform: scale(1.5); /* Increase size by 50% */
-  }
+    transform: scale(1.5);
+}
   
-  button:hover {
+button:hover {
     background-color: #e0e0e0;
-  }
+}
   
-  canvas {
+canvas {
     display: block;
     background: #0a4f2f;
     margin: 20px auto;
     border: 4px solid #fff;
     border-radius: 15px;
-  }
+}
 
-  header h1 {
+header h1 {
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    letter-spacing: 0.2em; /* Correctly increase letter spacing by 5% */
+    letter-spacing: 0.2em;
     font-size: 5em;
-  }
+}
 
-  .container {
+.container {
     display: flex;
-    flex-direction: column;  /* Stack elements vertically */
-    align-items: center;  /* Center elements horizontally */
-    justify-content: top;  /* Center elements vertically */
-    height: 100vh;  /* Full viewport height */
-   letter-spacing: 30%;
-  }
+    flex-direction: column;
+    align-items: center;
+    justify-content: top;
+    height: 100vh;
+    letter-spacing: 30%;
+}
 
-  main p {
+main p {
     font-size: 1.5em;
     letter-spacing: 0.1em;
     text-align: center;
     padding: 5%;
-  }
+}

@@ -1,26 +1,25 @@
-/* Original Theme */
 body.original-theme {
-  background: #006400; /* Dark green */
+  background: #006400;
   color: white;
 }
 
 body.original-theme #billiardsCanvas {
-  background: #0a4f2f; /* Table green */
-  border-color: #fff; /* White border */
+  background: #0a4f2f;
+  border-color: #fff;
 }
 
 body.original-theme button {
-  background-color: #ffffff; /* White buttons */
-  color: #006400; /* Dark green text */
+  background-color: #ffffff;
+  color: #006400;
 }
 
 body.original-theme #pocketedBallsDisplay {
-  color: white; /* White text */
+  color: white;
 }
 
 body.original-theme h1,
 body.original-theme .instructions {
-  color: white; /* White text */
+  color: white;
 }
 
 body {
@@ -67,20 +66,20 @@ canvas {
 
 .phone {
   text-align: center;
-  margin-top: 120px; /* Increase margin to move the dashes 10% lower */
+  margin-top: 120px;
 }
 
 #pocketedBallsDisplay {
-  font-size: 50px; /* Make the dashes bigger */
+  font-size: 50px;
   font-weight: bold;
   color: white;
-  letter-spacing: 10px; /* Increase spacing between dashes */
+  letter-spacing: 10px;
 }
 
 .button-container {
   display: flex;
   justify-content: center;
-  align-items: center; /* Ensure buttons are vertically aligned */
+  align-items: center;
   gap: 10px;
 }
 
@@ -89,8 +88,8 @@ canvas {
   width: 100px;
   height: 40px;
   font-size: 16px;
-  background-color: #ffffff; /* Match Reset button's background */
-  color: #006400; /* Match Reset button's text color */
+  background-color: #ffffff;
+  color: #006400;
   border: none;
   border-radius: 5px;
   font-weight: bold;
@@ -99,7 +98,7 @@ canvas {
 
 #resetButton:hover,
 #enterButton:hover {
-  background-color: #e0e0e0; /* Match Reset button's hover effect */
+  background-color: #e0e0e0;
 }
 
 #resetButton {
@@ -108,20 +107,20 @@ canvas {
   font-size: 16px;
   border-radius: 5px;
   border: none;
-  background-color: #ffffff; /* White background */
-  color: #006400; /* Dark green text */
+  background-color: #ffffff;
+  color: #006400;
   font-weight: bold;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 #resetButton:hover {
-  background-color: #e0e0e0; /* Light gray on hover */
-  color: #004d00; /* Darker green text on hover */
+  background-color: #e0e0e0;
+  color: #004d00;
 }
 
 #enterButton {
-  margin-top: 10px; /* Match the margin of the Reset button */
+  margin-top: 10px;
 }
 
 h1 {
@@ -141,130 +140,124 @@ h1 {
 
 #sillyMessage {
   position: absolute;
-  top: 50%; /* Center vertically */
-  left: 50%; /* Center horizontally */
-  transform: translate(-50%, -50%); /* Center both horizontally and vertically */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   font-size: 3rem;
   color: white;
   font-weight: bold;
   opacity: 0;
   transition: opacity 1s ease-in-out, color 0.5s ease-in-out;
   pointer-events: none;
-  width: 100%; /* Stretch across the entire table */
-  text-align: center; /* Center the text horizontally */
-  line-height: 1; /* Ensure proper vertical alignment */
+  width: 100%;
+  text-align: center;
+  line-height: 1;
   letter-spacing: 0.1em;
-  display: flex; /* Use flexbox for vertical centering */
-  align-items: center; /* Vertically center the text */
-  justify-content: center; /* Horizontally center the text */
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* Devil's Game Theme */
 body.devils-game {
-  background-color: #8B0000; /* Dark red */
-  color: #000000; /* Black text */
+  background-color: #8B0000;
+  color: #000000;
 }
 
 body.devils-game #billiardsCanvas {
-  background-color: #660000; /* Dark red for the table */
-  border-color: #B8860B; /* Dark goldenrod for a less bright yellow outline */
+  background-color: #660000;
+  border-color: #B8860B;
 }
 
 body.devils-game button {
-  background-color: #DC143C; /* Crimson */
-  color: #000000; /* Black text */
+  background-color: #DC143C;
+  color: #000000;
 }
 
 body.devils-game #pocketedBallsDisplay {
-  color: #FFD700; /* Gold */
+  color: #FFD700;
 }
 
 body.devils-game h1,
 body.devils-game .instructions {
-  color: #000000; /* Black text */
+  color: #000000;
 }
 
-/* 420 Theme */
 body.weed-game {
-  background-color: #556B2F; /* Dark olive green */
-  color: #FFFFFF; /* White text */
+  background-color: #556B2F;
+  color: #FFFFFF;
 }
 
 body.weed-game #billiardsCanvas {
-  background-color: #6B8E23; /* Olive drab */
-  border-color: #8FBC8F; /* Dark sea green */
+  background-color: #6B8E23;
+  border-color: #8FBC8F;
 }
 
 body.weed-game button {
-  background-color: #2E8B57; /* Sea green */
-  color: #FFFFFF; /* White text */
+  background-color: #2E8B57;
+  color: #FFFFFF;
 }
 
 body.weed-game #pocketedBallsDisplay {
-  color: #228B22; /* Forest green */
+  color: #228B22;
 }
 
 body.weed-game h1,
 body.weed-game .instructions {
-  color: #FFFFFF; /* White text */
+  color: #FFFFFF;
 }
 
-/* Police Theme */
 body.police-game {
-  background-color: #001F3F; /* Navy blue */
-  color: #FF4136; /* Red text for contrast */
+  background-color: #001F3F;
+  color: #FF4136;
 }
 
 body.police-game #billiardsCanvas {
-  background-color: #0074D9; /* Bright blue for the table */
-  border-color: #FF4136; /* Red border to mimic police lights */
+  background-color: #0074D9;
+  border-color: #FF4136;
 }
 
 body.police-game button {
-  background-color: #FF4136; /* Red buttons */
-  color: #FFFFFF; /* White text */
+  background-color: #FF4136;
+  color: #FFFFFF;
 }
 
 body.police-game button:hover {
-  background-color: #FF6347; /* Lighter red on hover */
+  background-color: #FF6347;
 }
 
 body.police-game #pocketedBallsDisplay {
-  color: #FF4136; /* Red dashes */
+  color: #FF4136;
 }
 
 body.police-game h1,
 body.police-game .instructions {
-  color: #FF4136; /* Red text */
+  color: #FF4136;
 }
 
-/* Casino Theme */
 body.casino-game {
-  background-color: #732C39; /* Deep purple for a luxurious casino feel */
-  color: #1B1A26; /* Gold text for contrast */
+  background-color: #732C39;
+  color: #1B1A26;
 }
 
 body.casino-game #billiardsCanvas {
-  background-color: #758C51; /* Dark green for the table */
-  border-color: #1B1A26; /* Bright gold border to mimic casino lights */
+  background-color: #758C51;
+  border-color: #1B1A26;
 }
 
 body.casino-game button {
-  background-color: #C0C0C0; /* Silver buttons */
-  color: #1B1A26; /* Gold text */
+  background-color: #C0C0C0;
+  color: #1B1A26;
 }
 
-
 body.casino-game #pocketedBallsDisplay {
-  color: #FFD700; /* Gold dashes */
+  color: #FFD700;
 }
 
 body.casino-game h1,
 body.casino-game .instructions {
-  color: #1B1A26; /* Gold text */
+  color: #1B1A26;
 }
 
-/* Jackpot Animation */
 @keyframes jackpotAnimation {
   0%, 100% {
     transform: scale(1);

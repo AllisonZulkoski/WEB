@@ -4,39 +4,39 @@ body {
     font-family: sans-serif;
     color: white;
     display: flex;
-    flex-direction: column; /* Stack elements vertically */
-    align-items: center; /* Center content horizontally */
-    height: 120vh; /* Maintain height for spacing */
-    font-size: 110%; /* Scale font size */
-    padding-top: 10%; /* Reduce padding to move content up */
-    gap: 10%; /* Add spacing between elements */
-    overflow: hidden; /* Prevent scrolling */
+    flex-direction: column;
+    align-items: center;
+    height: 120vh;
+    font-size: 110%;
+    padding-top: 10%;
+    gap: 10%;
+    overflow: hidden;
 }
 
 .controls {
-    padding: 25px; /* Increase padding */
+    padding: 25px;
     text-align: center;
-    font-size: 19.8px; /* Scale font size */
-    margin-top: 10%; /* Add spacing above controls */
+    font-size: 19.8px;
+    margin-top: 10%;
 }
 
 button {
-    padding: 5.5px 16.5px; /* Scale padding */
-    font-size: 17.6px; /* Scale font size */
-    margin-left: 15px; /* Increase margin */
-    border-radius: 5.5px; /* Scale border radius */
+    padding: 5.5px 16.5px;
+    font-size: 17.6px;
+    margin-left: 15px;
+    border-radius: 5.5px;
     border: none;
     background-color: #ffffff;
     color: #006400;
     font-weight: bold;
     cursor: pointer;
-    margin-top: 10%; /* Add spacing above buttons */
+    margin-top: 10%;
 }
 
 button#startButton {
     display: block;
-    margin: 20px auto; /* Adjust margin for alignment */
-    transform: scale(1.65); /* Scale size */
+    margin: 20px auto;
+    transform: scale(1.65);
 }
 
 button:hover {
@@ -46,40 +46,38 @@ button:hover {
 canvas {
     display: block;
     background: #0a4f2f;
-    margin: 20px auto; /* Adjust margin for alignment */
-    border: 4.4px solid #fff; /* Scale border */
-    border-radius: 16.5px; /* Scale border radius */
-    margin-top: 10%; /* Add spacing above canvas */
+    margin: 20px auto;
+    border: 4.4px solid #fff;
+    border-radius: 16.5px;
+    margin-top: 10%;
 }
 
 header h1 {
-    letter-spacing: 0.2em; /* Correctly increase letter spacing */
-    font-size: 2.2em; /* Scale font size */
-    margin: 10px 0; /* Reduce margin for top alignment */
-    margin-bottom: 5%; /* Reduce spacing below header */
+    letter-spacing: 0.2em;
+    font-size: 2.2em;
+    margin: 10px 0;
+    margin-bottom: 5%;
 }
 
 .container {
     display: flex;
-    flex-direction: column; /* Stack elements vertically */
-    align-items: center; /* Center elements horizontally */
-    justify-content: flex-start; /* Align elements to the top */
-    text-align: center; /* Center text */
-    width: 100%; /* Full width */
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    width: 100%;
 }
 
 main p {
-    font-size: 1.65em; /* Scale font size */
+    font-size: 1.65em;
     letter-spacing: 0.1em;
     text-align: center;
-    margin: 5% 0; /* Reduce spacing above and below paragraphs */
+    margin: 5% 0;
 }
 
 #displayNumber {
-    font-size: 3.5em; /* Scale font size */
-    text-align: center; /* Center the text */
-    margin: 20% 0; /* Add spacing above and below display number */
+    font-size: 3.5em;
+    text-align: center;
+    margin: 20% 0;
     letter-spacing: .3em;
-
-    
 }
