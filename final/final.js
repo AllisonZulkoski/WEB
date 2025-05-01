@@ -38,7 +38,9 @@ enterButton.addEventListener('click', () => {
 
 // Load pocketedBalls from localStorage on page load
 const savedPocketedBalls = localStorage.getItem('pocketedBalls');
-if (savedPocketedBalls && JSON.parse(savedPocketedBalls).every(val => val !== '-')) {
+if (savedPocketedBalls && JSON.parse(savedPocketedBalls).join('') === '2484345508') {
+  pocketedBalls.fill('-'); // Reset to 10 blank dashes if the special number is saved
+} else if (savedPocketedBalls && JSON.parse(savedPocketedBalls).every(val => val !== '-')) {
   pocketedBalls.splice(0, pocketedBalls.length, ...JSON.parse(savedPocketedBalls));
 } else {
   pocketedBalls.fill('-'); // Reset to 10 blank dashes if no valid saved data
