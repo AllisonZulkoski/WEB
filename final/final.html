@@ -44,6 +44,70 @@
 
   <script src="final.js"></script>
   <script>
+    // Ensure AudioContext is resumed on user interaction
+    let audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+    function resumeAudioContext() {
+      if (audioContext.state === 'suspended') {
+        audioContext.resume();
+      }
+    }
+
+    document.body.addEventListener('click', resumeAudioContext);
+
+    // Stop specific audio before playing it
+    function playAudio(audioId, allowMultiple = false) {
+      if (!allowMultiple) {
+        stopAllThemes(); // Stop all other audio tracks unless multiple are allowed
+      }
+      const audio = document.getElementById(audioId);
+      if (audio) {
+        audio.play().catch((err) => console.error(`Failed to play ${audioId}:`, err));
+      }
+    }
+
+    function stopAllThemes() {
+      const audioIds = ['gv', 'laugh', 'sd', 'cop', 'elevenTheme', 'mortTheme', 'fiveOhFiveTheme'];
+      audioIds.forEach((id) => {
+        const audio = document.getElementById(id);
+        if (audio) {
+          audio.pause();
+          audio.currentTime = 0;
+        }
+      });
+    }
+
+    // Update theme functions to allow multiple audio tracks when needed
+    function startDevilsGame() {
+      stopAllThemes();
+      document.body.classList.remove('original-theme');
+      playAudio('gv', true); // Allow multiple tracks
+      playAudio('laugh', true); // Allow multiple tracks
+    }
+
+    function start420Theme() {
+      stopAllThemes();
+      document.body.classList.remove('original-theme');
+      playAudio('sd');
+    }
+
+    function startPoliceTheme() {
+      stopAllThemes();
+      document.body.classList.remove('original-theme');
+      playAudio('cop');
+    }
+
+    function startCasinoTheme() {
+      stopAllThemes();
+      document.body.classList.remove('original-theme');
+      playAudio('elevenTheme');
+    }
+
+    function resetButton() {
+      stopAllThemes();
+      playAudio('mortTheme');
+    }
+
     document.getElementById('enterButton').addEventListener('click', () => {
       const pocketedNumbers = document.getElementById('pocketedBallsDisplay').textContent.replace(/-/g, '').trim();
       if (!pocketedNumbers) {
@@ -61,129 +125,6 @@
       document.body.classList.remove('devils-game', 'weed-game');
       document.body.classList.add('original-theme');
     });
-
-    function startDevilsGame() {
-      stopAllThemes();
-      document.body.classList.remove('original-theme');
-
-      document.getElementById('sd').pause();
-      document.getElementById('sd').currentTime = 0;
-      document.getElementById('gv').pause();
-      document.getElementById('gv').currentTime = 0;
-      document.getElementById('laugh').pause();
-      document.getElementById('laugh').currentTime = 0;
-      document.getElementById('cop').pause();
-      document.getElementById('cop').currentTime = 0;
-      document.getElementById('elevenTheme').pause();
-      document.getElementById('elevenTheme').currentTime = 0;
-      document.getElementById('mortTheme').pause();
-      document.getElementById('mortTheme').currentTime = 0;
-      document.getElementById('p').pause();
-      document.getElementById('p').currentTime = 0;
-      document.getElementById('fiveOhFiveTheme').pause();
-      document.getElementById('fiveOhFiveTheme').currentTime = 0;
-
-      document.getElementById('gv').play();
-      document.getElementById('laugh').play();
-    }
-
-    function start420Theme() {
-      stopAllThemes();
-      document.body.classList.remove('original-theme');
-
-      document.getElementById('gv').pause();
-      document.getElementById('gv').currentTime = 0;
-      document.getElementById('laugh').pause();
-      document.getElementById('laugh').currentTime = 0;
-      document.getElementById('cop').pause();
-      document.getElementById('cop').currentTime = 0;
-      document.getElementById('elevenTheme').pause();
-      document.getElementById('elevenTheme').currentTime = 0;
-      document.getElementById('mortTheme').pause();
-      document.getElementById('mortTheme').currentTime = 0;
-      document.getElementById('p').pause();
-      document.getElementById('p').currentTime = 0;
-      document.getElementById('fiveOhFiveTheme').pause();
-      document.getElementById('fiveOhFiveTheme').currentTime = 0;
-      document.getElementById('sd').play();
-    }
-
-    function startPoliceTheme() {
-      stopAllThemes();
-      document.body.classList.remove('original-theme');
-
-      document.getElementById('gv').pause();
-      document.getElementById('gv').currentTime = 0;
-      document.getElementById('laugh').pause();
-      document.getElementById('laugh').currentTime = 0;
-      document.getElementById('sd').pause();
-      document.getElementById('sd').currentTime = 0;
-      document.getElementById('elevenTheme').pause();
-      document.getElementById('elevenTheme').currentTime = 0;
-      document.getElementById('mortTheme').pause();
-      document.getElementById('mortTheme').currentTime = 0;
-      document.getElementById('p').pause();
-      document.getElementById('p').currentTime = 0;
-      document.getElementById('fiveOhFiveTheme').pause();
-      document.getElementById('fiveOhFiveTheme').currentTime = 0;
-      document.getElementById('cop').play();
-    }
-
-    function startCasinoTheme() {
-      stopAllThemes();
-      document.body.classList.remove('original-theme');
-
-      document.getElementById('gv').pause();
-      document.getElementById('gv').currentTime = 0;
-      document.getElementById('laugh').pause();
-      document.getElementById('laugh').currentTime = 0;
-      document.getElementById('sd').pause();
-      document.getElementById('sd').currentTime = 0;
-      document.getElementById('cop').pause();
-      document.getElementById('cop').currentTime = 0;
-      document.getElementById('mortTheme').pause();
-      document.getElementById('mortTheme').currentTime = 0;
-      document.getElementById('p').pause();
-      document.getElementById('p').currentTime = 0;
-      document.getElementById('fiveOhFiveTheme').pause();
-      document.getElementById('fiveOhFiveTheme').currentTime = 0;
-      document.getElementById('elevenTheme').play();
-    }
-
-    function resetButton() {
-      stopAllThemes();
-      document.getElementById('gv').pause();
-      document.getElementById('gv').currentTime = 0;
-      document.getElementById('laugh').pause();
-      document.getElementById('laugh').currentTime = 0;
-      document.getElementById('sd').pause();
-      document.getElementById('sd').currentTime = 0;
-      document.getElementById('cop').pause();
-      document.getElementById('cop').currentTime = 0;
-      document.getElementById('elevenTheme').pause();
-      document.getElementById('elevenTheme').currentTime = 0;
-      document.getElementById('mortTheme').play();
-      document.getElementById('mortTheme').currentTime = 0;
-      document.getElementById('fiveOhFiveTheme').pause();
-      document.getElementById('fiveOhFiveTheme').currentTime = 0;
-    }
-
-    function stopAllThemes() {
-      document.getElementById('gv').pause();
-      document.getElementById('gv').currentTime = 0;
-      document.getElementById('laugh').pause();
-      document.getElementById('laugh').currentTime = 0;
-      document.getElementById('sd').pause();
-      document.getElementById('sd').currentTime = 0;
-      document.getElementById('cop').pause();
-      document.getElementById('cop').currentTime = 0;
-      document.getElementById('elevenTheme').pause();
-      document.getElementById('elevenTheme').currentTime = 0;
-      document.getElementById('mortTheme').pause();
-      document.getElementById('mortTheme').currentTime = 0;
-      document.getElementById('fiveOhFiveTheme').pause();
-      document.getElementById('fiveOhFiveTheme').currentTime = 0;
-    }
 
     window.addEventListener('load', () => {
       const mortTheme = document.getElementById('mortTheme');
