@@ -63,6 +63,7 @@
     });
 
     function startDevilsGame() {
+      stopAllThemes();
       document.body.classList.remove('original-theme');
 
       document.getElementById('sd').pause();
@@ -79,12 +80,15 @@
       document.getElementById('mortTheme').currentTime = 0;
       document.getElementById('p').pause();
       document.getElementById('p').currentTime = 0;
+      document.getElementById('fiveOhFiveTheme').pause();
+      document.getElementById('fiveOhFiveTheme').currentTime = 0;
 
       document.getElementById('gv').play();
       document.getElementById('laugh').play();
     }
 
     function start420Theme() {
+      stopAllThemes();
       document.body.classList.remove('original-theme');
 
       document.getElementById('gv').pause();
@@ -99,10 +103,13 @@
       document.getElementById('mortTheme').currentTime = 0;
       document.getElementById('p').pause();
       document.getElementById('p').currentTime = 0;
+      document.getElementById('fiveOhFiveTheme').pause();
+      document.getElementById('fiveOhFiveTheme').currentTime = 0;
       document.getElementById('sd').play();
     }
 
     function startPoliceTheme() {
+      stopAllThemes();
       document.body.classList.remove('original-theme');
 
       document.getElementById('gv').pause();
@@ -115,10 +122,15 @@
       document.getElementById('elevenTheme').currentTime = 0;
       document.getElementById('mortTheme').pause();
       document.getElementById('mortTheme').currentTime = 0;
+      document.getElementById('p').pause();
+      document.getElementById('p').currentTime = 0;
+      document.getElementById('fiveOhFiveTheme').pause();
+      document.getElementById('fiveOhFiveTheme').currentTime = 0;
       document.getElementById('cop').play();
     }
 
     function startCasinoTheme() {
+      stopAllThemes();
       document.body.classList.remove('original-theme');
 
       document.getElementById('gv').pause();
@@ -131,10 +143,15 @@
       document.getElementById('cop').currentTime = 0;
       document.getElementById('mortTheme').pause();
       document.getElementById('mortTheme').currentTime = 0;
+      document.getElementById('p').pause();
+      document.getElementById('p').currentTime = 0;
+      document.getElementById('fiveOhFiveTheme').pause();
+      document.getElementById('fiveOhFiveTheme').currentTime = 0;
       document.getElementById('elevenTheme').play();
     }
 
     function resetButton() {
+      stopAllThemes();
       document.getElementById('gv').pause();
       document.getElementById('gv').currentTime = 0;
       document.getElementById('laugh').pause();
@@ -147,6 +164,25 @@
       document.getElementById('elevenTheme').currentTime = 0;
       document.getElementById('mortTheme').play();
       document.getElementById('mortTheme').currentTime = 0;
+      document.getElementById('fiveOhFiveTheme').pause();
+      document.getElementById('fiveOhFiveTheme').currentTime = 0;
+    }
+
+    function stopAllThemes() {
+      document.getElementById('gv').pause();
+      document.getElementById('gv').currentTime = 0;
+      document.getElementById('laugh').pause();
+      document.getElementById('laugh').currentTime = 0;
+      document.getElementById('sd').pause();
+      document.getElementById('sd').currentTime = 0;
+      document.getElementById('cop').pause();
+      document.getElementById('cop').currentTime = 0;
+      document.getElementById('elevenTheme').pause();
+      document.getElementById('elevenTheme').currentTime = 0;
+      document.getElementById('mortTheme').pause();
+      document.getElementById('mortTheme').currentTime = 0;
+      document.getElementById('fiveOhFiveTheme').pause();
+      document.getElementById('fiveOhFiveTheme').currentTime = 0;
     }
 
     window.addEventListener('load', () => {

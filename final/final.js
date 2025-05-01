@@ -38,20 +38,34 @@ enterButton.addEventListener('click', () => {
 
 // Load pocketedBalls from localStorage on page load
 const savedPocketedBalls = localStorage.getItem('pocketedBalls');
-if (savedPocketedBalls) {
+if (savedPocketedBalls && JSON.parse(savedPocketedBalls).every(val => val !== '-')) {
   pocketedBalls.splice(0, pocketedBalls.length, ...JSON.parse(savedPocketedBalls));
-  pocketedBallsDisplay.textContent = pocketedBalls.join(' ');
+} else {
+  pocketedBalls.fill('-'); // Reset to 10 blank dashes if no valid saved data
+}
+pocketedBallsDisplay.textContent = pocketedBalls.join(' ');
+
+// Check for specific number sequence
+function checkSpecialNumberSequence() {
+  const enteredNumber = pocketedBalls.join('').replace(/-/g, '');
+  if (enteredNumber === '2484345508') {
+    window.location.href = 'https://www.youtube.com/watch?v=xm3YgoEiEDc';
+  }
 }
 
 // Update localStorage whenever pocketedBalls changes
 function updatePocketedBalls() {
   localStorage.setItem('pocketedBalls', JSON.stringify(pocketedBalls));
   pocketedBallsDisplay.textContent = pocketedBalls.join(' ');
+  checkSpecialNumberSequence(); // Ensure this is called after every update
 }
 
 // Handle the Enter button click event
 enterButton.addEventListener('click', () => {
-  if (pocketedBalls.every(val => val === '-')) {
+  const enteredNumber = pocketedBalls.join('').replace(/-/g, '');
+  if (enteredNumber === '2484345508') {
+    window.location.href = 'https://www.youtube.com/watch?v=xm3YgoEiEDc';
+  } else if (pocketedBalls.every(val => val === '-')) {
     alert('No numbers have been pocketed yet.');
   } else {
     // Save pocketedBalls to localStorage and redirect to num.html
@@ -349,7 +363,7 @@ function checkPockets() {
         const emptyIndex = pocketedBalls.indexOf('-');
         if (emptyIndex !== -1) {
           pocketedBalls[emptyIndex] = ball.number;
-          updatePocketedBalls(); // Save to localStorage
+          updatePocketedBalls(); // Save to localStorage and check sequence
         }
 
         ball.x = Math.random() * (canvas.width - 2 * BALL_RADIUS) + BALL_RADIUS;
@@ -367,7 +381,7 @@ function checkPockets() {
     if (dist < POCKET_RADIUS + BALL_RADIUS) {
       resetBalls();
       pocketedBalls.fill('-');
-      updatePocketedBalls(); // Save to localStorage
+      updatePocketedBalls(); // Save to localStorage and reset sequence
       break;
     }
   }
