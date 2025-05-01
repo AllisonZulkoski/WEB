@@ -80,7 +80,6 @@ enterButton.addEventListener('click', () => {
 const grumbleVolcanoTheme = new Audio('sounds/grumble_volcano.mp3');
 const devilLaughSound = new Audio('sounds/devil_laugh.mp3');
 const snoopDoggTheme = new Audio('sounds/snoop_dogg.mp3');
-const policeSirenSound = new Audio('sounds/police_siren.mp3');
 const copTheme = new Audio('sounds/Cop.mp3');
 const casinoTheme = new Audio('sounds/Casino.mp3');
 const elevenTheme = new Audio('sounds/11.mp3');
