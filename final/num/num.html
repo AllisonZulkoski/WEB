@@ -13,20 +13,12 @@
     </header>
     <main>
       <p id="instructions">
-        Is this your phone number??? If not, click "reset" to try again!      </p>
+        Is this your phone number??? If not, click "reset" to try again!
+      </p>
       <p id="displayNumber">- - - - - - - - - -</p>
       <button id="startButton">Reset</button>
     </main>
   </div>
-  <script>
-    const params = new URLSearchParams(window.location.search);
-    const number = params.get('number');
-    if (number) {
-      document.getElementById('displayNumber').textContent = number.split('').join(' ');
-    }
-    document.getElementById('startButton').addEventListener('click', () => {
-      window.location.href = '../final.html';
-    });
-  </script>
+  <script src="num.js"></script>
 </body>
 </html>

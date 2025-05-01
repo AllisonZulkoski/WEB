@@ -36,6 +36,30 @@ enterButton.addEventListener('click', () => {
   window.location.href = 'https://allisonzulkoski.github.io/WEB/final/num/num.html';
 });
 
+// Load pocketedBalls from localStorage on page load
+const savedPocketedBalls = localStorage.getItem('pocketedBalls');
+if (savedPocketedBalls) {
+  pocketedBalls.splice(0, pocketedBalls.length, ...JSON.parse(savedPocketedBalls));
+  pocketedBallsDisplay.textContent = pocketedBalls.join(' ');
+}
+
+// Update localStorage whenever pocketedBalls changes
+function updatePocketedBalls() {
+  localStorage.setItem('pocketedBalls', JSON.stringify(pocketedBalls));
+  pocketedBallsDisplay.textContent = pocketedBalls.join(' ');
+}
+
+// Handle the Enter button click event
+enterButton.addEventListener('click', () => {
+  if (pocketedBalls.every(val => val === '-')) {
+    alert('No numbers have been pocketed yet.');
+  } else {
+    // Save pocketedBalls to localStorage and redirect to num.html
+    localStorage.setItem('pocketedBalls', JSON.stringify(pocketedBalls));
+    window.location.href = './num/num.html';
+  }
+});
+
 //calling the audios from the sounds folder
 const grumbleVolcanoTheme = new Audio('sounds/grumble_volcano.mp3');
 const devilLaughSound = new Audio('sounds/devil_laugh.mp3');
@@ -167,7 +191,7 @@ function resetBalls() {
 resetButton.addEventListener('click', () => {
   resetBalls();
   pocketedBalls.fill('-');
-  pocketedBallsDisplay.textContent = pocketedBalls.join(' ');
+  updatePocketedBalls(); // Save to localStorage
   document.body.classList.remove('devils-game', 'weed-game', 'police-game', 'casino-game');
   document.body.classList.add('original-theme');
   document.getElementById('gv').pause();
@@ -300,7 +324,7 @@ function checkPockets() {
         const emptyIndex = pocketedBalls.indexOf('-');
         if (emptyIndex !== -1) {
           pocketedBalls[emptyIndex] = ball.number;
-          pocketedBallsDisplay.textContent = pocketedBalls.join(' ');
+          updatePocketedBalls(); // Save to localStorage
         }
 
         ball.x = Math.random() * (canvas.width - 2 * BALL_RADIUS) + BALL_RADIUS;
@@ -318,7 +342,7 @@ function checkPockets() {
     if (dist < POCKET_RADIUS + BALL_RADIUS) {
       resetBalls();
       pocketedBalls.fill('-');
-      pocketedBallsDisplay.textContent = pocketedBalls.join(' ');
+      updatePocketedBalls(); // Save to localStorage
       break;
     }
   }
