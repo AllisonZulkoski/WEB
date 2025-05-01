@@ -18,8 +18,11 @@
       <button id="startButton">Start Game</button>
     </main>
   </div>
+  <audio id="mortTheme" src="../sounds/Mort.mp3"></audio>
   <script>
+    const mortTheme = document.getElementById('mortTheme');
     document.getElementById('startButton').addEventListener('click', () => {
+      mortTheme.play();
       window.location.href = '../final.html';
     });
   </script>

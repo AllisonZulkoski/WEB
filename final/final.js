@@ -69,12 +69,14 @@ const copTheme = new Audio('sounds/Cop.mp3');
 const casinoTheme = new Audio('sounds/Casino.mp3');
 const elevenTheme = new Audio('sounds/11.mp3');
 const mortTheme = new Audio('sounds/Mort.mp3');
+const fiveOhFiveTheme = new Audio('sounds/505.mp3');
 
 grumbleVolcanoTheme.loop = true;
 policeSirenSound.loop = true;
 copTheme.loop = true;
 casinoTheme.loop = true;
 elevenTheme.loop = true;
+fiveOhFiveTheme.loop = true;
 
 let audioInitialized = false;
 function initializeAudio() {
@@ -101,11 +103,22 @@ function stopAllThemes() {
   elevenTheme.currentTime = 0;
   mortTheme.pause();
   mortTheme.currentTime = 0;
+  fiveOhFiveTheme.pause();
+  fiveOhFiveTheme.currentTime = 0;
+}
+
+// Function to stop the Mort theme
+function stopMortTheme() {
+  if (!mortTheme.paused) {
+    mortTheme.pause();
+    mortTheme.currentTime = 0;
+  }
 }
 
 //for when 666 is entered
 function startDevilsGame() {
   stopAllThemes();
+  stopMortTheme();
   document.body.classList.remove('weed-game', 'original-theme', 'police-game', 'casino-game');
   document.body.classList.add('devils-game');
   applyDevilTheme();
@@ -116,6 +129,7 @@ function startDevilsGame() {
 //for when 420 is entered
 function start420Theme() {
   stopAllThemes();
+  stopMortTheme();
   document.body.classList.remove('devils-game', 'original-theme', 'police-game', 'casino-game');
   document.body.classList.add('weed-game');
   applyWeedTheme();
@@ -125,6 +139,7 @@ function start420Theme() {
 //for when 911 is entered
 function startPoliceTheme() {
   stopAllThemes();
+  stopMortTheme();
   document.body.classList.remove('devils-game', 'weed-game', 'original-theme', 'casino-game');
   document.body.classList.add('police-game');
   applyPoliceTheme();
@@ -134,11 +149,36 @@ function startPoliceTheme() {
 //for when 777 is entered
 function startCasinoTheme() {
   stopAllThemes();
+  stopMortTheme();
   document.body.classList.remove('devils-game', 'weed-game', 'police-game', 'original-theme');
   document.body.classList.add('casino-game');
   applyCasinoTheme();
   elevenTheme.play().catch((err) => console.error('Audio playback failed:', err));
   triggerJackpotAnimation();
+}
+
+// Fix the 505 theme to ensure it works correctly
+function start505Theme() {
+  stopAllThemes(); // Stop all other themes
+  document.body.classList.remove('devils-game', 'weed-game', 'police-game', 'casino-game', 'original-theme');
+  document.body.classList.add('five-oh-five-theme');
+  apply505Theme();
+  fiveOhFiveTheme.currentTime = 0; // Reset the audio to the start
+  fiveOhFiveTheme.play().catch((err) => console.error('Audio playback failed:', err));
+}
+
+function apply505Theme() {
+  document.body.className = ''; // Clear all existing classes
+  document.body.classList.add('five-oh-five-theme');
+  const fiveOhFiveColors = ['#2C2C2C', '#FFFFFF', '#B0B0B0', '#FFB6C1', '#FF7F50', '#DDA0DD'];
+  balls.forEach((ball, index) => {
+    if (ball.number === 1 || ball.number === 7) {
+      ball.color = '#F0E68C'; // Muted yellow for balls 1 and 7
+    } else {
+      ball.color = fiveOhFiveColors[index % fiveOhFiveColors.length];
+    }
+  });
+  cueBall.color = '#FFFFFF'; // White for the cue ball
 }
 
 function triggerJackpotAnimation() {
@@ -189,23 +229,8 @@ function resetBalls() {
 
 //calls the balls and themes to be reset and stops the audio
 resetButton.addEventListener('click', () => {
-  resetBalls();
-  pocketedBalls.fill('-');
-  updatePocketedBalls(); // Save to localStorage
-  document.body.classList.remove('devils-game', 'weed-game', 'police-game', 'casino-game');
-  document.body.classList.add('original-theme');
-  document.getElementById('gv').pause();
-  document.getElementById('gv').currentTime = 0;
-  document.getElementById('laugh').pause();
-  document.getElementById('laugh').currentTime = 0;
-  document.getElementById('sd').pause();
-  document.getElementById('sd').currentTime = 0;
-  document.getElementById('cop').pause();
-  document.getElementById('cop').currentTime = 0;
-  document.getElementById('elevenTheme').pause();
-  document.getElementById('elevenTheme').currentTime = 0;
-  document.getElementById('mortTheme').play();
-  document.getElementById('mortTheme').currentTime = 0;
+  stopAllThemes(); // Stop all audio
+  window.location.href = 'https://allisonzulkoski.github.io/WEB/final/open/open.html'; // Redirect to the open page
 });
 
 let cueAngle = 0;
@@ -365,6 +390,7 @@ let messageTimeout;
 
 //for when 666 is entered
 function applyDevilTheme() {
+  document.body.className = ''; // Clear all existing classes
   document.body.classList.add('devils-game');
   const hellColors = ['#FF4500', '#8B0000', '#FFD700', '#DC143C', '#FF6347'];
   balls.forEach((ball, index) => {
@@ -375,6 +401,7 @@ function applyDevilTheme() {
 
 //for when 420 is entered
 function applyWeedTheme() {
+  document.body.className = ''; // Clear all existing classes
   document.body.classList.add('weed-game');
   const weedColors = ['#6B8E23', '#556B2F', '#8FBC8F', '#2E8B57', '#228B22'];
   balls.forEach((ball, index) => {
@@ -385,6 +412,7 @@ function applyWeedTheme() {
 
 //for when 911 is entered
 function applyPoliceTheme() {
+  document.body.className = ''; // Clear all existing classes
   document.body.classList.add('police-game');
   const policeColors = ['#001F3F', '#0074D9', '#FF4136', '#7FDBFF', '#FF851B'];
   balls.forEach((ball, index) => {
@@ -395,12 +423,28 @@ function applyPoliceTheme() {
 
 //for when 777 is entered
 function applyCasinoTheme() {
+  document.body.className = ''; // Clear all existing classes
   document.body.classList.add('casino-game');
   const casinoColors = ['#D4AF37', '#C0C0C0', '#8B0000', '#228B22', '#FFD700'];
   balls.forEach((ball, index) => {
     ball.color = casinoColors[index % casinoColors.length];
   });
   cueBall.color = '#FFFFFF';
+}
+
+//for when 505 is entered
+function apply505Theme() {
+  document.body.className = ''; // Clear all existing classes
+  document.body.classList.add('five-oh-five-theme');
+  const fiveOhFiveColors = ['#2C2C2C', '#FFFFFF', '#B0B0B0', '#FFB6C1', '#FF7F50', '#DDA0DD'];
+  balls.forEach((ball, index) => {
+    if (ball.number === 1 || ball.number === 7) {
+      ball.color = '#F0E68C'; // Muted yellow for balls 1 and 7
+    } else {
+      ball.color = fiveOhFiveColors[index % fiveOhFiveColors.length];
+    }
+  });
+  cueBall.color = '#FFFFFF'; // White for the cue ball
 }
 
 //for when 666 is entered
@@ -492,6 +536,22 @@ function handleNumberInput(number) {
 
     applyCasinoTheme();
     startCasinoTheme();
+  }
+
+  if (
+    inputSequence.length >= 3 &&
+    inputSequence.slice(-3).join('') === '505'
+  ) {
+    const sillyMessage = document.getElementById('sillyMessage');
+    sillyMessage.textContent = 'but I crumble completely when you cry';
+    sillyMessage.style.opacity = 1;
+    clearTimeout(messageTimeout);
+    messageTimeout = setTimeout(() => {
+      sillyMessage.style.opacity = 0;
+    }, 3000);
+
+    apply505Theme();
+    start505Theme();
   }
 
   if (inputSequence.length === targetSequence.length) {
