@@ -36,31 +36,26 @@ enterButton.addEventListener('click', () => {
   window.location.href = 'https://allisonzulkoski.github.io/WEB/final/num/num.html';
 });
 
-// Load pocketedBalls from localStorage on page load
 const savedPocketedBalls = localStorage.getItem('pocketedBalls');
 if (savedPocketedBalls) {
   pocketedBalls.splice(0, pocketedBalls.length, ...JSON.parse(savedPocketedBalls));
   pocketedBallsDisplay.textContent = pocketedBalls.join(' ');
 }
 
-// Update localStorage whenever pocketedBalls changes
 function updatePocketedBalls() {
   localStorage.setItem('pocketedBalls', JSON.stringify(pocketedBalls));
   pocketedBallsDisplay.textContent = pocketedBalls.join(' ');
 }
 
-// Handle the Enter button click event
 enterButton.addEventListener('click', () => {
   if (pocketedBalls.every(val => val === '-')) {
     alert('No numbers have been pocketed yet.');
   } else {
-    // Save pocketedBalls to localStorage and redirect to num.html
     localStorage.setItem('pocketedBalls', JSON.stringify(pocketedBalls));
     window.location.href = './num/num.html';
   }
 });
 
-//calling the audios from the sounds folder
 const grumbleVolcanoTheme = new Audio('sounds/grumble_volcano.mp3');
 const devilLaughSound = new Audio('sounds/devil_laugh.mp3');
 const snoopDoggTheme = new Audio('sounds/snoop_dogg.mp3');
@@ -83,7 +78,6 @@ function initializeAudio() {
   }
 }
 
-// Stop all themes, including resetting audio states
 function stopAllThemes() {
   const themes = [
     grumbleVolcanoTheme,
@@ -93,22 +87,20 @@ function stopAllThemes() {
     casinoTheme,
     elevenTheme,
     mortTheme,
-    fiveOhFiveTheme // Ensure 505 theme is included
+    fiveOhFiveTheme
   ];
 
   themes.forEach((theme) => {
     theme.pause();
-    theme.currentTime = 0; // Reset audio to the beginning
+    theme.currentTime = 0;
   });
 }
 
-// Ensure the Mort theme is stopped
 function stopMortTheme() {
   mortTheme.pause();
   mortTheme.currentTime = 0;
 }
 
-// Ensure the 505 theme stops when switching themes
 function stop505Theme() {
   fiveOhFiveTheme.pause();
   fiveOhFiveTheme.currentTime = 0;
@@ -118,8 +110,8 @@ function stop505Theme() {
 function startDevilsGame() {
   stopAllThemes();
   stopMortTheme();
-  fiveOhFiveTheme.pause(); // Stop the 505 theme
-  fiveOhFiveTheme.currentTime = 0; // Reset the 505 theme
+  fiveOhFiveTheme.pause();
+  fiveOhFiveTheme.currentTime = 0;
   document.body.classList.remove('weed-game', 'original-theme', 'police-game', 'casino-game', 'five-oh-five-theme');
   document.body.classList.add('devils-game');
   applyDevilTheme();
@@ -131,8 +123,8 @@ function startDevilsGame() {
 function start420Theme() {
   stopAllThemes();
   stopMortTheme();
-  fiveOhFiveTheme.pause(); // Stop the 505 theme
-  fiveOhFiveTheme.currentTime = 0; // Reset the 505 theme
+  fiveOhFiveTheme.pause();
+  fiveOhFiveTheme.currentTime = 0;
   document.body.classList.remove('devils-game', 'original-theme', 'police-game', 'casino-game', 'five-oh-five-theme');
   document.body.classList.add('weed-game');
   applyWeedTheme();
@@ -143,8 +135,8 @@ function start420Theme() {
 function startPoliceTheme() {
   stopAllThemes();
   stopMortTheme();
-  fiveOhFiveTheme.pause(); // Stop the 505 theme
-  fiveOhFiveTheme.currentTime = 0; // Reset the 505 theme
+  fiveOhFiveTheme.pause();
+  fiveOhFiveTheme.currentTime = 0;
   document.body.classList.remove('devils-game', 'weed-game', 'original-theme', 'casino-game', 'five-oh-five-theme');
   document.body.classList.add('police-game');
   applyPoliceTheme();
@@ -155,8 +147,8 @@ function startPoliceTheme() {
 function startCasinoTheme() {
   stopAllThemes();
   stopMortTheme();
-  fiveOhFiveTheme.pause(); // Stop the 505 theme
-  fiveOhFiveTheme.currentTime = 0; // Reset the 505 theme
+  fiveOhFiveTheme.pause();
+  fiveOhFiveTheme.currentTime = 0;
   document.body.classList.remove('devils-game', 'weed-game', 'police-game', 'original-theme', 'five-oh-five-theme');
   document.body.classList.add('casino-game');
   applyCasinoTheme();
@@ -166,26 +158,26 @@ function startCasinoTheme() {
 
 // Fix the 505 theme to ensure it works correctly
 function start505Theme() {
-  stopAllThemes(); // Stop all other themes, including the 505 theme
+  stopAllThemes();
   document.body.classList.remove('devils-game', 'weed-game', 'police-game', 'casino-game', 'original-theme');
   document.body.classList.add('five-oh-five-theme');
   apply505Theme();
-  fiveOhFiveTheme.currentTime = 0; // Reset the audio to the start
+  fiveOhFiveTheme.currentTime = 0;
   fiveOhFiveTheme.play().catch((err) => console.error('Audio playback failed:', err));
 }
 
 function apply505Theme() {
-  document.body.className = ''; // Clear all existing classes
+  document.body.className = '';
   document.body.classList.add('five-oh-five-theme');
   const fiveOhFiveColors = ['#2C2C2C', '#FFFFFF', '#B0B0B0', '#FFB6C1', '#FF7F50', '#DDA0DD'];
   balls.forEach((ball, index) => {
     if (ball.number === 1 || ball.number === 7) {
-      ball.color = '#F0E68C'; // Muted yellow for balls 1 and 7
+      ball.color = '#F0E68C';
     } else {
       ball.color = fiveOhFiveColors[index % fiveOhFiveColors.length];
     }
   });
-  cueBall.color = '#FFFFFF'; // White for the cue ball
+  cueBall.color = '#FFFFFF';
 }
 
 function triggerJackpotAnimation() {
@@ -236,13 +228,13 @@ function resetBalls() {
 
 //calls the balls and themes to be reset and stops the audio
 resetButton.addEventListener('click', () => {
-  stopAllThemes(); // Stop all audio, including the 505 theme
-  fiveOhFiveTheme.pause(); // Explicitly stop the 505 theme
-  fiveOhFiveTheme.currentTime = 0; // Reset the 505 theme to the beginning
+  stopAllThemes();
+  fiveOhFiveTheme.pause();
+  fiveOhFiveTheme.currentTime = 0;
   resetBalls();
   pocketedBalls.fill('-');
   updatePocketedBalls();
-  document.body.className = 'original-theme'; // Reset to original theme
+  document.body.className = 'original-theme';
 });
 
 let cueAngle = 0;
@@ -265,7 +257,6 @@ shootButton.addEventListener('click', () => {
   }
 });
 
-//draw the balls
 function drawBall(ball) {
   ctx.beginPath();
   ctx.arc(ball.x, ball.y, BALL_RADIUS, 0, Math.PI * 2);
@@ -284,7 +275,6 @@ function drawBall(ball) {
   }
 }
 
-//draw the cue stick
 function drawCueStick() {
   if (Math.hypot(cueBall.vx, cueBall.vy) < 0.1) {
     const length = 80;
@@ -308,7 +298,6 @@ function moveBall(ball) {
   ball.vx *= FRICTION;
   ball.vy *= FRICTION;
 
-  // Ensure balls bounce off the canvas edges
   if (ball.x + BALL_RADIUS > canvas.width || ball.x - BALL_RADIUS < 0) {
     ball.vx *= -1;
     ball.x = Math.max(BALL_RADIUS, Math.min(ball.x, canvas.width - BALL_RADIUS));
@@ -334,13 +323,11 @@ function handleCollisions(allBalls) {
         const moveX = (Math.cos(angle) * overlap) / 2;
         const moveY = (Math.sin(angle) * overlap) / 2;
 
-        // Separate overlapping balls
         a.x -= moveX;
         a.y -= moveY;
         b.x += moveX;
         b.y += moveY;
 
-        // Swap velocities for a realistic collision effect
         const tempVx = a.vx;
         const tempVy = a.vy;
         a.vx = b.vx;
@@ -352,7 +339,6 @@ function handleCollisions(allBalls) {
   }
 }
 
-// Ensure balls are properly pocketed
 function checkPockets() {
   for (let i = balls.length - 1; i >= 0; i--) {
     const ball = balls[i];
@@ -364,13 +350,12 @@ function checkPockets() {
           pocketedBalls[emptyIndex] = ball.number;
           updatePocketedBalls();
         }
-        balls.splice(i, 1); // Remove the pocketed ball
+        balls.splice(i, 1);
         break;
       }
     }
   }
 
-  // Check if the cue ball is pocketed
   for (const pocket of pockets) {
     const dist = Math.sqrt((cueBall.x - pocket.x) ** 2 + (cueBall.y - pocket.y) ** 2);
     if (dist < POCKET_RADIUS + BALL_RADIUS) {
@@ -399,7 +384,7 @@ let messageTimeout;
 
 //for when 666 is entered
 function applyDevilTheme() {
-  document.body.className = ''; // Clear all existing classes
+  document.body.className = '';
   document.body.classList.add('devils-game');
   const hellColors = ['#FF4500', '#8B0000', '#FFD700', '#DC143C', '#FF6347'];
   balls.forEach((ball, index) => {
@@ -410,7 +395,7 @@ function applyDevilTheme() {
 
 //for when 420 is entered
 function applyWeedTheme() {
-  document.body.className = ''; // Clear all existing classes
+  document.body.className = '';
   document.body.classList.add('weed-game');
   const weedColors = ['#6B8E23', '#556B2F', '#8FBC8F', '#2E8B57', '#228B22'];
   balls.forEach((ball, index) => {
@@ -421,7 +406,7 @@ function applyWeedTheme() {
 
 //for when 911 is entered
 function applyPoliceTheme() {
-  document.body.className = ''; // Clear all existing classes
+  document.body.className = '';
   document.body.classList.add('police-game');
   const policeColors = ['#001F3F', '#0074D9', '#FF4136', '#7FDBFF', '#FF851B'];
   balls.forEach((ball, index) => {
@@ -432,7 +417,7 @@ function applyPoliceTheme() {
 
 //for when 777 is entered
 function applyCasinoTheme() {
-  document.body.className = ''; // Clear all existing classes
+  document.body.className = '';
   document.body.classList.add('casino-game');
   const casinoColors = ['#D4AF37', '#C0C0C0', '#8B0000', '#228B22', '#FFD700'];
   balls.forEach((ball, index) => {
@@ -443,17 +428,17 @@ function applyCasinoTheme() {
 
 //for when 505 is entered
 function apply505Theme() {
-  document.body.className = ''; // Clear all existing classes
+  document.body.className = '';
   document.body.classList.add('five-oh-five-theme');
   const fiveOhFiveColors = ['#2C2C2C', '#FFFFFF', '#B0B0B0', '#FFB6C1', '#FF7F50', '#DDA0DD'];
   balls.forEach((ball, index) => {
     if (ball.number === 1 || ball.number === 7) {
-      ball.color = '#F0E68C'; // Muted yellow for balls 1 and 7
+      ball.color = '#F0E68C';
     } else {
       ball.color = fiveOhFiveColors[index % fiveOhFiveColors.length];
     }
   });
-  cueBall.color = '#FFFFFF'; // White for the cue ball
+  cueBall.color = '#FFFFFF';
 }
 
 //for when 666 is entered

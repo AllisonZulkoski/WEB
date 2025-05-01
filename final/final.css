@@ -259,31 +259,31 @@ body.casino-game .instructions {
 }
 
 body.five-oh-five-theme {
-  background-color: #2C2C2C; /* Off-black */
-  color: #F0E68C; /* Muted yellow */
+  background-color: #2C2C2C;
+  color: #F0E68C;
 }
 
 body.five-oh-five-theme #billiardsCanvas {
-  background-color: #B0B0B0; /* Grey */
-  border-color: #FFB6C1; /* Light pink */
+  background-color: #B0B0B0;
+  border-color: #FFB6C1;
 }
 
 body.five-oh-five-theme button {
-  background-color: #FF7F50; /* Coral */
-  color: #F0E68C; /* Muted yellow */
+  background-color: #FF7F50;
+  color: #F0E68C;
 }
 
 body.five-oh-five-theme button:hover {
-  background-color: #DDA0DD; /* Plum */
+  background-color: #DDA0DD;
 }
 
 body.five-oh-five-theme #pocketedBallsDisplay {
-  color: #FFB6C1; /* Light pink */
+  color: #FFB6C1;
 }
 
 body.five-oh-five-theme h1,
 body.five-oh-five-theme .instructions {
-  color: #F0E68C; /* Muted yellow */
+  color: #F0E68C;
 }
 
 @keyframes jackpotAnimation {

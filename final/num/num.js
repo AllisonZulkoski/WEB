@@ -1,7 +1,7 @@
 const params = new URLSearchParams(window.location.search);
 const numberString = params.get('number');
 
-// Retrieve pocketedBalls from localStorage
+//code to get the information from the dashes on the last page
 const savedPocketedBalls = localStorage.getItem('pocketedBalls');
 if (savedPocketedBalls) {
   const pocketed = JSON.parse(savedPocketedBalls);
@@ -11,7 +11,6 @@ if (savedPocketedBalls) {
 }
 
 document.getElementById('startButton').addEventListener('click', () => {
-  // Clear localStorage and redirect back to the main page
   localStorage.removeItem('pocketedBalls');
   window.location.href = '../final.html';
 });

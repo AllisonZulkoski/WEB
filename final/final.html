@@ -44,7 +44,6 @@
 
   <script src="final.js"></script>
   <script>
-    // Ensure AudioContext is resumed on user interaction
     let audioContext = new (window.AudioContext || window.webkitAudioContext)();
 
     function resumeAudioContext() {
@@ -55,10 +54,9 @@
 
     document.body.addEventListener('click', resumeAudioContext);
 
-    // Stop specific audio before playing it
     function playAudio(audioId, allowMultiple = false) {
       if (!allowMultiple) {
-        stopAllThemes(); // Stop all other audio tracks unless multiple are allowed
+        stopAllThemes(); 
       }
       const audio = document.getElementById(audioId);
       if (audio) {
@@ -77,14 +75,13 @@
       });
     }
 
-    // Update theme functions to allow multiple audio tracks when needed
     function startDevilsGame() {
       stopAllThemes();
       document.body.classList.remove('original-theme');
       fiveOhFiveTheme.pause();
     fiveOhFiveTheme.currentTime = 0;
-      playAudio('gv', true); // Allow multiple tracks
-      playAudio('laugh', true); // Allow multiple tracks
+      playAudio('gv', true); 
+      playAudio('laugh', true); 
     }
 
     function start420Theme() {
@@ -138,7 +135,6 @@
       const mortTheme = document.getElementById('mortTheme');
       mortTheme.play().catch((err) => console.error('Audio playback failed:', err));
 
-      // Set pocketedBallsDisplay to blank spaces on page load
       pocketedBallsDisplay.textContent = pocketedBalls.map(() => '').join(' ');
     });
   </script>
