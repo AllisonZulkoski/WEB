@@ -38,34 +38,20 @@ enterButton.addEventListener('click', () => {
 
 // Load pocketedBalls from localStorage on page load
 const savedPocketedBalls = localStorage.getItem('pocketedBalls');
-if (savedPocketedBalls && JSON.parse(savedPocketedBalls).every(val => val !== '-')) {
+if (savedPocketedBalls) {
   pocketedBalls.splice(0, pocketedBalls.length, ...JSON.parse(savedPocketedBalls));
-} else {
-  pocketedBalls.fill('-'); // Reset to 10 blank dashes if no valid saved data
-}
-pocketedBallsDisplay.textContent = pocketedBalls.join(' ');
-
-// Check for specific number sequence
-function checkSpecialNumberSequence() {
-  const enteredNumber = pocketedBalls.join('').replace(/-/g, '');
-  if (enteredNumber === '2484345508') {
-    window.location.href = 'https://www.youtube.com/watch?v=xm3YgoEiEDc';
-  }
+  pocketedBallsDisplay.textContent = pocketedBalls.join(' ');
 }
 
 // Update localStorage whenever pocketedBalls changes
 function updatePocketedBalls() {
   localStorage.setItem('pocketedBalls', JSON.stringify(pocketedBalls));
   pocketedBallsDisplay.textContent = pocketedBalls.join(' ');
-  checkSpecialNumberSequence(); // Ensure this is called after every update
 }
 
 // Handle the Enter button click event
 enterButton.addEventListener('click', () => {
-  const enteredNumber = pocketedBalls.join('').replace(/-/g, '');
-  if (enteredNumber === '2484345508') {
-    window.location.href = 'https://www.youtube.com/watch?v=xm3YgoEiEDc';
-  } else if (pocketedBalls.every(val => val === '-')) {
+  if (pocketedBalls.every(val => val === '-')) {
     alert('No numbers have been pocketed yet.');
   } else {
     // Save pocketedBalls to localStorage and redirect to num.html
@@ -85,7 +71,6 @@ const mortTheme = new Audio('sounds/Mort.mp3');
 const fiveOhFiveTheme = new Audio('sounds/505.mp3');
 
 grumbleVolcanoTheme.loop = true;
-policeSirenSound.loop = true;
 copTheme.loop = true;
 casinoTheme.loop = true;
 elevenTheme.loop = true;
@@ -98,41 +83,44 @@ function initializeAudio() {
   }
 }
 
-//stop audios from overlapping
+// Stop all themes, including resetting audio states
 function stopAllThemes() {
-  snoopDoggTheme.pause();
-  snoopDoggTheme.currentTime = 0;
-  grumbleVolcanoTheme.pause();
-  grumbleVolcanoTheme.currentTime = 0;
-  devilLaughSound.pause();
-  devilLaughSound.currentTime = 0;
-  policeSirenSound.pause();
-  policeSirenSound.currentTime = 0;
-  copTheme.pause();
-  copTheme.currentTime = 0;
-  casinoTheme.pause();
-  casinoTheme.currentTime = 0;
-  elevenTheme.pause();
-  elevenTheme.currentTime = 0;
-  mortTheme.pause();
-  mortTheme.currentTime = 0;
-  fiveOhFiveTheme.pause();
-  fiveOhFiveTheme.currentTime = 0;
+  const themes = [
+    grumbleVolcanoTheme,
+    devilLaughSound,
+    snoopDoggTheme,
+    copTheme,
+    casinoTheme,
+    elevenTheme,
+    mortTheme,
+    fiveOhFiveTheme // Ensure 505 theme is included
+  ];
+
+  themes.forEach((theme) => {
+    theme.pause();
+    theme.currentTime = 0; // Reset audio to the beginning
+  });
 }
 
-// Function to stop the Mort theme
+// Ensure the Mort theme is stopped
 function stopMortTheme() {
-  if (!mortTheme.paused) {
-    mortTheme.pause();
-    mortTheme.currentTime = 0;
-  }
+  mortTheme.pause();
+  mortTheme.currentTime = 0;
+}
+
+// Ensure the 505 theme stops when switching themes
+function stop505Theme() {
+  fiveOhFiveTheme.pause();
+  fiveOhFiveTheme.currentTime = 0;
 }
 
 //for when 666 is entered
 function startDevilsGame() {
   stopAllThemes();
   stopMortTheme();
-  document.body.classList.remove('weed-game', 'original-theme', 'police-game', 'casino-game');
+  fiveOhFiveTheme.pause(); // Stop the 505 theme
+  fiveOhFiveTheme.currentTime = 0; // Reset the 505 theme
+  document.body.classList.remove('weed-game', 'original-theme', 'police-game', 'casino-game', 'five-oh-five-theme');
   document.body.classList.add('devils-game');
   applyDevilTheme();
   grumbleVolcanoTheme.play().catch((err) => console.error('Audio playback failed:', err));
@@ -143,7 +131,9 @@ function startDevilsGame() {
 function start420Theme() {
   stopAllThemes();
   stopMortTheme();
-  document.body.classList.remove('devils-game', 'original-theme', 'police-game', 'casino-game');
+  fiveOhFiveTheme.pause(); // Stop the 505 theme
+  fiveOhFiveTheme.currentTime = 0; // Reset the 505 theme
+  document.body.classList.remove('devils-game', 'original-theme', 'police-game', 'casino-game', 'five-oh-five-theme');
   document.body.classList.add('weed-game');
   applyWeedTheme();
   snoopDoggTheme.play().catch((err) => console.error('Audio playback failed:', err));
@@ -153,7 +143,9 @@ function start420Theme() {
 function startPoliceTheme() {
   stopAllThemes();
   stopMortTheme();
-  document.body.classList.remove('devils-game', 'weed-game', 'original-theme', 'casino-game');
+  fiveOhFiveTheme.pause(); // Stop the 505 theme
+  fiveOhFiveTheme.currentTime = 0; // Reset the 505 theme
+  document.body.classList.remove('devils-game', 'weed-game', 'original-theme', 'casino-game', 'five-oh-five-theme');
   document.body.classList.add('police-game');
   applyPoliceTheme();
   copTheme.play().catch((err) => console.error('Audio playback failed:', err));
@@ -163,7 +155,9 @@ function startPoliceTheme() {
 function startCasinoTheme() {
   stopAllThemes();
   stopMortTheme();
-  document.body.classList.remove('devils-game', 'weed-game', 'police-game', 'original-theme');
+  fiveOhFiveTheme.pause(); // Stop the 505 theme
+  fiveOhFiveTheme.currentTime = 0; // Reset the 505 theme
+  document.body.classList.remove('devils-game', 'weed-game', 'police-game', 'original-theme', 'five-oh-five-theme');
   document.body.classList.add('casino-game');
   applyCasinoTheme();
   elevenTheme.play().catch((err) => console.error('Audio playback failed:', err));
@@ -172,7 +166,7 @@ function startCasinoTheme() {
 
 // Fix the 505 theme to ensure it works correctly
 function start505Theme() {
-  stopAllThemes(); // Stop all other themes
+  stopAllThemes(); // Stop all other themes, including the 505 theme
   document.body.classList.remove('devils-game', 'weed-game', 'police-game', 'casino-game', 'original-theme');
   document.body.classList.add('five-oh-five-theme');
   apply505Theme();
@@ -242,8 +236,13 @@ function resetBalls() {
 
 //calls the balls and themes to be reset and stops the audio
 resetButton.addEventListener('click', () => {
-  stopAllThemes(); // Stop all audio
-  window.location.href = 'https://allisonzulkoski.github.io/WEB/final/open/open.html'; // Redirect to the open page
+  stopAllThemes(); // Stop all audio, including the 505 theme
+  fiveOhFiveTheme.pause(); // Explicitly stop the 505 theme
+  fiveOhFiveTheme.currentTime = 0; // Reset the 505 theme to the beginning
+  resetBalls();
+  pocketedBalls.fill('-');
+  updatePocketedBalls();
+  document.body.className = 'original-theme'; // Reset to original theme
 });
 
 let cueAngle = 0;
@@ -309,6 +308,7 @@ function moveBall(ball) {
   ball.vx *= FRICTION;
   ball.vy *= FRICTION;
 
+  // Ensure balls bounce off the canvas edges
   if (ball.x + BALL_RADIUS > canvas.width || ball.x - BALL_RADIUS < 0) {
     ball.vx *= -1;
     ball.x = Math.max(BALL_RADIUS, Math.min(ball.x, canvas.width - BALL_RADIUS));
@@ -319,7 +319,6 @@ function moveBall(ball) {
   }
 }
 
-//collisions
 function handleCollisions(allBalls) {
   for (let i = 0; i < allBalls.length; i++) {
     for (let j = i + 1; j < allBalls.length; j++) {
@@ -334,16 +333,18 @@ function handleCollisions(allBalls) {
         const overlap = BALL_RADIUS * 2 - dist;
         const moveX = (Math.cos(angle) * overlap) / 2;
         const moveY = (Math.sin(angle) * overlap) / 2;
+
+        // Separate overlapping balls
         a.x -= moveX;
         a.y -= moveY;
         b.x += moveX;
         b.y += moveY;
 
-        const velocityScale = 1;
-        const tempVx = a.vx * velocityScale;
-        const tempVy = a.vy * velocityScale;
-        a.vx = b.vx * velocityScale;
-        a.vy = b.vy * velocityScale;
+        // Swap velocities for a realistic collision effect
+        const tempVx = a.vx;
+        const tempVy = a.vy;
+        a.vx = b.vx;
+        a.vy = b.vy;
         b.vx = tempVx;
         b.vy = tempVy;
       }
@@ -351,36 +352,31 @@ function handleCollisions(allBalls) {
   }
 }
 
-//for when a ball touches a pocekt
+// Ensure balls are properly pocketed
 function checkPockets() {
-  for (let i = 0; i < balls.length; i++) {
+  for (let i = balls.length - 1; i >= 0; i--) {
     const ball = balls[i];
-    for (let j = 0; j < pockets.length; j++) {
-      const pocket = pockets[j];
+    for (const pocket of pockets) {
       const dist = Math.sqrt((ball.x - pocket.x) ** 2 + (ball.y - pocket.y) ** 2);
       if (dist < POCKET_RADIUS + BALL_RADIUS) {
         const emptyIndex = pocketedBalls.indexOf('-');
         if (emptyIndex !== -1) {
           pocketedBalls[emptyIndex] = ball.number;
-          updatePocketedBalls(); // Save to localStorage and check sequence
+          updatePocketedBalls();
         }
-
-        ball.x = Math.random() * (canvas.width - 2 * BALL_RADIUS) + BALL_RADIUS;
-        ball.y = Math.random() * (canvas.height - 2 * BALL_RADIUS) + BALL_RADIUS;
-        ball.vx = 0;
-        ball.vy = 0;
+        balls.splice(i, 1); // Remove the pocketed ball
         break;
       }
     }
   }
 
-  for (let j = 0; j < pockets.length; j++) {
-    const pocket = pockets[j];
+  // Check if the cue ball is pocketed
+  for (const pocket of pockets) {
     const dist = Math.sqrt((cueBall.x - pocket.x) ** 2 + (cueBall.y - pocket.y) ** 2);
     if (dist < POCKET_RADIUS + BALL_RADIUS) {
       resetBalls();
       pocketedBalls.fill('-');
-      updatePocketedBalls(); // Save to localStorage and reset sequence
+      updatePocketedBalls();
       break;
     }
   }

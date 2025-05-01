@@ -67,7 +67,7 @@
     }
 
     function stopAllThemes() {
-      const audioIds = ['grumbleVolcanoTheme', 'devilLaughSound', 'snoopDoggTheme', 'copTheme', 'elevenTheme', 'mortTheme', 'fiveOhFiveTheme'];
+      const audioIds = ['gv', 'laugh', 'sd', 'cop', 'elevenTheme', 'mortTheme', 'fiveOhFiveTheme'];
       audioIds.forEach((id) => {
         const audio = document.getElementById(id);
         if (audio) {
@@ -81,24 +81,32 @@
     function startDevilsGame() {
       stopAllThemes();
       document.body.classList.remove('original-theme');
+      fiveOhFiveTheme.pause();
+    fiveOhFiveTheme.currentTime = 0;
       playAudio('gv', true); // Allow multiple tracks
       playAudio('laugh', true); // Allow multiple tracks
     }
 
     function start420Theme() {
       stopAllThemes();
+      fiveOhFiveTheme.pause();
+    fiveOhFiveTheme.currentTime = 0;
       document.body.classList.remove('original-theme');
       playAudio('sd');
     }
 
     function startPoliceTheme() {
       stopAllThemes();
+      fiveOhFiveTheme.pause();
+    fiveOhFiveTheme.currentTime = 0;
       document.body.classList.remove('original-theme');
       playAudio('cop');
     }
 
     function startCasinoTheme() {
       stopAllThemes();
+      fiveOhFiveTheme.pause();
+    fiveOhFiveTheme.currentTime = 0;
       document.body.classList.remove('original-theme');
       playAudio('elevenTheme');
     }
@@ -120,7 +128,7 @@
     document.getElementById('resetButton').addEventListener('click', () => {
       resetBalls();
       pocketedBalls.fill('-');
-      pocketedBallsDisplay.textContent = pocketedBalls.join(' ');
+      pocketedBallsDisplay.textContent = pocketedBalls.map(() => '').join(' '); // Set blank spaces
 
       document.body.classList.remove('devils-game', 'weed-game');
       document.body.classList.add('original-theme');
@@ -129,6 +137,9 @@
     window.addEventListener('load', () => {
       const mortTheme = document.getElementById('mortTheme');
       mortTheme.play().catch((err) => console.error('Audio playback failed:', err));
+
+      // Set pocketedBallsDisplay to blank spaces on page load
+      pocketedBallsDisplay.textContent = pocketedBalls.map(() => '').join(' ');
     });
   </script>
 </body>
