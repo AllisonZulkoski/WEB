@@ -226,6 +226,9 @@ function resetBalls() {
   cueBall.vy = 0;
 }
 
+//makes it so you can only move the white ball vertically during the first shot
+let firstShotTaken = false; 
+
 //calls the balls and themes to be reset and stops the audio
 resetButton.addEventListener('click', () => {
   stopAllThemes();
@@ -235,6 +238,7 @@ resetButton.addEventListener('click', () => {
   pocketedBalls.fill('-');
   updatePocketedBalls();
   document.body.className = 'original-theme';
+  firstShotTaken = false; 
 });
 
 let cueAngle = 0;
@@ -254,6 +258,7 @@ shootButton.addEventListener('click', () => {
     const powerMultiplier = 1 + cuePower / 50;
     cueBall.vx = Math.cos(cueAngle) * cuePower * powerMultiplier;
     cueBall.vy = Math.sin(cueAngle) * cuePower * powerMultiplier;
+    firstShotTaken = true; 
   }
 });
 
@@ -369,12 +374,20 @@ function checkPockets() {
 
 //keyboard controls for the cue stick
 document.addEventListener('keydown', (e) => {
+  if (!firstShotTaken) {
+    // Allow vertical movement of the cue ball during setup
+    if (e.code === 'ArrowUp' && cueBall.y - BALL_RADIUS > 0) cueBall.y -= 5;
+    if (e.code === 'ArrowDown' && cueBall.y + BALL_RADIUS < canvas.height) cueBall.y += 5;
+  }
+
   if (e.code === 'ArrowLeft') cueAngle -= 0.1;
   if (e.code === 'ArrowRight') cueAngle += 0.1;
+
   if (e.code === 'Space' && Math.hypot(cueBall.vx, cueBall.vy) < 0.1) {
     const powerMultiplier = 1 + cuePower / 50;
     cueBall.vx = Math.cos(cueAngle) * cuePower * powerMultiplier;
     cueBall.vy = Math.sin(cueAngle) * cuePower * powerMultiplier;
+    firstShotTaken = true; 
   }
 });
 
@@ -556,7 +569,7 @@ function handleNumberInput(number) {
   }
 }
 
-//for when the balls are clicked (will be commented out later)
+//for when the balls are clicked (would be commented out if I were to publish this)
 canvas.addEventListener('click', (e) => {
   const rect = canvas.getBoundingClientRect();
   const mouseX = e.clientX - rect.left;
